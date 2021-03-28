@@ -10,12 +10,14 @@ class RestaurantDetail extends StatelessWidget {
         appBar:AppBar(
         title: Text('menudetail')
         ),
-         body: ListView(
+         body: SizedBox.expand(
+           child:ListView(
           children:<Widget>[
             imageSection,
             menuSection,
             restaurantSection
             ]
+          ),
           ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -24,7 +26,7 @@ class RestaurantDetail extends StatelessWidget {
 
 Widget imageSection = Container(
   width: double.infinity,
-  child:Image.asset('images/restaurant_sample.png'),
+  child:Image.asset('images/restaurant_sample.png',fit: BoxFit.cover),
 );
 
 Widget menuSection = Container(
