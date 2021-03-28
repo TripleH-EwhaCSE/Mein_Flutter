@@ -1,78 +1,56 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+//void main() => runApp(MyApp());
 
-void openPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(
-    builder: (BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Second page'),
-        ),
-        body: const Center(
-          child: Text(
-            'This is the Second page',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-      );
-    },
-  ));
+/*
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+*/
+
+final _picker = ImagePicker();
+
+class Camera_3 extends StatefulWidget {
+  @override
+  _Camera_3_State createState() => _Camera_3_State();
 }
 
-class camera_3 extends StatelessWidget {
-  // This widget is the root of your application.
+class _Camera_3_State extends State<Camera_3> {
+  File _image;
+  final picker = ImagePicker();
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
       appBar: AppBar(
-        title: const Text('AppBar Example'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.navigate_next),
-            tooltip: 'Next page',
-            onPressed: () {
-              openPage(context);
-            },
-          ),
-        ],
+        title: Text('Select Image'),
       ),
-      body: const Center(
-        child: Text(
-          'This is my first page',
-          style: TextStyle(fontSize: 24),
-        ),
+      body: Center(
+        child: _image == null ? Text('No image selected.') : Image.file(_image),
       ),
-    );
-    return Column(
-      children: <Widget>[
-        makeRow('/Users/ohjoo/Desktop/Mein_Flutter/mein/images/photo.png',
-            '/Users/ohjoo/Desktop/Mein_Flutter/mein/images/photo.png'),
-        makeRow('/Users/ohjoo/Desktop/Mein_Flutter/mein/images/photo.png',
-            '/Users/ohjoo/Desktop/Mein_Flutter/mein/images/photo.png'),
-        makeRow('/Users/ohjoo/Desktop/Mein_Flutter/mein/images/photo.png',
-            '/Users/ohjoo/Desktop/Mein_Flutter/mein/images/photo.png'),
-      ],
-    );
-  }
-
-  Widget makeRow(String leftPath, String rightPath) {
-    return IntrinsicHeight(
-      child: Row(
-        children: <Widget>[
-          makeExpandedImage(leftPath),
-          makeExpandedImage(rightPath),
-        ],
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-      ),
-    );
-  }
-
-  Widget makeExpandedImage(String imagePath) {
-    return Expanded(
-      child: Container(
-        child: Image.asset(imagePath, fit: BoxFit.cover),
-        margin: EdgeInsets.all(5.0),
+      floatingActionButton: FloatingActionButton(
+        onPressed: getImage,
+        tooltip: 'Pick Image',
+        child: Icon(Icons.add_a_photo),
       ),
     );
   }

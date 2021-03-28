@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  image_picker: ^0.7.3
+  
   flutter:
     sdk: flutter
 

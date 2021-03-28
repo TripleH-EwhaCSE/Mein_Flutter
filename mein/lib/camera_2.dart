@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 // MyApp을 시작 위젯으로 설정하여 앱을 실행
 //void main() => runApp(MyApp());
 
-class camera_2 extends StatefulWidget {
+class Camera_2 extends StatefulWidget {
   @override
   State createState() {
-    return camera_2_state();
+    return Camera_2_state();
   }
 }
 
 // 앱의 시작점에 해당하는 위젯
-class camera_2_state extends State<camera_2> {
+class Camera_2_state extends State<Camera_2> {
   String selected =
       '/Users/ohjoo/Desktop/Mein_Flutter/mein/images/restaurant_sample.png';
 
