@@ -1,15 +1,22 @@
+
+
 import 'package:flutter/material.dart';
 
 
-class MyApp extends StatelessWidget {
+class RestaurantDetail extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+    return Scaffold(
+        appBar:AppBar(
+        title: Text('menudetail')
+        ),
+         body: ListView(
+          children:<Widget>[
+              menuSection,
+              restaurantSection
+            ]
+          ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
