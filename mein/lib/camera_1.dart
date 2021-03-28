@@ -1,25 +1,39 @@
-// Copyright 2018 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
+class camera_1 extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //final wordPair = WordPair.random();
     return MaterialApp(
-      title: 'Welcome to Flutter',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Camera'),
-        ),
-        body: Center(
-          child: Text('Take a Picture /n Or /n Select a Picture'),
-        ),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      // home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
+
+Widget textbox = Container(
+  padding: const EdgeInsets.all(32),
+  child: Row(
+    children: [
+      Expanded(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Container(
+            child: Text('Take a Picture',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0))),
+        Text('or',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0)),
+        Container(
+          child: Text(
+            'Select a Picture',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+          ),
+        ),
+        // Image(image: ),
+      ]))
+    ],
+  ),
+);
