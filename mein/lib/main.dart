@@ -4,6 +4,7 @@ import 'package:mein/main_page.dart';
 import 'package:mein/menuAR.dart';
 import 'package:mein/menudetail.dart';
 import 'package:mein/restaurantDetail.dart';
+import 'package:mein/menuList.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         '/menudetail': (context) => MenuDetail(),
         '/menuAR': (context) => MenuAR(),
         '/cart': (context) => Cart(),
-        '/restaurantdetail': (context) => RestaurantDetail()
+        '/restaurantdetail': (context) => RestaurantDetail(),
+        '/menulist': (context) => MenuList()
       },
     );
   }

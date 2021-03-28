@@ -23,17 +23,19 @@ class RestaurantDetail extends StatelessWidget {
 }
 
 Widget imageSection = Container(
+  width: double.infinity,
   child:Image.asset('images/restaurant_sample.png'),
 );
 
 Widget menuSection = Container(
-  padding: const EdgeInsets.all(32),
+  padding: const EdgeInsets.all(36),
   child: Row(
     children: [
       Expanded(child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children:[
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children:[ 
           Container(
+            margin: const EdgeInsets.only(top: 12.0),
             child:Text(
               '전주 콩나물 국밥',
               style : TextStyle(
@@ -50,6 +52,7 @@ Widget menuSection = Container(
             )
           ),
           Container(
+            margin: const EdgeInsets.all(12.0),
             child: Text(
               'Main Menu',
               style: TextStyle(
@@ -58,31 +61,45 @@ Widget menuSection = Container(
               ),
             ),
           ),
-          // Image(image: ),
-          Row(
+          Container(
+            child: Image.asset('images/kongnamulgookbab.png'),
+          ),
+          Container(
+          margin: const EdgeInsets.only(top:12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children:[
-              Text(
-                '#Hot',
-                style : TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 16.0
-                )
-              ),
-              Text(
-                '#Hot',
-                style : TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 16.0
-                )
-              ),
-              Text(
-                '#Hot',
+              Container(
+                child:Text(
+                '#HOT',
                 style : TextStyle(
                 fontWeight: FontWeight.normal,
                 fontSize: 16.0
                 )
               )
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 36.0),
+                child:Text(
+                '#SALTY',
+                style : TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 16.0
+                )
+              )
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 36.0),
+                child:Text(
+                '#VEGAN',
+                style : TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 16.0
+                )
+              )
+              )
             ]
+          )
           )
         ]
       ))  
@@ -102,13 +119,14 @@ var stars = Row(
 );
 
 Widget restaurantSection = Container(
- padding: const EdgeInsets.all(32),
+ padding: const EdgeInsets.all(36),
   child: Row(
     children: [
       Expanded(child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:[
           Container(
+            margin: const EdgeInsets.only(bottom:12.0),
             child:Text(
               'This restaurant is ...',
               style : TextStyle(
@@ -118,30 +136,40 @@ Widget restaurantSection = Container(
             )
           ),
           stars,
-          Row(
+          Container(
+            margin: const EdgeInsets.only(top:12.0),
+            child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children:[
-              Text(
-                '#Cheap',
-                style : TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 16.0
+              Container(
+                child :Text(
+                  '#Cheap',
+                  style : TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 16.0
+                  )
                 )
               ),
-              Text(
-                '#Delicious',
-                style : TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 16.0
+              Container(
+                margin: const EdgeInsets.only(left: 36.0),
+                child :Text(
+                  '#Delicious',
+                  style : TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 16.0
                 )
-              ),
-              Text(
-                '#Kind',
-                style : TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 16.0
+              )),
+              Container(
+                margin: const EdgeInsets.only(left: 36.0),
+                child :Text(
+                  '#Kind',
+                  style : TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 16.0
                 )
-              )
+              ))
             ]
+          )
           )
         ]
       )
