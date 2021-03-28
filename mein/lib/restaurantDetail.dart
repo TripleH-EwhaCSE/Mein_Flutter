@@ -87,6 +87,17 @@ Widget menuSection = Container(
   ),
 );
 
+var stars = Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.grey),
+    Icon(Icons.star, color: Colors.grey),
+  ],
+);
+
 Widget restaurantSection = Container(
  padding: const EdgeInsets.all(32),
   child: Row(
@@ -103,7 +114,32 @@ Widget restaurantSection = Container(
               )
             )
           ),
-          Row()
+          stars,
+          Row(
+            children:[
+              Text(
+                '#Cheap',
+                style : TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 16.0
+                )
+              ),
+              Text(
+                '#Delicious',
+                style : TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 16.0
+                )
+              ),
+              Text(
+                '#Kind',
+                style : TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 16.0
+                )
+              )
+            ]
+          )
         ]
       )
       )
