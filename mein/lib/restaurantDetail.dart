@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-
 class RestaurantDetail extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -13,8 +12,9 @@ class RestaurantDetail extends StatelessWidget {
         ),
          body: ListView(
           children:<Widget>[
-              menuSection,
-              restaurantSection
+            imageSection,
+            menuSection,
+            restaurantSection
             ]
           ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -22,6 +22,9 @@ class RestaurantDetail extends StatelessWidget {
   }
 }
 
+Widget imageSection = Container(
+  child:Image.asset('images/restaurant_sample.png'),
+);
 
 Widget menuSection = Container(
   padding: const EdgeInsets.all(32),
