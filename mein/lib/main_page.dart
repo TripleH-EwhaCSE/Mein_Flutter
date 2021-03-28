@@ -41,6 +41,16 @@ class MainPage extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, '/cart');
               },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.grey[850],
+              ),
+              title: Text('restaurantdetail'),
+              onTap: () {
+                Navigator.pushNamed(context, '/restaurantdetail');
+              },
             )
           ],
         ),

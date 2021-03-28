@@ -1,20 +1,30 @@
+
+
 import 'package:flutter/material.dart';
 
-
-class MyApp extends StatelessWidget {
+class RestaurantDetail extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+    return Scaffold(
+        appBar:AppBar(
+        title: Text('menudetail')
+        ),
+         body: ListView(
+          children:<Widget>[
+            imageSection,
+            menuSection,
+            restaurantSection
+            ]
+          ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
+Widget imageSection = Container(
+  child:Image.asset('images/restaurant_sample.png'),
+);
 
 Widget menuSection = Container(
   padding: const EdgeInsets.all(32),
@@ -80,6 +90,17 @@ Widget menuSection = Container(
   ),
 );
 
+var stars = Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.grey),
+    Icon(Icons.star, color: Colors.grey),
+  ],
+);
+
 Widget restaurantSection = Container(
  padding: const EdgeInsets.all(32),
   child: Row(
@@ -96,7 +117,32 @@ Widget restaurantSection = Container(
               )
             )
           ),
-          Row()
+          stars,
+          Row(
+            children:[
+              Text(
+                '#Cheap',
+                style : TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 16.0
+                )
+              ),
+              Text(
+                '#Delicious',
+                style : TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 16.0
+                )
+              ),
+              Text(
+                '#Kind',
+                style : TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 16.0
+                )
+              )
+            ]
+          )
         ]
       )
       )
