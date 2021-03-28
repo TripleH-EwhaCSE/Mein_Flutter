@@ -5,9 +5,7 @@ class MenuDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
-        title: Text('menudetail')
-        ),
+      appBar: AppBar(title: Text('menudetail')),
     );
   }
 }
