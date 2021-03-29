@@ -25,7 +25,8 @@ class _MyMapState extends State<MyMap> {
 
   static final gwanghwamun = CameraPosition(
     target: LatLng(37.575929, 126.976849),
-    zoom: 3.0,
+    zoom: 16.0,
+    
   );
 
   @override
@@ -33,11 +34,16 @@ class _MyMapState extends State<MyMap> {
     return Scaffold(
       body: Center(
         child: GoogleMap(
-          mapType: MapType.hybrid,
+          mapType: MapType.normal,
           initialCameraPosition: gwanghwamun,
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);
           },
+          compassEnabled: true,
+          zoomGesturesEnabled: true,
+          rotateGesturesEnabled: true,
+          scrollGesturesEnabled: true,
+          tiltGesturesEnabled: true,
         ),
       ),
     );
