@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mein/bottomnavigationbar.dart';
 
 class MenuDetail extends StatelessWidget {
   // This widget is the root of your application.
@@ -95,90 +96,90 @@ class MenuDetail extends StatelessWidget {
 
     //return MaterialApp(
     return Scaffold(
-        appBar: AppBar(
-          title: Text('menudetail'),
-          iconTheme: IconThemeData(color: Colors.black),
+      appBar: AppBar(
+        title: Text('menudetail'),
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
+      body: ListView(children: <Widget>[
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: menuSection(
+                  "전주 콩나물 국밥", "steamed rice mixed with bean sprout soup"),
+            ),
+          ],
         ),
-        body: ListView(children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                child: menuSection(
-                    "전주 콩나물 국밥", "steamed rice mixed with bean sprout soup"),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: textSection(
+                  '** Each restaurant may have different ingredients.'),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+              child: Center(
+                child: Text('Ingredient',
+                    style: TextStyle(fontSize: 15.0, color: Colors.red)),
               ),
-            ],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                child: textSection(
-                    '** Each restaurant may have different ingredients.'),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                child: Center(
-                  child: Text('Ingredient',
-                      style: TextStyle(fontSize: 15.0, color: Colors.red)),
-                ),
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10.0),
-                      child: Column(
-                        children: [
-                          Container(child: Text('Must')),
-                          Container(child: Text('b')),
-                          Container(child: Text('c')),
-                        ],
-                      ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: [
+                        Container(child: Text('Must')),
+                        Container(child: Text('b')),
+                        Container(child: Text('c')),
+                      ],
                     ),
-                    Container(
-                      padding: EdgeInsets.all(10.0),
-                      child: Column(
-                        children: [
-                          Container(child: Text('Usally')),
-                          Container(child: Text('e')),
-                          Container(child: Text('f')),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: [
+                        Container(child: Text('Usally')),
+                        Container(child: Text('e')),
+                        Container(child: Text('f')),
+                      ],
+                    ),
+                  )
+                ],
               ),
-            ],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                child:
-                    textSection('** Ask owner for more specific information'),
+            ),
+          ],
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: textSection('** Ask owner for more specific information'),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+              child: Center(
+                child: Text('Allergy Info',
+                    style: TextStyle(fontSize: 15.0, color: Colors.red)),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                child: Center(
-                  child: Text('Allergy Info',
-                      style: TextStyle(fontSize: 15.0, color: Colors.red)),
-                ),
+            ),
+            Container(
+              child: Column(
+                children: [
+                  Container(child: Text('bean')),
+                  Container(child: Text('Egg')),
+                  Container(child: Text('c')),
+                ],
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Container(child: Text('bean')),
-                    Container(child: Text('Egg')),
-                    Container(child: Text('c')),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ])
-        //)
-        );
+            ),
+          ],
+        ),
+      ]),
+      //)
+      bottomNavigationBar: BottomNavigation(currentTab: 0),
+    );
   }
 }

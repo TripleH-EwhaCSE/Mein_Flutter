@@ -20,7 +20,7 @@ class RestaurantDetail extends StatelessWidget {
             restaurantSection
             ]
           ),
-          ),
+        ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
     bottomNavigationBar: BottomNavigation(currentTab : 0),
     );

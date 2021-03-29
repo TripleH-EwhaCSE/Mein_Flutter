@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:mein/bottomnavigationbar.dart';
 
 // ignore: must_be_immutable
 class MenuAR extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('menuAR')),
-      body: Hobby(),
+      body: Menu(),
+      bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
   // This widget is the root of your application.
 }
 
-class Hobby extends StatefulWidget {
+class Menu extends StatefulWidget {
   @override
   State createState() {
-    return HobbyState();
+    return MenuState();
   }
 }
 
-class HobbyState extends State<Hobby> {
-  String selected = 'images/restaurant_sample.png';
+class MenuState extends State<Menu> {
+  String selected = 'images/AR_sample.png';
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -31,8 +33,19 @@ class HobbyState extends State<Hobby> {
           child: Align(
             child: Row(
               children: <Widget>[
-                Text('AR',
-                    style: TextStyle(fontSize: 25.0, color: Colors.white)),
+                Container(
+                  child: Text(
+                    'AR',
+                    style: TextStyle(fontSize: 25.0, color: Colors.black),
+                    textAlign: TextAlign.center,
+                  ),
+                  padding: EdgeInsets.only(top: 5),
+                  decoration: BoxDecoration(
+                      color: Colors.red[400],
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  width: 50.0,
+                  height: 40.0,
+                ),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             ),
@@ -44,7 +57,7 @@ class HobbyState extends State<Hobby> {
           child: Align(
             child: Row(
               children: <Widget>[
-                makeButton('Hot', () => selected),
+                makeButton('HOT', () => selected),
                 makeButton('SALTY', () => selected),
                 makeButton('VEGAN', () => selected),
               ],
@@ -61,7 +74,19 @@ class HobbyState extends State<Hobby> {
   Widget makeButton(String title, VoidCallback callback) {
     // ignore: deprecated_member_use
     return TextButton(
-      child: Text(title, style: TextStyle(fontSize: 25.0, color: Colors.white)),
+      child: Container(
+        child: Text(
+          title,
+          style: TextStyle(fontSize: 25.0, color: Colors.black),
+          textAlign: TextAlign.center,
+        ),
+        padding: EdgeInsets.only(top: 5),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        width: 100.0,
+        height: 40.0,
+      ),
       onPressed: () {},
     );
   }
@@ -70,5 +95,5 @@ class HobbyState extends State<Hobby> {
 Widget imageSection = Container(
   width: double.infinity,
   height: double.infinity,
-  child: Image.asset('images/restaurant_sample.png'),
+  child: Image.asset('images/AR_sample.png'),
 );

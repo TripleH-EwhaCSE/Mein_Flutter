@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mein/bottomnavigationbar.dart';
 
+// ignore: camel_case_types
 class Camera_1 extends StatelessWidget {
   // This widget is the root of your application.
   @override
