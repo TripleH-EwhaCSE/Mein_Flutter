@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mein/bottomnavigationbar.dart';
+import 'package:mein/menuList.dart';
 
 class MenuDetail extends StatelessWidget {
   // This widget is the root of your application.
+  static const routeName = '/mainMenu';
   @override
   Widget build(BuildContext context) {
+    final MainMenuArguments args = ModalRoute.of(context).settings.arguments;
+
     var stars = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -15,6 +19,7 @@ class MenuDetail extends StatelessWidget {
         Icon(Icons.star, color: Colors.grey),
       ],
     );
+
     Widget menuSection(String menunameko, String menunameeng) {
       return Container(
           child: Row(
@@ -27,7 +32,7 @@ class MenuDetail extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(top: 32.0),
-                    child: Text(menunameko,
+                    child: Text(args.menuname.toString(),
                         style: TextStyle(
                           fontSize: 25.0,
                         )),
