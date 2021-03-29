@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mein/bottomnavigationbar.dart';
 
 class MenuList extends StatelessWidget {
   // This widget is the root of your application.
@@ -17,6 +18,7 @@ class MenuList extends StatelessWidget {
             body: SizedBox.expand(
                 child :menuSection,
               ),
+     bottomNavigationBar: BottomNavigation(currentTab : 0),
     ),
     );
   }
@@ -26,12 +28,14 @@ class MenuList extends StatelessWidget {
 Widget menuSection = Container(
   padding: const EdgeInsets.all(36),
   child:Column(
+     crossAxisAlignment: CrossAxisAlignment.start,
         children:[
            Container(
             height: 46.0,
             width: 202.0,
             color: Colors.transparent,
             child: new Container(
+               padding: const EdgeInsets.all(5),
               decoration: new BoxDecoration(
                 color: Colors.white,
                 borderRadius: new BorderRadius.only(
@@ -42,11 +46,15 @@ Widget menuSection = Container(
                 )
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children:[
                   Image.asset('images/ic_location.png'),
-                  Text('24/7 steamed rice mixed with bean sprout soup', 
+                  Flexible(
+                    child: new Text('24/7 steamed rice mixed with bean sprout soup', 
                   style: TextStyle(fontSize: 12
-                  ))
+                  )
+                  )
+                  )
                 ]
               ),
             )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mein/bottomnavigationbar.dart';
 
 class MainPage extends StatelessWidget {
   @override
@@ -65,6 +66,7 @@ class MainPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigation(currentTab : 0),
     );
   }
 }
