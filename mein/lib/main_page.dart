@@ -18,6 +18,36 @@ class MainPage extends StatelessWidget {
                 Icons.home,
                 color: Colors.grey[850],
               ),
+              title: Text('camera_1'),
+              onTap: () {
+                Navigator.pushNamed(context, '/camera_1');
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.grey[850],
+              ),
+              title: Text('camera_2'),
+              onTap: () {
+                Navigator.pushNamed(context, '/camera_2');
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.grey[850],
+              ),
+              title: Text('camera_3'),
+              onTap: () {
+                Navigator.pushNamed(context, '/camera_3');
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.grey[850],
+              ),
               title: Text('menudetail'),
               onTap: () {
                 Navigator.pushNamed(context, '/menudetail');
