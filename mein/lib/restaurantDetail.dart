@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:mein/bottomnavigationbar.dart';
 
 class RestaurantDetail extends StatelessWidget {
   // This widget is the root of your application.
@@ -15,11 +16,13 @@ class RestaurantDetail extends StatelessWidget {
           children:<Widget>[
             imageSection,
             menuSection,
+            devider,
             restaurantSection
             ]
           ),
           ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
+    bottomNavigationBar: BottomNavigation(currentTab : 0),
     );
   }
 }
@@ -178,4 +181,11 @@ Widget restaurantSection = Container(
       )
     ]
   )
+);
+
+Widget devider = Container(
+  height: 2.0,
+  width: double.infinity,
+  color: const Color(0xFFC4C4C4),
+  margin: const EdgeInsets.only(left:24.0,right: 24.0),
 );
