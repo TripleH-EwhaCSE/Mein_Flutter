@@ -23,8 +23,7 @@ class Camera_2_1 extends StatefulWidget {
 
 // 앱의 시작점에 해당하는 위젯
 class Camera_2_state extends State<Camera_2_1> {
-  String selected =
-      '/Users/ohjoo/Desktop/Mein_Flutter/mein/images/restaurant_sample.png';
+  String selected = 'images/restaurant_sample.png';
 
   @override
   Widget build(BuildContext context) {

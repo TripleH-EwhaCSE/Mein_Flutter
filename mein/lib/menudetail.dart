@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mein/bottomnavigationbar.dart';
+import 'package:mein/menuList.dart';
 
 class MenuDetail extends StatelessWidget {
   // This widget is the root of your application.
+  static const routeName = '/mainMenu';
   @override
   Widget build(BuildContext context) {
+    final MainMenuArguments args = ModalRoute.of(context).settings.arguments;
+
     var stars = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -15,6 +19,7 @@ class MenuDetail extends StatelessWidget {
         Icon(Icons.star, color: Colors.grey),
       ],
     );
+
     Widget menuSection(String menunameko, String menunameeng) {
       return Container(
           child: Row(
@@ -27,7 +32,7 @@ class MenuDetail extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(top: 32.0),
-                    child: Text(menunameko,
+                    child: Text(args.menuname.toString(),
                         style: TextStyle(
                           fontSize: 25.0,
                         )),
@@ -42,38 +47,37 @@ class MenuDetail extends StatelessWidget {
                     )),
               ),
               Container(margin: EdgeInsets.only(top: 10.0), child: stars),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ButtonBar(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 190.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 150.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/menuAR');
+                        },
+                        child: Text("AR"),
+                      ),
+                      padding: const EdgeInsets.only(right: 10.0),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(),
+                      child: SizedBox(
                         child: ElevatedButton(
+                          child: Text('Add to cart',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                              )),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/menuAR');
+                            Navigator.pushNamed(context, '/cart');
                           },
-                          child: Text("AR"),
                         ),
+                        width: 120.0,
                       ),
-                      Container(
-                        margin: EdgeInsets.only(),
-                        child: SizedBox(
-                          child: ElevatedButton(
-                            child: Text('Add to cart',
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                )),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/cart');
-                            },
-                          ),
-                          width: 150.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               )
             ],
           ),

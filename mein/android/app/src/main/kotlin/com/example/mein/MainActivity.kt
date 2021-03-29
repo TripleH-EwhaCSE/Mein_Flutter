@@ -1,4 +1,4 @@
-package com.example.mein
+package com.ohjoo.mein
 
 import io.flutter.embedding.android.FlutterActivity
 

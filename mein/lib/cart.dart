@@ -49,23 +49,27 @@ class Cart extends StatelessWidget {
         alignment: Alignment.centerLeft,
         margin: EdgeInsets.only(top: 10.0, left: 20.0),
       ),
-      Row(
-        children: [
-          Container(
-            child: counter(),
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(top: 10.0, left: 250.0),
-          ),
-          Container(
-            child: Text('\$'),
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(top: 10.0),
-          ),
-          Container(
-            child: value(45),
-            alignment: Alignment.centerRight,
-          )
-        ],
+      Padding(
+        padding: const EdgeInsets.only(right: 30.0),
+        //  padding: EdgeInsets.only(top: 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              child: counter(),
+              padding: EdgeInsets.only(top: 10.0),
+            ),
+            Container(
+              child: Text('\$'),
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.only(top: 10.0),
+            ),
+            Container(
+              child: value(45),
+              alignment: Alignment.centerRight,
+            )
+          ],
+        ),
       ),
       Container(
         margin: EdgeInsets.only(),
@@ -115,23 +119,27 @@ class Cart extends StatelessWidget {
         alignment: Alignment.centerLeft,
         margin: EdgeInsets.only(top: 10.0, left: 20.0),
       ),
-      Row(
-        children: [
-          Container(
-            child: counter(),
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(top: 10.0, left: 250.0),
-          ),
-          Container(
-            child: Text('\$'),
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(top: 10.0),
-          ),
-          Container(
-            child: value(45),
-            alignment: Alignment.centerRight,
-          )
-        ],
+      Padding(
+        padding: const EdgeInsets.only(right: 30.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              child: counter(),
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.only(top: 10.0),
+            ),
+            Container(
+              child: Text('\$'),
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.only(top: 10.0),
+            ),
+            Container(
+              child: value(45),
+              alignment: Alignment.centerRight,
+            )
+          ],
+        ),
       ),
       Container(
         margin: EdgeInsets.only(),
