@@ -12,11 +12,20 @@ class Cart extends StatelessWidget {
         child: ListView(children: <Widget>[
           SelectedMenu("1.steamed rice mixed with bean sprout soup"),
           MyCart("1.steamed rice mixed with bean sprout soup"),
-          Total(9000),
+          Total(wonvalue),
         ]),
       ),
       bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
+  }
+
+  var wonvalue;
+  Widget returnValue(int value, int quantity) {
+    // ignore: unnecessary_statements
+    //quantity = int.parse(quantity);
+    wonvalue = value * quantity;
+    // return wonvalue;
+    //print(wonvalue);
   }
 
   Widget value(var value) {
@@ -60,7 +69,7 @@ class Cart extends StatelessWidget {
               padding: EdgeInsets.only(top: 10.0),
             ),
             Container(
-              child: Text('\$'),
+              child: Text('₩'),
               alignment: Alignment.centerRight,
               padding: EdgeInsets.only(top: 10.0),
             ),
@@ -130,14 +139,15 @@ class Cart extends StatelessWidget {
               padding: EdgeInsets.only(top: 10.0),
             ),
             Container(
-              child: Text('\$'),
+              child: Text('₩'),
               alignment: Alignment.centerRight,
               padding: EdgeInsets.only(top: 10.0),
             ),
             Container(
               child: value(45),
               alignment: Alignment.centerRight,
-            )
+            ),
+            Container(child: returnValue(45, 2))
           ],
         ),
       ),
@@ -207,7 +217,7 @@ class Cart extends StatelessWidget {
             margin: EdgeInsets.only(top: 70.0, left: 10.0),
           ),
           Container(
-            child:  Text(
+            child: Text(
               '${dollar}',
               style: TextStyle(fontSize: 16.0, color: Colors.black),
             ),
@@ -229,11 +239,12 @@ class counter extends StatefulWidget {
 // ignore: camel_case_types
 class counterstate extends State<counter> {
   @override
-  var quantity = 0;
+  int quantity = 0;
   Widget quatityButton() {
     if (quantity < 0) {
       this.quantity = 0;
     }
+    //print(quantity);
     return Container(
         // build 메서드는 항상 위젯을 반환한다.
         child: Row(
