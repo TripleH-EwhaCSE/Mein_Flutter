@@ -9,7 +9,6 @@ class MenuAR extends StatelessWidget {
     );
   }
   // This widget is the root of your application.
-
 }
 
 class Menu extends StatefulWidget {

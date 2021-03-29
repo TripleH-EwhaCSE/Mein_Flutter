@@ -3,8 +3,17 @@ import 'package:flutter/material.dart';
 // MyApp을 시작 위젯으로 설정하여 앱을 실행
 //void main() => runApp(MyApp());
 
-// ignore: camel_case_types
-class Camera_2 extends StatefulWidget {
+class Camera_2 extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Check the Photo')),
+      body: Camera_2_1(),
+    );
+  }
+  // This widget is the root of your application.
+}
+
+class Camera_2_1 extends StatefulWidget {
   @override
   State createState() {
     return Camera_2_state();
@@ -12,8 +21,7 @@ class Camera_2 extends StatefulWidget {
 }
 
 // 앱의 시작점에 해당하는 위젯
-// ignore: camel_case_types
-class Camera_2_state extends State<Camera_2> {
+class Camera_2_state extends State<Camera_2_1> {
   String selected =
       '/Users/ohjoo/Desktop/Mein_Flutter/mein/images/restaurant_sample.png';
 
