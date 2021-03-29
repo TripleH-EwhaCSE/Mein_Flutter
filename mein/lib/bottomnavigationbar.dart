@@ -29,13 +29,13 @@ class BottomNavigation extends StatelessWidget{
       onTap: (index){
           switch(index){
               case 0:
-                Navigator.pushNamed(context, "/menudetail");
+                Navigator.pushNamed(context, "/map");
                 break;
               case 1:
-                Navigator.pushNamed(context, "/menuAR");
+                Navigator.pushNamed(context, "/camera_3");
                 break;
               case 2:
-                Navigator.pushNamed(context, "/map");
+                Navigator.pushNamed(context, "/camera_3");
                 break;
             }
       }
