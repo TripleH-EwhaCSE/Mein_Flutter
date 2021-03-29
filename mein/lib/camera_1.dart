@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mein/bottomnavigationbar.dart';
 
 class Camera_1 extends StatelessWidget {
   // This widget is the root of your application.
@@ -10,6 +11,7 @@ class Camera_1 extends StatelessWidget {
         child: ListView(children: <Widget>[textbox]),
       ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
+      bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
 }

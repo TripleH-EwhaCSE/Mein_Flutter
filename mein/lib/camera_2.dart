@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:mein/bottomnavigationbar.dart';
 // MyApp을 시작 위젯으로 설정하여 앱을 실행
 //void main() => runApp(MyApp());
 
@@ -8,6 +8,7 @@ class Camera_2 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Check the Photo')),
       body: Camera_2_1(),
+      bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
   // This widget is the root of your application.
