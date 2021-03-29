@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mein/bottomnavigationbar.dart';
 
 class MenuDetail extends StatelessWidget {
   // This widget is the root of your application.
@@ -177,8 +178,10 @@ class MenuDetail extends StatelessWidget {
               ),
             ],
           ),
-        ])
+        ]),
         //)
+         bottomNavigationBar: BottomNavigation(currentTab : 0),
+
         );
   }
 }

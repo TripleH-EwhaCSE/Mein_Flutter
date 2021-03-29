@@ -7,7 +7,7 @@ import 'package:mein/restaurantDetail.dart';
 import 'package:mein/camera_1.dart';
 import 'package:mein/camera_2.dart';
 import 'package:mein/camera_3.dart';
-
+import 'package:mein/map.dart';
 import 'menuList.dart';
 
 void main() {
@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/menulist': (context) => MenuList(),
         '/menuAR': (context) => MenuAR(),
         '/cart': (context) => Cart(),
+        '/map': (context) => MapView(),
         '/restaurantdetail': (context) => RestaurantDetail()
       },
     );
