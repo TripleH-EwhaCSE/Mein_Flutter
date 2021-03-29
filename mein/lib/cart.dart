@@ -12,7 +12,7 @@ class Cart extends StatelessWidget {
         child: ListView(children: <Widget>[
           SelectedMenu("1.steamed rice mixed with bean sprout soup"),
           MyCart("1.steamed rice mixed with bean sprout soup"),
-          Total(9000, 7.79),
+          Total(9000),
         ]),
       ),
       bottomNavigationBar: BottomNavigation(currentTab: 0),
@@ -49,23 +49,27 @@ class Cart extends StatelessWidget {
         alignment: Alignment.centerLeft,
         margin: EdgeInsets.only(top: 10.0, left: 20.0),
       ),
-      Row(
-        children: [
-          Container(
-            child: counter(),
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(top: 10.0, left: 250.0),
-          ),
-          Container(
-            child: Text('\$'),
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(top: 10.0),
-          ),
-          Container(
-            child: value(45),
-            alignment: Alignment.centerRight,
-          )
-        ],
+      Padding(
+        padding: const EdgeInsets.only(right: 30.0),
+        //  padding: EdgeInsets.only(top: 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              child: counter(),
+              padding: EdgeInsets.only(top: 10.0),
+            ),
+            Container(
+              child: Text('\$'),
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.only(top: 10.0),
+            ),
+            Container(
+              child: value(45),
+              alignment: Alignment.centerRight,
+            )
+          ],
+        ),
       ),
       Container(
         margin: EdgeInsets.only(),
@@ -115,23 +119,27 @@ class Cart extends StatelessWidget {
         alignment: Alignment.centerLeft,
         margin: EdgeInsets.only(top: 10.0, left: 20.0),
       ),
-      Row(
-        children: [
-          Container(
-            child: counter(),
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(top: 10.0, left: 250.0),
-          ),
-          Container(
-            child: Text('\$'),
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(top: 10.0),
-          ),
-          Container(
-            child: value(45),
-            alignment: Alignment.centerRight,
-          )
-        ],
+      Padding(
+        padding: const EdgeInsets.only(right: 30.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              child: counter(),
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.only(top: 10.0),
+            ),
+            Container(
+              child: Text('\$'),
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.only(top: 10.0),
+            ),
+            Container(
+              child: value(45),
+              alignment: Alignment.centerRight,
+            )
+          ],
+        ),
       ),
       Container(
         margin: EdgeInsets.only(),
@@ -157,7 +165,9 @@ class Cart extends StatelessWidget {
   }
 
   // ignore: non_constant_identifier_names
-  Widget Total(var won, var dollar) {
+  Widget Total(var won) {
+    var dollarInt = won / 1220;
+    var dollar = dollarInt.toStringAsFixed(2);
     return Flex(direction: Axis.vertical, children: <Widget>[
       Row(
         children: [
@@ -197,7 +207,10 @@ class Cart extends StatelessWidget {
             margin: EdgeInsets.only(top: 70.0, left: 10.0),
           ),
           Container(
-            child: value(dollar),
+            child:  Text(
+              '${dollar}',
+              style: TextStyle(fontSize: 16.0, color: Colors.black),
+            ),
             alignment: Alignment.center,
             margin: EdgeInsets.only(top: 60.0, left: 10.0),
           ),

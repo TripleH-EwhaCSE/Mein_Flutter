@@ -47,38 +47,37 @@ class MenuDetail extends StatelessWidget {
                     )),
               ),
               Container(margin: EdgeInsets.only(top: 10.0), child: stars),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ButtonBar(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 190.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 150.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/menuAR');
+                        },
+                        child: Text("AR"),
+                      ),
+                      padding: const EdgeInsets.only(right: 10.0),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(),
+                      child: SizedBox(
                         child: ElevatedButton(
+                          child: Text('Add to cart',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                              )),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/menuAR');
+                            Navigator.pushNamed(context, '/cart');
                           },
-                          child: Text("AR"),
                         ),
+                        width: 120.0,
                       ),
-                      Container(
-                        margin: EdgeInsets.only(),
-                        child: SizedBox(
-                          child: ElevatedButton(
-                            child: Text('Add to cart',
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                )),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/cart');
-                            },
-                          ),
-                          width: 150.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               )
             ],
           ),
@@ -187,4 +186,4 @@ class MenuDetail extends StatelessWidget {
       bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
-}
+} 

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         '/menuAR': (context) => MenuAR(),
         '/cart': (context) => Cart(),
         '/map': (context) => MapView(),
-        '/restaurantdetail': (context) => RestaurantDetail()
+        '/restaurantdetail': (context) => RestaurantDetail(),
       },
     );
   }

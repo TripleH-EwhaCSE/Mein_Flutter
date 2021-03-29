@@ -25,7 +25,7 @@ class MenuList extends StatelessWidget {
 Widget menuname(String menuname, BuildContext context) {
   // ignore: deprecated_member_use
   return FlatButton(
-    child: Text(menuname, style: TextStyle(fontSize: 24)),
+    child: Text(menuname, style: TextStyle(fontSize: 20)),
     onPressed: () {
       // Navigator.pushNamed(
       //   context,
@@ -85,7 +85,7 @@ class menuSection extends StatelessWidget {
               Expanded(
                   child: Column(children: <Widget>[
                 // ignore: deprecated_member_use
-                menuname("kongamul", context),
+                menuname("kongnamul", context),
                 SizedBox(
                   height: 72,
                 ),
