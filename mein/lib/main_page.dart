@@ -43,16 +43,16 @@ class MainPage extends StatelessWidget {
                 Navigator.pushNamed(context, '/camera_3');
               },
             ),
-            ListTile(
-              leading: Icon(
-                Icons.home,
-                color: Colors.grey[850],
-              ),
-              title: Text('menudetail'),
-              onTap: () {
-                Navigator.pushNamed(context, '/menudetail');
-              },
-            ),
+            // ListTile(
+            //   leading: Icon(
+            //     Icons.home,
+            //     color: Colors.grey[850],
+            //   ),
+            //   title: Text('menudetail'),
+            //   onTap: () {
+            //     Navigator.pushNamed(context, '/menudetail');
+            //   },
+            // ),
             ListTile(
               leading: Icon(
                 Icons.home,
@@ -96,7 +96,7 @@ class MainPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigation(currentTab : 0),
+      bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
 }
