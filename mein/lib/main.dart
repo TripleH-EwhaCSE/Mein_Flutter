@@ -4,8 +4,8 @@ import 'package:mein/main_page.dart';
 import 'package:mein/menuAR.dart';
 import 'package:mein/menudetail.dart';
 import 'package:mein/restaurantDetail.dart';
-import 'package:mein/camera_1.dart';
-import 'package:mein/camera_2.dart';
+//import 'package:mein/camera_1.dart';
+//import 'package:mein/camera_2.dart';
 import 'package:mein/camera_3.dart';
 import 'package:mein/map.dart';
 import 'menuList.dart';
@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => MainPage(),
-        '/camera_1': (context) => Camera_1(),
-        '/camera_2': (context) => Camera_2(),
+        //'/camera_1': (context) => Camera_1(),
+        //'/camera_2': (context) => Camera_2(),
         '/camera_3': (context) => Camera_3(),
         '/menudetail': (context) => MenuDetail(),
         '/menulist': (context) => MenuList(),
