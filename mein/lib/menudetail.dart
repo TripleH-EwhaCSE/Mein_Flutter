@@ -182,4 +182,4 @@ class MenuDetail extends StatelessWidget {
       bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
-}
+} 
