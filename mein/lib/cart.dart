@@ -11,8 +11,7 @@ class Cart extends StatelessWidget {
       body: SizedBox.expand(
         child: ListView(children: <Widget>[
           SelectedMenu("1.steamed rice mixed with bean sprout soup"),
-          MyCart("1.steamed rice mixed with bean sprout soup"),
-          Total(wonvalue),
+          Total(900),
         ]),
       ),
       bottomNavigationBar: BottomNavigation(currentTab: 0),
@@ -20,6 +19,7 @@ class Cart extends StatelessWidget {
   }
 
   var wonvalue;
+  // ignore: missing_return
   Widget returnValue(int value, int quantity) {
     // ignore: unnecessary_statements
     //quantity = int.parse(quantity);
@@ -85,7 +85,7 @@ class Cart extends StatelessWidget {
         child: SizedBox(
           child: ElevatedButton(
             child: Text(
-              'Add to cart',
+              'pay',
               style: TextStyle(
                 fontSize: 15.0,
                 color: Colors.black,
@@ -99,72 +99,6 @@ class Cart extends StatelessWidget {
             /*decoration: BoxDecoration(
                 color: Colors.yellow,
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),*/
-          ),
-          width: 150.0,
-        ),
-        alignment: Alignment.centerRight,
-        padding: EdgeInsets.only(top: 10.0, right: 20.0),
-      ),
-    ]);
-  }
-
-  // ignore: non_constant_identifier_names
-  Widget MyCart(String AddtoCart) {
-    return Flex(direction: Axis.vertical, children: <Widget>[
-      Container(
-        child: Text(
-          "My Cart",
-          style: TextStyle(fontSize: 25.0, color: Colors.black),
-          textAlign: TextAlign.start,
-        ),
-        alignment: Alignment.centerLeft,
-        margin: EdgeInsets.only(top: 10.0, left: 10.0),
-      ),
-      Container(
-        child: Text(
-          AddtoCart,
-          style: TextStyle(fontSize: 18.0, color: Colors.black),
-        ),
-        alignment: Alignment.centerLeft,
-        margin: EdgeInsets.only(top: 10.0, left: 20.0),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(right: 30.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(
-              child: counter(),
-              alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(top: 10.0),
-            ),
-            Container(
-              child: Text('₩'),
-              alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(top: 10.0),
-            ),
-            Container(
-              child: value(45),
-              alignment: Alignment.centerRight,
-            ),
-            Container(child: returnValue(45, 2))
-          ],
-        ),
-      ),
-      Container(
-        margin: EdgeInsets.only(),
-        child: SizedBox(
-          child: ElevatedButton(
-            child: Text('Pay',
-                style: TextStyle(
-                  fontSize: 15.0,
-                  color: Colors.black,
-                )),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.yellow, // background
-              // onPrimary: Colors.white, // foreground
-            ),
-            onPressed: () {},
           ),
           width: 150.0,
         ),
