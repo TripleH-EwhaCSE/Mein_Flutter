@@ -16,7 +16,7 @@ class MenuList extends StatelessWidget {
             title: Text('menuList')
             ),
             body: SizedBox.expand(
-                child :menuSection,
+                child :menuSection(),
               ),
      bottomNavigationBar: BottomNavigation(currentTab : 0),
     ),
@@ -24,8 +24,9 @@ class MenuList extends StatelessWidget {
   }
 }
 
-
-Widget menuSection = Container(
+class menuSection extends StatelessWidget {
+   Widget build(BuildContext context) {
+  return Container(
   padding: const EdgeInsets.all(36),
   child:Column(
      crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +72,7 @@ Widget menuSection = Container(
                 FlatButton(
                   child: Text('콩나물국밥', style: TextStyle(fontSize: 24)),
                   // onPressed: () => showMessage('FlatButton'),
-                  onPressed: () {  },
+                  onPressed: () {  Navigator.pushNamed(context, '/menudetail');  },
                   color: Colors.yellow,
                   textColor: Colors.black, 
                 ),
@@ -82,7 +83,7 @@ Widget menuSection = Container(
                 FlatButton(
                     child: Text('황태콩나물국밥', style: TextStyle(fontSize: 24)),
                     // onPressed: () => showMessage('FlatButton'),
-                    onPressed: () {  },
+                    onPressed: () {  Navigator.pushNamed(context, '/menudetail');  },
                     color: Colors.yellow,
                     textColor: Colors.black, 
                 ),
@@ -93,7 +94,9 @@ Widget menuSection = Container(
                 FlatButton(
                     child: Text('김치콩나물국밥', style: TextStyle(fontSize: 24)),
                     // onPressed: () => showMessage('FlatButton'),
-                    onPressed: () {  },
+                    onPressed: () { 
+                      Navigator.pushNamed(context, '/menudetail'); 
+                      },
                     color: Colors.yellow,
                     textColor: Colors.black, 
                   )
@@ -106,7 +109,7 @@ Widget menuSection = Container(
                   FlatButton(
                       child: Text('부추야채전', style: TextStyle(fontSize: 24)),
                       // onPressed: () => showMessage('FlatButton'),
-                      onPressed: () {  },
+                      onPressed: () {  Navigator.pushNamed(context, '/menudetail');  },
                       color: Colors.yellow,
                       textColor: Colors.black, 
                     ),
@@ -117,7 +120,7 @@ Widget menuSection = Container(
                   FlatButton(
                       child: Text('김치전', style: TextStyle(fontSize: 24)),
                       // onPressed: () => showMessage('FlatButton'),
-                      onPressed: () {  },
+                      onPressed: () {  Navigator.pushNamed(context, '/menudetail');  },
                       color: Colors.yellow,
                       textColor: Colors.black, 
                     ),
@@ -128,7 +131,7 @@ Widget menuSection = Container(
                   FlatButton(
                       child: Text('오징어한마리', style: TextStyle(fontSize: 24)),
                       // onPressed: () => showMessage('FlatButton'),
-                      onPressed: () {  },
+                      onPressed: () {  Navigator.pushNamed(context, '/menudetail');  },
                       color: Colors.yellow,
                       textColor: Colors.black, 
                     )
@@ -141,4 +144,5 @@ Widget menuSection = Container(
       ]
     )
 );
-      
+}
+}
