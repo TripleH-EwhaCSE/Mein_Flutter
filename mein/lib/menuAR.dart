@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mein/bottomnavigationbar.dart';
 
 // ignore: must_be_immutable
 class MenuAR extends StatelessWidget {
@@ -6,6 +7,7 @@ class MenuAR extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('menuAR')),
       body: Menu(),
+      bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
   // This widget is the root of your application.
@@ -55,7 +57,7 @@ class MenuState extends State<Menu> {
           child: Align(
             child: Row(
               children: <Widget>[
-                makeButton('Hot', () => selected),
+                makeButton('HOT', () => selected),
                 makeButton('SALTY', () => selected),
                 makeButton('VEGAN', () => selected),
               ],
