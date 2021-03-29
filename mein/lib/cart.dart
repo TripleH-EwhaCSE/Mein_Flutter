@@ -12,7 +12,7 @@ class Cart extends StatelessWidget {
         child: ListView(children: <Widget>[
           SelectedMenu("1.steamed rice mixed with bean sprout soup"),
           MyCart("1.steamed rice mixed with bean sprout soup"),
-          Total(9000, 7.79),
+          Total(9000),
         ]),
       ),
       bottomNavigationBar: BottomNavigation(currentTab: 0),
@@ -157,7 +157,9 @@ class Cart extends StatelessWidget {
   }
 
   // ignore: non_constant_identifier_names
-  Widget Total(var won, var dollar) {
+  Widget Total(var won) {
+    var dollarInt = won / 1220;
+    var dollar = dollarInt.toStringAsFixed(2);
     return Flex(direction: Axis.vertical, children: <Widget>[
       Row(
         children: [
@@ -197,7 +199,10 @@ class Cart extends StatelessWidget {
             margin: EdgeInsets.only(top: 70.0, left: 10.0),
           ),
           Container(
-            child: value(dollar),
+            child:  Text(
+              '${dollar}',
+              style: TextStyle(fontSize: 16.0, color: Colors.black),
+            ),
             alignment: Alignment.center,
             margin: EdgeInsets.only(top: 60.0, left: 10.0),
           ),
