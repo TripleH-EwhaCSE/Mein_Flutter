@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mein/bottomnavigationbar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -10,11 +8,9 @@ class MapView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:AppBar(
-        title: Text('map')
-        ),
-       body: MyMap(),
-    bottomNavigationBar: BottomNavigation(currentTab : 0),
+      appBar: AppBar(title: Text('map')),
+      body: MyMap(),
+      bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
 }
@@ -27,7 +23,7 @@ class MyMap extends StatefulWidget {
 class _MyMapState extends State<MyMap> {
   Completer<GoogleMapController> _controller = Completer();
 
-   static final gwanghwamun = CameraPosition(
+  static final gwanghwamun = CameraPosition(
     target: LatLng(37.575929, 126.976849),
     zoom: 3.0,
   );
