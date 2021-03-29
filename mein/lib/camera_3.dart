@@ -92,11 +92,13 @@ class MyApp extends StatelessWidget {
 
 final _picker = ImagePicker();
 
+// ignore: camel_case_types
 class Camera_3 extends StatefulWidget {
   @override
   _Camera_3_State createState() => _Camera_3_State();
 }
 
+// ignore: camel_case_types
 class _Camera_3_State extends State<Camera_3> {
   File _image;
   final picker = ImagePicker();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class Camera_1 extends StatelessWidget {
   // This widget is the root of your application.
   @override

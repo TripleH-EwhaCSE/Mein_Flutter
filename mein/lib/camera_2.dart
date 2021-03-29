@@ -56,6 +56,7 @@ class Camera_2_state extends State<Camera_2_1> {
   }
 
   Widget makeButton(String title, VoidCallback callback) {
+    // ignore: deprecated_member_use
     return RaisedButton(
       child: Text(title),
       onPressed: () {
