@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mein/bottomnavigationbar.dart';
+import 'package:mein/camera_3.dart';
 
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MainPage'),
+        title: Text('Select the Image'),
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -18,41 +19,11 @@ class MainPage extends StatelessWidget {
                 Icons.home,
                 color: Colors.grey[850],
               ),
-              title: Text('camera_1'),
+              title: Text('main'),
               onTap: () {
-                Navigator.pushNamed(context, '/camera_1');
+                Navigator.pushNamed(context, '/');
               },
             ),
-            ListTile(
-              leading: Icon(
-                Icons.home,
-                color: Colors.grey[850],
-              ),
-              title: Text('camera_2'),
-              onTap: () {
-                Navigator.pushNamed(context, '/camera_2');
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.home,
-                color: Colors.grey[850],
-              ),
-              title: Text('camera_3'),
-              onTap: () {
-                Navigator.pushNamed(context, '/camera_3');
-              },
-            ),
-            // ListTile(
-            //   leading: Icon(
-            //     Icons.home,
-            //     color: Colors.grey[850],
-            //   ),
-            //   title: Text('menudetail'),
-            //   onTap: () {
-            //     Navigator.pushNamed(context, '/menudetail');
-            //   },
-            // ),
             ListTile(
               leading: Icon(
                 Icons.home,
@@ -96,7 +67,7 @@ class MainPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigation(currentTab: 0),
+      body: Camera_3(),
     );
   }
 }

@@ -9,6 +9,7 @@ class Camera_3 extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
 //사진 찍기
 
 class _MyHomePageState extends State<Camera_3> {
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<Camera_3> {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
       } else {
-        print('No image selected.');
+        print('Take a Picture or Select a Photo');
       }
     });
   }
@@ -51,9 +52,6 @@ class _MyHomePageState extends State<Camera_3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Select the Image'),
-      ),
       body: Center(
         /*
         children: <Widget>[
@@ -67,7 +65,25 @@ class _MyHomePageState extends State<Camera_3> {
                 : Image.file(File(_image_2.path)))
       ]
       */
-        child: _image == null ? Text('No image selected.') : Image.file(_image),
+        child: _image == null
+            ? Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Text(
+                  'Take a Picture',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'or',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'Select a Photo',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                  textAlign: TextAlign.center,
+                )
+              ])
+            : Image.file(_image),
         //child: _image_2 == null ? Text('No image'): Image.file(File(_image_2.path)),
         //_image == null ? Text('No image selected.') : Image.file(_image),
       ),
