@@ -24,3 +24,7 @@ cupertino_icons: ^1.0.2
 ```
 ### Product Guide
 [Product Guide](https://github.com/TripleH-EwhaCSE/Mein_Flutter/files/6589162/6_.pdf)
+<img width="1440" alt="스크린샷 2021-06-03 오후 2 39 19" src="https://user-images.githubusercontent.com/42567697/120593003-c4fe0200-c479-11eb-8a5f-59c62303c068.png">
+<img width="1440" alt="스크린샷 2021-06-03 오후 2 39 27" src="https://user-images.githubusercontent.com/42567697/120592996-c2031180-c479-11eb-9659-4de10b944be5.png">
+<img width="1440" alt="스크린샷 2021-06-03 오후 2 39 41" src="https://user-images.githubusercontent.com/42567697/120592991-bfa0b780-c479-11eb-97bd-24f3814e34b2.png">
+<img width="1440" alt="스크린샷 2021-06-03 오후 2 39 51" src="https://user-images.githubusercontent.com/42567697/120592983-bd3e5d80-c479-11eb-8205-39fc4aefb09e.png">
