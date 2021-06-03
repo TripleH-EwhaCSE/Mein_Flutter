@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mein/bottomnavigationbar.dart';
 
 // ignore: must_be_immutable
-class MenuAR extends StatelessWidget {
+class MenuImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('menuAR')),
+      appBar: AppBar(title: Text('menu Image')),
       body: Menu(),
       bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
@@ -33,19 +33,6 @@ class MenuState extends State<Menu> {
           child: Align(
             child: Row(
               children: <Widget>[
-                Container(
-                  child: Text(
-                    'AR',
-                    style: TextStyle(fontSize: 25.0, color: Colors.black),
-                    textAlign: TextAlign.center,
-                  ),
-                  padding: EdgeInsets.only(top: 5),
-                  decoration: BoxDecoration(
-                      color: Colors.red[400],
-                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                  width: 50.0,
-                  height: 40.0,
-                ),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             ),

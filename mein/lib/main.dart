@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         '/camera_3': (context) => Camera_3(),
         '/menudetail': (context) => MenuDetail(),
         '/menulist': (context) => MenuList(),
-        '/menuAR': (context) => MenuAR(),
+        '/menuImage': (context) => MenuImage(),
         '/cart': (context) => Cart(),
         '/map': (context) => MapView(),
         '/restaurantdetail': (context) => RestaurantDetail(),

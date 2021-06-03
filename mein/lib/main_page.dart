@@ -29,9 +29,9 @@ class MainPage extends StatelessWidget {
                 Icons.home,
                 color: Colors.grey[850],
               ),
-              title: Text('menuAR'),
+              title: Text('menuImage'),
               onTap: () {
-                Navigator.pushNamed(context, '/menuAR');
+                Navigator.pushNamed(context, '/menuImage');
               },
             ),
             ListTile(

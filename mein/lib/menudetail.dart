@@ -55,9 +55,9 @@ class MenuDetail extends StatelessWidget {
                     Container(
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/menuAR');
+                          Navigator.pushNamed(context, '/menuImage');
                         },
-                        child: Text("AR"),
+                        child: Text("Image"),
                       ),
                       padding: const EdgeInsets.only(right: 10.0),
                     ),
@@ -119,7 +119,7 @@ class MenuDetail extends StatelessWidget {
           children: [
             Container(
               child: textSection(
-                  '** Each restaurant may have different ingredients.'),
+                  '\n** Each restaurant may have different ingredients.'),
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -137,8 +137,10 @@ class MenuDetail extends StatelessWidget {
                     child: Column(
                       children: [
                         Container(child: Text('Must')),
-                        Container(child: Text('b')),
-                        Container(child: Text('c')),
+                        Container(child: Text('bean sprout')),
+                        Container(child: Text('soy sauce')),
+                        Container(child: Text('garlic')),
+                        Container(child: Text('anchovy broth')),
                       ],
                     ),
                   ),
@@ -147,8 +149,10 @@ class MenuDetail extends StatelessWidget {
                     child: Column(
                       children: [
                         Container(child: Text('Usally')),
-                        Container(child: Text('e')),
-                        Container(child: Text('f')),
+                        Container(child: Text('chili powder')),
+                        Container(child: Text('salted shrimp')),
+                        Container(child: Text('Sesame oil')),
+                        Container(child: Text('Kelp')),
                       ],
                     ),
                   )
@@ -161,7 +165,7 @@ class MenuDetail extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              child: textSection('** Ask owner for more specific information'),
+              child: textSection('\n\n** Ask owner for more specific information'),
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -173,9 +177,12 @@ class MenuDetail extends StatelessWidget {
             Container(
               child: Column(
                 children: [
-                  Container(child: Text('bean')),
+                  Container(child: Text('Bean')),
+                  Container(child: Text('Sesame')),
                   Container(child: Text('Egg')),
-                  Container(child: Text('c')),
+                  Container(child: Text('Shrimp')),
+                  Container(child: Text('Anchovy')),
+                  Container(child: Text('Garlic')),
                 ],
               ),
             ),
