@@ -1,9 +1,13 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:mein/bottomnavigationbar.dart';
 import 'dart:async';
+
+import 'package:mein/file_picker_service.dart';
+import 'package:mein/ml_service.dart';
 
 class Camera_3 extends StatefulWidget {
   @override
@@ -17,16 +21,26 @@ class _MyHomePageState extends State<Camera_3> {
   PickedFile _image_2;
   final picker = ImagePicker();
 
+  MLService _mlService = MLService();
+  FilePickerService _filePickerService = FilePickerService();
+
+  Widget LoadingImage(Uint8List imageData) {
+    return Image.memory(imageData);
+  }
+
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
 
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
+        //return imageData;
       } else {
         print('No image selected.');
       }
     });
+    final imageData = await _filePickerService.imageFilePickAsBytes(_image);
+    final ImageJSONData = await _mlService.convertImage(imageData);
   }
 
 /*
@@ -47,6 +61,8 @@ class _MyHomePageState extends State<Camera_3> {
         print('Take a Picture or Select a Photo');
       }
     });
+    final imageData = await _filePickerService.imageFilePickAsBytes(_image);
+    final ImageJSONData = await _mlService.convertImage(imageData);
   }
 
   @override
