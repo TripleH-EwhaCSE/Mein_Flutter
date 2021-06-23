@@ -63,6 +63,16 @@ class MainPage extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, '/menulist');
               },
+            ), 
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.grey[850],
+              ),
+              title: Text('ocr'),
+              onTap: () {
+                Navigator.pushNamed(context, '/ocr');
+              },
             )
           ],
         ),

@@ -3,6 +3,7 @@ import 'package:mein/cart.dart';
 import 'package:mein/main_page.dart';
 import 'package:mein/menuAR.dart';
 import 'package:mein/menudetail.dart';
+import 'package:mein/ocr_flutter.dart';
 import 'package:mein/restaurantDetail.dart';
 //import 'package:mein/camera_1.dart';
 //import 'package:mein/camera_2.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/cart': (context) => Cart(),
         '/map': (context) => MapView(),
         '/restaurantdetail': (context) => RestaurantDetail(),
+         '/ocr': (context) => OCRPage(),
       },
     );
   }
