@@ -4,7 +4,7 @@ PODS:
   - Flutter (1.0.0)
   - google_maps_flutter (0.0.1):
     - Flutter
-    - GoogleMaps (< 3.10)
+    - GoogleMaps
   - GoogleMaps (3.9.0):
     - GoogleMaps/Maps (= 3.9.0)
   - GoogleMaps/Base (3.9.0)
@@ -18,6 +18,7 @@ PODS:
     - Flutter
   - photo_manager (0.0.1):
     - Flutter
+    - FlutterMacOS
 
 DEPENDENCIES:
   - camera (from `.symlinks/plugins/camera/ios`)
@@ -49,14 +50,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/photo_manager/ios"
 
 SPEC CHECKSUMS:
-  camera: a0ca5080336f7af47b88436e5e26da3dee5568f0
+  camera: 3164201dc344383e62282964016528c4f5a9ad50
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  google_maps_flutter: c7f9c73576de1fbe152a227bfd6e6c4ae8088619
+  google_maps_flutter: df4e7de95264aa0a2f11aac0fc7e313acb8ffc7e
   GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   image_picker: 50e7c7ff960e5f58faa4d1f4af84a771c671bc4a
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   permission_handler: 67637977b227d62d46bfbf524f335f8568de5a73
-  photo_manager: f7c619c2cc8c2adb8d85c63363babac477de9c67
+  photo_manager: 61cdd6835af271b9ad1bb533fccf71d5db02fff3
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 

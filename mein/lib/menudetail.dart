@@ -324,15 +324,11 @@ Widget reviewView = Container(
 );
 
 Widget reviewDetail = RatingDialog(
-  title: 'Rating Dialog',
-  message:
-      'Tap a star to set your rating. Add more description here if you want.',
-  image: const FlutterLogo(size: 100),
   submitButton: 'Submit',
   //onCancelled: () => print('cancelled'),
   onSubmitted: (response) {
     print('rating: ${response.rating}, comment: ${response.comment}');
-  },
+  }, title: 'Write your own review',
 );
 
 Widget devider = Container(
