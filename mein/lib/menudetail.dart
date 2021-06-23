@@ -69,8 +69,7 @@ class _MenuDetailState extends State<MenuDetailPage> {
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           children: <Widget>[
-                            Container(height: 160.0, color: Colors.purple),
-                            reviewDetail,
+                            reviewWrite,
                             Container(
                               height: 160.0,
                               color: Colors.yellow,
@@ -323,13 +322,119 @@ Widget reviewView = Container(
   margin: const EdgeInsets.only(left: 24.0, right: 24.0),
 );
 
-Widget reviewDetail = RatingDialog(
+Widget reviewWrite = RatingDialog(
   submitButton: 'Submit',
   //onCancelled: () => print('cancelled'),
   onSubmitted: (response) {
     print('rating: ${response.rating}, comment: ${response.comment}');
   }, title: 'Write your own review',
 );
+
+
+Widget reviewDetailList = Container(
+  child : ListView(
+    children: [
+      reviewDetail,
+    ],
+  )
+);
+
+Widget reviewDetail = Container(
+  child : Column(
+    children: [
+
+    ],
+  )
+);
+
+class Reviews {
+  int score;
+  String reviewText;
+
+   Reviews(this.score, this.reviewText);
+}
+
+class ReviewsTile extends StatelessWidget{
+  ReviewsTile(this._reviews);
+  final Reviews _reviews;
+  @override
+  Widget build(BuildContext context) {
+     return ListTile(
+      leading: Icon(Icons.person),
+      title: StarIcon(_reviews.score),
+      subtitle: Text("${_reviews.reviewText}"),
+    );
+  }
+
+}
+
+class StarIcon extends StatelessWidget{
+  StarIcon(this._score);
+  final int _score;
+  @override
+  Widget build(BuildContext context) {
+     switch (_score){
+     case 1:  
+     return Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.grey),
+    Icon(Icons.star, color: Colors.grey),
+    Icon(Icons.star, color: Colors.grey),
+    Icon(Icons.star, color: Colors.grey),
+  ],
+);
+     case 2:  
+     return Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.grey),
+    Icon(Icons.star, color: Colors.grey),
+    Icon(Icons.star, color: Colors.grey),
+  ],
+);
+     case 3:  
+     return Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.grey),
+    Icon(Icons.star, color: Colors.grey),
+  ],
+);
+     case 4:  
+     return Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.grey),
+  ],
+);
+     case 5:  
+     return Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+    Icon(Icons.star, color: Colors.yellow[500]),
+  ],
+);
+     }
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+
 
 Widget devider = Container(
   height: 2.0,
