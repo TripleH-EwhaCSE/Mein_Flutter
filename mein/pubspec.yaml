@@ -23,7 +23,6 @@ environment:
 dependencies:
   image_picker: ^0.7.3
   permission_handler: ^3.2.0
-  photo_manager: ^1.0.6
   
   flutter:
     sdk: flutter
@@ -39,6 +38,7 @@ dependencies:
   rating_dialog: ^2.0.1
   dio: ^4.0.0
   file_picker: ^3.0.3
+  vertical_barchart: ^2.0.0
 
 dev_dependencies:
   flutter_test:

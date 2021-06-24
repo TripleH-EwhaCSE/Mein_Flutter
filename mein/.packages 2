@@ -39,7 +39,6 @@ path_provider_platform_interface:file:///Users/hyeonjinkim/Downloads/flutter/.pu
 path_provider_windows:file:///Users/hyeonjinkim/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.0/lib/
 pedantic:file:///Users/hyeonjinkim/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.11.0/lib/
 permission_handler:file:///Users/hyeonjinkim/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-3.3.0/lib/
-photo_manager:file:///Users/hyeonjinkim/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/photo_manager-1.0.6/lib/
 platform:file:///Users/hyeonjinkim/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.0.0/lib/
 plugin_platform_interface:file:///Users/hyeonjinkim/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.0.0/lib/
 process:file:///Users/hyeonjinkim/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.1/lib/

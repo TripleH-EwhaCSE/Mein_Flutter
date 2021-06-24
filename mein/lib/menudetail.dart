@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mein/bottomnavigationbar.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:vertical_barchart/extension/expandedSection.dart';
+import 'package:vertical_barchart/vertical-barchart.dart';
+import 'package:vertical_barchart/vertical-barchartmodel.dart';
+import 'package:vertical_barchart/vertical-legend.dart';
 
 class MenuDetail extends StatelessWidget {
   @override
@@ -53,32 +57,12 @@ class _MenuDetailState extends State<MenuDetailPage> {
                 children: [
                   Container(
                       width: 200.0,
-                      child: ListView(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          children: <Widget>[
-                            ingredientView,
-                            Container(
-                              height: 160.0,
-                              color: Colors.blue,
-                            )
-                          ])),
+                      child: barchart(), 
+                          ),
                   Container(
                       width: 200.0,
-                      child: ListView(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          children: <Widget>[
-                            reviewWrite,
-                            Container(
-                              height: 160.0,
-                              color: Colors.yellow,
-                            ),
-                            Container(
-                              height: 160.0,
-                              color: Colors.green,
-                            ),
-                          ])),
+                      child:  ReviewList()
+                          ),
                 ],
               ),
             ),
@@ -190,130 +174,228 @@ Widget restaurantSection = Container(
       ]))
     ]));
 
-Widget ingredientView = Container(
-    margin: EdgeInsets.symmetric(vertical: 20.0),
-    width: 200.0,
-    child: ListView(
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        children: <Widget>[Ingredientchart()]));
+// Widget ingredientView = Container(
+    
+//     margin: EdgeInsets.symmetric(vertical: 20.0),
+//     width: 200.0,
+//     child:  
+//     );
 
-class Ingredientchart extends StatelessWidget {
+class barchart extends StatelessWidget{
+  List<VBarChartModel> bardata = [
+    VBarChartModel(
+      index: 0,
+      label: "Seafood",
+      colors: [Colors.orange, Colors.deepOrange],
+      jumlah: (97/100)*55,
+      tooltip: "97%",
+      description: Text(
+        "Most selling fruit last week",
+        style: TextStyle(fontSize: 10),
+      ),
+    ),
+    VBarChartModel(
+      index: 1,
+      label: "tofu",
+      colors: [Colors.teal, Colors.indigo],
+      jumlah: (55/100)*55,
+      tooltip: "55%",
+    ),
+    VBarChartModel(
+      index: 2,
+      label: "Anchovy Stock",
+      colors: [Colors.teal, Colors.indigo],
+      jumlah: (99/100)*55,
+      tooltip: "99%",
+    ),
+    VBarChartModel(
+      index: 3,
+      label: "papper",
+      colors: [Colors.teal, Colors.indigo],
+      jumlah: (1/100)*55,
+      tooltip: "5%",
+    ),
+    VBarChartModel(
+      index: 4,
+      label: "egg",
+      colors: [Colors.orange, Colors.deepOrange],
+      jumlah: (15/100)*55,
+      tooltip: "15%",
+    ),
+    VBarChartModel(
+      index: 5,
+      label: "green onion",
+      colors: [Colors.teal, Colors.indigo],
+      jumlah: (30/100)*55,
+      tooltip: "30%",
+    ),
+        VBarChartModel(
+      index: 4,
+      label: "crab",
+      colors: [Colors.orange, Colors.deepOrange],
+      jumlah: (15/100)*55,
+      tooltip: "15%",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    List<double> points = [99, 83, 27, 55, 9, 50, 70, 12];
+    return Scaffold(
+      body: SingleChildScrollView(
+          child: Column(
+        children: [
+          _buildGrafik(bardata),
+          IngredientList,
+          IngredientinfoList,
+        ],
+      )),
+    );
+  }
 
-    List<String> labels = [
-      // 가로축에 적을 텍스트(레이블)
-      "Seafood",
-      "tofu",
-      "Anchovy Stock",
-      "papper",
-      "egg",
-      "green onion",
-      "salt",
-      "crab"
-    ];
-
-    //return Scaffold(
-    //body:
-    return Row(
-      //children: <Widget>[
-      //Container(
-      //width: 300.0,
-      //height: 200.0,
-      // padding: const EdgeInsets.symmetric(vertical: 8.0),
-
-      //Expanded(
-      //child: SingleChildScrollView(
-      //child: Container(
-      // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      // child: Row(
-      //height: 200,
-      children: <Widget>[
-        Container(
-          height: 100.0,
-          width: 300.0,
-          child: CustomPaint(
-              size: Size(200, 200),
-              painter: BarChart(
-                  data: points,
-                  labels: labels,
-                  color: Colors.pinkAccent)), // color - 막대 그래프의 색깔
+  Widget _buildGrafik(List<VBarChartModel> bardata) {
+    return VerticalBarchart(
+      maxX: 55,
+      data: bardata,
+      showLegend: true,
+      showBackdrop: true,
+      barStyle: BarStyle.DEFAULT,
+      // alwaysShowDescription: true,
+      legend: [
+        Vlegend(
+          isSquare: false,
+          color: Colors.orange,
+          text: "Non-Vegan",
+        ),
+        Vlegend(
+          isSquare: false,
+          color: Colors.teal,
+          text: "Vegan",
         )
       ],
-      //),
-      //))
-      //),
-      // )
-      //]
-      //)
     );
   }
 }
 
-class BarChart extends CustomPainter {
-  Color color;
-  List<double> data = [];
-  List<String> labels = [];
-  double bottomPadding = 0.0;
-  double leftPadding = 0.0;
+// class Ingredientchart extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     List<double> points = [99, 83, 27, 55, 9, 50, 70, 12];
 
-  BarChart({this.data, this.labels, this.color = Colors.blue});
+//     List<String> labels = [
+//       // 가로축에 적을 텍스트(레이블)
+//       "Seafood",
+//       "tofu",
+//       "Anchovy Stock",
+//       "papper",
+//       "egg",
+//       "green onion",
+//       "salt",
+//       "crab"
+//     ];
 
-  @override
-  void paint(Canvas canvas, Size size) {
-    List<Offset> coordinates = getCoordinates(size);
+//     //return Scaffold(
+//     //body:
+//     return Row(
+//       //children: <Widget>[
+//       //Container(
+//       //width: 300.0,
+//       //height: 200.0,
+//       // padding: const EdgeInsets.symmetric(vertical: 8.0),
 
-    drawBar(canvas, size, coordinates);
-  }
+//       //Expanded(
+//       //child: SingleChildScrollView(
+//       //child: Container(
+//       // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+//       // child: Row(
+//       //height: 200,
+//       children: <Widget>[
+//         Container(
+//           height: 100.0,
+//           width: 300.0,
+//           child: CustomPaint(
+//               size: Size(200, 200),
+//               painter: BarChart(
+//                   data: points,
+//                   labels: labels,
+//                   color: Colors.pinkAccent)), // color - 막대 그래프의 색깔
+//         )
+//       ],
+//       //),
+//       //))
+//       //),
+//       // )
+//       //]
+//       //)
+//     );
+//   }
+// }
 
-  void drawBar(Canvas canvas, Size size, List<Offset> coordinates) {
-    Paint paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill
-      ..strokeCap = StrokeCap.round;
+// class BarChart extends CustomPainter {
+//   Color color;
+//   List<double> data = [];
+//   List<String> labels = [];
+//   double bottomPadding = 0.0;
+//   double leftPadding = 0.0;
 
-    double barWidthMargin = 5.0; // 막대 그래프가 겹치지 않게 간격을 줌.
+//   BarChart({this.data, this.labels, this.color = Colors.blue});
 
-    for (var index = 0; index < coordinates.length; index++) {
-      Offset offset = coordinates[index];
-      double left = size.width - 30;
-      double right = offset.dy; // 간격만큼 가로로 이동
-      double top = offset.dx;
-      double bottom =
-          offset.dx + barWidthMargin; // 텍스트 크기만큼 패딩을 빼줘서, 텍스트와 겹치지 않게 함.
+//   @override
+//   void paint(Canvas canvas, Size size) {
+//     List<Offset> coordinates = getCoordinates(size);
 
-      Rect rect = Rect.fromLTRB(left, top, right, bottom);
-      canvas.drawRect(rect, paint);
-    }
-  }
+//     drawBar(canvas, size, coordinates);
+//   }
 
-  List<Offset> getCoordinates(Size size) {
-    List<Offset> coordinates = [];
+//   void drawBar(Canvas canvas, Size size, List<Offset> coordinates) {
+//     Paint paint = Paint()
+//       ..color = color
+//       ..style = PaintingStyle.fill
+//       ..strokeCap = StrokeCap.round;
 
-    double height = size.height - bottomPadding;
-    double minBarHeight = height / data.length;
+//     double barWidthMargin = 5.0; // 막대 그래프가 겹치지 않게 간격을 줌.
 
-    for (var index = 0; index < data.length; index++) {
-      double top = minBarHeight * (index) + bottomPadding; // 그래프의 가로 위치를 정합니다.
-      double normalized = data[index] / 100; // 그래프의 높이가 [0~1] 사이가 되도록 정규화 합니다.
-      double height =
-          size.height - bottomPadding; // x축에 표시되는 글자들과 겹치지 않게 높이에서 패딩을 제외합니다.
-      double right = normalized * height; // 정규화된 값을 통해 높이를 구해줍니다.
+//     for (var index = 0; index < coordinates.length; index++) {
+//       Offset offset = coordinates[index];
+//       // double left = offset.dy;
+//       // double right = size.width - 30; // 간격만큼 가로로 이동
+//       // double top = offset.dx;
+//       // double bottom =
+//       //     offset.dx + barWidthMargin; // 텍스트 크기만큼 패딩을 빼줘서, 텍스트와 겹치지 않게 함.
+//       double left = offset.dy;
+//       double right = size.width - 30; // 간격만큼 가로로 이동
+//       double bottom = offset.dx;
+//       double top =
+//           offset.dx + barWidthMargin; // 텍스
+//       Rect rect = Rect.fromLTRB(left, top, right, bottom);
+//       canvas.drawRect(rect, paint);
+//     }
+//   }
 
-      Offset offset = Offset(top, right);
-      coordinates.add(offset);
-    }
+//   List<Offset> getCoordinates(Size size) {
+//     List<Offset> coordinates = [];
 
-    return coordinates;
-  }
+//     double height = size.height - bottomPadding;
+//     double minBarHeight = height / data.length;
 
-  @override
-  bool shouldRepaint(BarChart old) {
-    return old.data != data;
-  }
-}
+//     for (var index = 0; index < data.length; index++) {
+//       double top = minBarHeight * (index) + bottomPadding; // 그래프의 가로 위치를 정합니다.
+//       double normalized = data[index] / 100; // 그래프의 높이가 [0~1] 사이가 되도록 정규화 합니다.
+//       double height =
+//           size.height - bottomPadding; // x축에 표시되는 글자들과 겹치지 않게 높이에서 패딩을 제외합니다.
+//       double right = normalized * height; // 정규화된 값을 통해 높이를 구해줍니다.
+
+//       Offset offset = Offset(top,right);
+//       coordinates.add(offset);
+//     }
+
+//     return coordinates;
+//   }
+
+//   @override
+//   bool shouldRepaint(BarChart old) {
+//     return old.data != data;
+//   }
+// }
 
 Widget reviewView = Container(
   height: 2.0,
@@ -327,25 +409,33 @@ Widget reviewWrite = RatingDialog(
   //onCancelled: () => print('cancelled'),
   onSubmitted: (response) {
     print('rating: ${response.rating}, comment: ${response.comment}');
-  }, title: 'Write your own review',
+  }, 
+  title: 'Write your own review',
 );
 
 
-Widget reviewDetailList = Container(
-  child : ListView(
-    children: [
-      reviewDetail,
-    ],
-  )
-);
-
-Widget reviewDetail = Container(
-  child : Column(
-    children: [
-
-    ],
-  )
-);
+class ReviewList extends StatelessWidget {
+  List<Reviews> reviews = [Reviews(1,"good"),Reviews(2,"good22"),Reviews(3,"good33")];
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        reviewWrite,
+        ReviewsTile(Reviews(1, "good1")),
+        ReviewsTile(Reviews(2, "good2")),
+        ReviewsTile(Reviews(3, "good3")),
+        ReviewsTile(Reviews(4, "good4")),
+        ReviewsTile(Reviews(5, "good5")),
+        ReviewsTile(Reviews(3, "good6")),
+      ],
+      // padding: const EdgeInsets.all(8),
+      // itemCount: reviews.length + 1,
+      // itemBuilder: (BuildContext context, int index) {
+      //   return ReviewsTile(reviews[index-1]);
+      // },
+    );
+  }
+}
 
 class Reviews {
   int score;
@@ -365,7 +455,6 @@ class ReviewsTile extends StatelessWidget{
       subtitle: Text("${_reviews.reviewText}"),
     );
   }
-
 }
 
 class StarIcon extends StatelessWidget{
@@ -435,10 +524,54 @@ class StarIcon extends StatelessWidget{
   }
 }
 
-
 Widget devider = Container(
   height: 2.0,
   width: double.infinity,
   color: const Color(0xFFC4C4C4),
   margin: const EdgeInsets.only(left: 24.0, right: 24.0),
 );
+
+
+Widget IngredientList =  Container(
+          margin: const EdgeInsets.only(top: 12.0),
+            child: Text('Allergy Info',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0)));
+
+Widget IngredientinfoList = Container(
+    margin: const EdgeInsets.only(top: 12.0),
+    height: 100.0,
+    child: ListView(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[Ingredientinfo()]));
+
+class Ingredientinfo extends StatelessWidget {
+  @override
+  List<String> allergy = [
+      // 알러지 유발 성분 리스트 
+      "Seafood",
+      "tofu",
+      "Anchovy Stock",
+      "papper",
+      "egg",
+      "green onion",
+      "salt",
+      "crab"
+    ];
+  Widget build(BuildContext context) {
+    //allergy.forEach((item) => Text(item));
+    return Container(
+      width: 350.0,
+      height: 300.0,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+          itemCount: allergy.length,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: const EdgeInsets.only(right: 12.0),
+              child:Text('${allergy[index]}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
+            );
+          },
+        ));
+  }
+}
