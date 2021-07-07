@@ -1,12 +1,14 @@
 import 'dart:io';
 import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+
 import 'package:mein/bottomnavigationbar.dart';
 import 'dart:async';
 
-import 'package:mein/file_picker_service.dart';
-import 'package:mein/ml_service.dart';
+import 'api.dart';
 
 class Camera_3 extends StatefulWidget {
   @override
@@ -18,13 +20,25 @@ class Camera_3 extends StatefulWidget {
 class _MyHomePageState extends State<Camera_3> {
   File _image;
   PickedFile _image_2;
+  //final picker = ImagePicker();
+  //
+  Uint8List _imageBytes;
+  String _imageName;
   final picker = ImagePicker();
-
-  MLService _mlService = MLService();
-  FilePickerService _filePickerService = FilePickerService();
+  CloudApi api;
+  bool isUploaded = false;
+  bool loading = false;
 
   Widget LoadingImage(Uint8List imageData) {
     return Image.memory(imageData);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    rootBundle.loadString('assets/credentials.json').then((json) {
+      api = CloudApi(json);
+    });
   }
 
   Future getImage() async {
@@ -32,14 +46,17 @@ class _MyHomePageState extends State<Camera_3> {
 
     setState(() {
       if (pickedFile != null) {
+        print(pickedFile.path);
         _image = File(pickedFile.path);
         //return imageData;
+        //
+        _imageBytes = _image.readAsBytesSync();
+        _imageName = _image.path.split('/').last;
+        isUploaded = false;
       } else {
         print('No image selected.');
       }
     });
-    final imageData = await _filePickerService.imageFilePickAsBytes(_image);
-    final ImageJSONData = await _mlService.convertImage(imageData);
   }
 
 /*
@@ -55,20 +72,37 @@ class _MyHomePageState extends State<Camera_3> {
 
     setState(() {
       if (pickedFile != null) {
+        print(pickedFile.path);
         _image = File(pickedFile.path);
+        //
+        _imageBytes = _image.readAsBytesSync();
+        _imageName = _image.path.split('/').last;
+        isUploaded = false;
       } else {
+        //print('No image selected.');
         print('Take a Picture or Select a Photo');
       }
     });
-    final imageData = await _filePickerService.imageFilePickAsBytes(_image);
-    final ImageJSONData = await _mlService.convertImage(imageData);
+  }
+
+  void _saveImage() async {
+    setState(() {
+      loading = true;
+    });
+    // Upload to Google cloud
+    final response = await api.save(_imageName, _imageBytes);
+    print(response.downloadLink);
+    setState(() {
+      loading = false;
+      isUploaded = true;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        /*
+          /*
         children: <Widget>[
           Container(
             child: _image == null
@@ -80,28 +114,62 @@ class _MyHomePageState extends State<Camera_3> {
                 : Image.file(File(_image_2.path)))
       ]
       */
-        child: _image == null
-            ? Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(
-                  'Take a Picture',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  'or',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  'Select a Photo',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
-                  textAlign: TextAlign.center,
-                )
-              ])
-            : Image.file(_image),
-        //child: _image_2 == null ? Text('No image'): Image.file(File(_image_2.path)),
-        //_image == null ? Text('No image selected.') : Image.file(_image),
-      ),
+          //child: _image == null
+          child: _imageBytes == null
+              ? Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text(
+                    'Take a Picture',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    'or',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    'Select a Photo',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                    textAlign: TextAlign.center,
+                  )
+                ])
+              //: Image.file(_image),
+              : Stack(
+                  children: [
+                    Image.memory(_imageBytes),
+                    if (loading)
+                      Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    isUploaded
+                        ? Center(
+                            child: CircleAvatar(
+                              radius: 40,
+                              backgroundColor: Colors.green,
+                              child: Icon(
+                                Icons.check,
+                                color: Colors.white,
+                                size: 60,
+                              ),
+                            ),
+                          )
+                        : Align(
+                            alignment: Alignment.bottomCenter,
+                            child: FlatButton(
+                              color: Colors.blueAccent,
+                              textColor: Colors.white,
+                              onPressed: _saveImage,
+                              child: Text('Save to cloud'),
+                            ),
+                          )
+                  ],
+                )),
+
+      //child: _image_2 == null ? Text('No image'): Image.file(File(_image_2.path)),
+      //_image == null ? Text('No image selected.') : Image.file(_image),
       floatingActionButton: Stack(
         children: <Widget>[
           Padding(

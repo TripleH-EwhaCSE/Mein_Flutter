@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mein/bottomnavigationbar.dart';
-import 'package:rating_dialog/rating_dialog.dart';
+import 'package:mein/rating_dialog.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:vertical_barchart/extension/expandedSection.dart';
 import 'package:vertical_barchart/vertical-barchart.dart';
@@ -56,13 +56,10 @@ class _MenuDetailState extends State<MenuDetailPage> {
               child: TabBarView(
                 children: [
                   Container(
-                      width: 200.0,
-                      child: barchart(), 
-                          ),
-                  Container(
-                      width: 200.0,
-                      child:  ReviewList()
-                          ),
+                    width: 200.0,
+                    child: barchart(),
+                  ),
+                  Container(width: 200.0, child: ReviewList()),
                 ],
               ),
             ),
@@ -175,19 +172,19 @@ Widget restaurantSection = Container(
     ]));
 
 // Widget ingredientView = Container(
-    
+
 //     margin: EdgeInsets.symmetric(vertical: 20.0),
 //     width: 200.0,
-//     child:  
+//     child:
 //     );
 
-class barchart extends StatelessWidget{
+class barchart extends StatelessWidget {
   List<VBarChartModel> bardata = [
     VBarChartModel(
       index: 0,
       label: "Seafood",
       colors: [Colors.orange, Colors.deepOrange],
-      jumlah: (97/100)*55,
+      jumlah: (97 / 100) * 55,
       tooltip: "97%",
       description: Text(
         "Most selling fruit last week",
@@ -198,42 +195,42 @@ class barchart extends StatelessWidget{
       index: 1,
       label: "tofu",
       colors: [Colors.teal, Colors.indigo],
-      jumlah: (55/100)*55,
+      jumlah: (55 / 100) * 55,
       tooltip: "55%",
     ),
     VBarChartModel(
       index: 2,
       label: "Anchovy Stock",
       colors: [Colors.teal, Colors.indigo],
-      jumlah: (99/100)*55,
+      jumlah: (99 / 100) * 55,
       tooltip: "99%",
     ),
     VBarChartModel(
       index: 3,
       label: "papper",
       colors: [Colors.teal, Colors.indigo],
-      jumlah: (1/100)*55,
+      jumlah: (1 / 100) * 55,
       tooltip: "5%",
     ),
     VBarChartModel(
       index: 4,
       label: "egg",
       colors: [Colors.orange, Colors.deepOrange],
-      jumlah: (15/100)*55,
+      jumlah: (15 / 100) * 55,
       tooltip: "15%",
     ),
     VBarChartModel(
       index: 5,
       label: "green onion",
       colors: [Colors.teal, Colors.indigo],
-      jumlah: (30/100)*55,
+      jumlah: (30 / 100) * 55,
       tooltip: "30%",
     ),
-        VBarChartModel(
+    VBarChartModel(
       index: 4,
       label: "crab",
       colors: [Colors.orange, Colors.deepOrange],
-      jumlah: (15/100)*55,
+      jumlah: (15 / 100) * 55,
       tooltip: "15%",
     ),
   ];
@@ -409,13 +406,16 @@ Widget reviewWrite = RatingDialog(
   //onCancelled: () => print('cancelled'),
   onSubmitted: (response) {
     print('rating: ${response.rating}, comment: ${response.comment}');
-  }, 
+  },
   title: 'Write your own review',
 );
 
-
 class ReviewList extends StatelessWidget {
-  List<Reviews> reviews = [Reviews(1,"good"),Reviews(2,"good22"),Reviews(3,"good33")];
+  List<Reviews> reviews = [
+    Reviews(1, "good"),
+    Reviews(2, "good22"),
+    Reviews(3, "good33")
+  ];
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -441,15 +441,15 @@ class Reviews {
   int score;
   String reviewText;
 
-   Reviews(this.score, this.reviewText);
+  Reviews(this.score, this.reviewText);
 }
 
-class ReviewsTile extends StatelessWidget{
+class ReviewsTile extends StatelessWidget {
   ReviewsTile(this._reviews);
   final Reviews _reviews;
   @override
   Widget build(BuildContext context) {
-     return ListTile(
+    return ListTile(
       leading: Icon(Icons.person),
       title: StarIcon(_reviews.score),
       subtitle: Text("${_reviews.reviewText}"),
@@ -457,68 +457,68 @@ class ReviewsTile extends StatelessWidget{
   }
 }
 
-class StarIcon extends StatelessWidget{
+class StarIcon extends StatelessWidget {
   StarIcon(this._score);
   final int _score;
   @override
   Widget build(BuildContext context) {
-     switch (_score){
-     case 1:  
-     return Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-  ],
-);
-     case 2:  
-     return Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-  ],
-);
-     case 3:  
-     return Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-  ],
-);
-     case 4:  
-     return Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.grey),
-  ],
-);
-     case 5:  
-     return Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-  ],
-);
-     }
+    switch (_score) {
+      case 1:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+          ],
+        );
+      case 2:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+          ],
+        );
+      case 3:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+          ],
+        );
+      case 4:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.grey),
+          ],
+        );
+      case 5:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+          ],
+        );
+    }
     // TODO: implement build
     throw UnimplementedError();
   }
@@ -531,11 +531,10 @@ Widget devider = Container(
   margin: const EdgeInsets.only(left: 24.0, right: 24.0),
 );
 
-
-Widget IngredientList =  Container(
-          margin: const EdgeInsets.only(top: 12.0),
-            child: Text('Allergy Info',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0)));
+Widget IngredientList = Container(
+    margin: const EdgeInsets.only(top: 12.0),
+    child: Text('Allergy Info',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0)));
 
 Widget IngredientinfoList = Container(
     margin: const EdgeInsets.only(top: 12.0),
@@ -548,28 +547,30 @@ Widget IngredientinfoList = Container(
 class Ingredientinfo extends StatelessWidget {
   @override
   List<String> allergy = [
-      // 알러지 유발 성분 리스트 
-      "Seafood",
-      "tofu",
-      "Anchovy Stock",
-      "papper",
-      "egg",
-      "green onion",
-      "salt",
-      "crab"
-    ];
+    // 알러지 유발 성분 리스트
+    "Seafood",
+    "tofu",
+    "Anchovy Stock",
+    "papper",
+    "egg",
+    "green onion",
+    "salt",
+    "crab"
+  ];
   Widget build(BuildContext context) {
     //allergy.forEach((item) => Text(item));
     return Container(
-      width: 350.0,
-      height: 300.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
+        width: 350.0,
+        height: 300.0,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
           itemCount: allergy.length,
           itemBuilder: (context, index) {
             return Container(
               margin: const EdgeInsets.only(right: 12.0),
-              child:Text('${allergy[index]}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
+              child: Text('${allergy[index]}',
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
             );
           },
         ));
