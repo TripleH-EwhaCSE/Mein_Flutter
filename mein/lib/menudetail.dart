@@ -6,6 +6,7 @@ import 'package:vertical_barchart/extension/expandedSection.dart';
 import 'package:vertical_barchart/vertical-barchart.dart';
 import 'package:vertical_barchart/vertical-barchartmodel.dart';
 import 'package:vertical_barchart/vertical-legend.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MenuDetail extends StatelessWidget {
   @override
@@ -61,7 +62,8 @@ class _MenuDetailState extends State<MenuDetailPage> {
                           ),
                   Container(
                       width: 200.0,
-                      child:  ReviewList()
+                      child: reviewWrite
+                      // child:  ReviewList()
                           ),
                 ],
               ),
@@ -82,6 +84,7 @@ Widget imageSection = Container(
   child: Image.asset('images/restaurant_sample.png', fit: BoxFit.cover),
 );
 
+Food food = Food('전주 콩나물 국밥','steamed rice mixed with bean sprout soup');
 Widget menuSection = Container(
   height: 300,
   padding: const EdgeInsets.all(36),
@@ -92,9 +95,9 @@ Widget menuSection = Container(
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         Container(
             margin: const EdgeInsets.only(top: 12.0),
-            child: Text('전주 콩나물 국밥',
+            child: Text(food.foodnameKR,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0))),
-        Text('steamed rice mixed with bean sprout soup',
+        Text(food.foodnameENG,
             style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16.0)),
         Container(
           margin: const EdgeInsets.all(12.0),
@@ -129,6 +132,13 @@ Widget menuSection = Container(
     ],
   ),
 );
+
+class Food {
+  String foodnameKR;
+  String foodnameENG;
+
+  Food(this.foodnameKR, this.foodnameENG);
+}
 
 var stars = Row(
   mainAxisSize: MainAxisSize.min,
@@ -173,13 +183,6 @@ Widget restaurantSection = Container(
             ]))
       ]))
     ]));
-
-// Widget ingredientView = Container(
-    
-//     margin: EdgeInsets.symmetric(vertical: 20.0),
-//     width: 200.0,
-//     child:  
-//     );
 
 class barchart extends StatelessWidget{
   List<VBarChartModel> bardata = [
@@ -276,167 +279,97 @@ class barchart extends StatelessWidget{
   }
 }
 
-// class Ingredientchart extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     List<double> points = [99, 83, 27, 55, 9, 50, 70, 12];
-
-//     List<String> labels = [
-//       // 가로축에 적을 텍스트(레이블)
-//       "Seafood",
-//       "tofu",
-//       "Anchovy Stock",
-//       "papper",
-//       "egg",
-//       "green onion",
-//       "salt",
-//       "crab"
-//     ];
-
-//     //return Scaffold(
-//     //body:
-//     return Row(
-//       //children: <Widget>[
-//       //Container(
-//       //width: 300.0,
-//       //height: 200.0,
-//       // padding: const EdgeInsets.symmetric(vertical: 8.0),
-
-//       //Expanded(
-//       //child: SingleChildScrollView(
-//       //child: Container(
-//       // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-//       // child: Row(
-//       //height: 200,
-//       children: <Widget>[
-//         Container(
-//           height: 100.0,
-//           width: 300.0,
-//           child: CustomPaint(
-//               size: Size(200, 200),
-//               painter: BarChart(
-//                   data: points,
-//                   labels: labels,
-//                   color: Colors.pinkAccent)), // color - 막대 그래프의 색깔
-//         )
-//       ],
-//       //),
-//       //))
-//       //),
-//       // )
-//       //]
-//       //)
-//     );
-//   }
-// }
-
-// class BarChart extends CustomPainter {
-//   Color color;
-//   List<double> data = [];
-//   List<String> labels = [];
-//   double bottomPadding = 0.0;
-//   double leftPadding = 0.0;
-
-//   BarChart({this.data, this.labels, this.color = Colors.blue});
-
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     List<Offset> coordinates = getCoordinates(size);
-
-//     drawBar(canvas, size, coordinates);
-//   }
-
-//   void drawBar(Canvas canvas, Size size, List<Offset> coordinates) {
-//     Paint paint = Paint()
-//       ..color = color
-//       ..style = PaintingStyle.fill
-//       ..strokeCap = StrokeCap.round;
-
-//     double barWidthMargin = 5.0; // 막대 그래프가 겹치지 않게 간격을 줌.
-
-//     for (var index = 0; index < coordinates.length; index++) {
-//       Offset offset = coordinates[index];
-//       // double left = offset.dy;
-//       // double right = size.width - 30; // 간격만큼 가로로 이동
-//       // double top = offset.dx;
-//       // double bottom =
-//       //     offset.dx + barWidthMargin; // 텍스트 크기만큼 패딩을 빼줘서, 텍스트와 겹치지 않게 함.
-//       double left = offset.dy;
-//       double right = size.width - 30; // 간격만큼 가로로 이동
-//       double bottom = offset.dx;
-//       double top =
-//           offset.dx + barWidthMargin; // 텍스
-//       Rect rect = Rect.fromLTRB(left, top, right, bottom);
-//       canvas.drawRect(rect, paint);
-//     }
-//   }
-
-//   List<Offset> getCoordinates(Size size) {
-//     List<Offset> coordinates = [];
-
-//     double height = size.height - bottomPadding;
-//     double minBarHeight = height / data.length;
-
-//     for (var index = 0; index < data.length; index++) {
-//       double top = minBarHeight * (index) + bottomPadding; // 그래프의 가로 위치를 정합니다.
-//       double normalized = data[index] / 100; // 그래프의 높이가 [0~1] 사이가 되도록 정규화 합니다.
-//       double height =
-//           size.height - bottomPadding; // x축에 표시되는 글자들과 겹치지 않게 높이에서 패딩을 제외합니다.
-//       double right = normalized * height; // 정규화된 값을 통해 높이를 구해줍니다.
-
-//       Offset offset = Offset(top,right);
-//       coordinates.add(offset);
-//     }
-
-//     return coordinates;
-//   }
-
-//   @override
-//   bool shouldRepaint(BarChart old) {
-//     return old.data != data;
-//   }
-// }
-
 Widget reviewView = Container(
   height: 2.0,
-  // width: double.infinity,
+  width: double.infinity,
   color: const Color(0xFFC4C4C4),
   margin: const EdgeInsets.only(left: 24.0, right: 24.0),
 );
 
-Widget reviewWrite = RatingDialog(
+Widget reviewWrite = Container(
+  width: 200.0,
+  height: 215.0,
+  child : RatingDialog(
   submitButton: 'Submit',
   //onCancelled: () => print('cancelled'),
   onSubmitted: (response) {
-    print('rating: ${response.rating}, comment: ${response.comment}');
+    Firestore.instance.collection("foodreview").add({
+      "foodnameENG": food.foodnameENG,
+      "foodnameKR": food.foodnameKR,
+      "review": '${response.comment}',
+      "star": int.parse('${response.rating}'),
+      "uploaddate": Timestamp.now(),
+    }).then((value) => null);
   }, 
   title: 'Write your own review',
-);
+));
 
 
 class ReviewList extends StatelessWidget {
-  List<Reviews> reviews = [Reviews(1,"good"),Reviews(2,"good22"),Reviews(3,"good33")];
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
+    return Column(
+      // scrollDirection: Axis.vertical,
+      // shrinkWrap: true,
+      children : [
         reviewWrite,
-        ReviewsTile(Reviews(1, "good1")),
-        ReviewsTile(Reviews(2, "good2")),
-        ReviewsTile(Reviews(3, "good3")),
-        ReviewsTile(Reviews(4, "good4")),
-        ReviewsTile(Reviews(5, "good5")),
-        ReviewsTile(Reviews(3, "good6")),
-      ],
-      // padding: const EdgeInsets.all(8),
-      // itemCount: reviews.length + 1,
-      // itemBuilder: (BuildContext context, int index) {
-      //   return ReviewsTile(reviews[index-1]);
-      // },
-    );
+        Expanded(
+          child : StreamBuilder<QuerySnapshot>(
+        stream: Firestore.instance.collection("foodreview").snapshots(),
+        builder: (BuildContext context,
+          AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError) return Text("Error: ${snapshot.error}");
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                return Text("Loading...");
+              default:
+                return ListView(
+                children:
+                snapshot.data.documents.map((DocumentSnapshot document) {
+                Timestamp tt = document["uploaddate"];
+                DateTime dt = DateTime.fromMicrosecondsSinceEpoch(tt.microsecondsSinceEpoch);
+                return Card(
+                  elevation: 2,
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                              StarIcon(document["star"]),
+                            ],
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                            document["review"],
+                            style: TextStyle(color: Colors.black54),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+                }).toList()
+              );
+            }
+          }
+        )
+        )
+      ]);
   }
 }
-
+// children: [
+//   reviewWrite,
+//   ReviewsTile(Reviews(1, "good1")),
+//   ReviewsTile(Reviews(2, "good2")),
+//   ReviewsTile(Reviews(3, "good3")),
+//   ReviewsTile(Reviews(4, "good4")),
+//   ReviewsTile(Reviews(5, "good5")),
+//   ReviewsTile(Reviews(3, "good6")),
+// ],
 class Reviews {
   int score;
   String reviewText;
