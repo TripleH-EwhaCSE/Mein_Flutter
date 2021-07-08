@@ -23,6 +23,7 @@ dependencies:
   dio: ^3.0.10
   #file_picker: ^3.0.3
   vertical_barchart: ^2.0.0
+  edge_detection: ^1.0.6
 
 dev_dependencies:
   flutter_test:
