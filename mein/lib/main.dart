@@ -7,7 +7,7 @@ import 'package:mein/ocr_flutter.dart';
 import 'package:mein/restaurantDetail.dart';
 //import 'package:mein/camera_1.dart';
 //import 'package:mein/camera_2.dart';
-import 'package:mein/camera_3.dart';
+// import 'package:mein/camera_3.dart';
 import 'package:mein/map.dart';
 import 'menuList.dart';
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => MainPage(),
         //'/camera_1': (context) => Camera_1(),
         //'/camera_2': (context) => Camera_2(),
-        '/camera_3': (context) => Camera_3(),
+        // '/camera_3': (context) => Camera_3(),
         '/menudetail': (context) => MenuDetail(),
         '/menulist': (context) => MenuList(),
         '/menuImage': (context) => MenuImage(),
