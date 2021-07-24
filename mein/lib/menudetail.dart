@@ -24,6 +24,7 @@ class MenuDetailPage extends StatefulWidget {
 
 class _MenuDetailState extends State<MenuDetailPage> {
   // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -38,7 +39,8 @@ class _MenuDetailState extends State<MenuDetailPage> {
               height: 50,
               child: AppBar(
                 bottom: TabBar(
-                  tabs: [
+                  tabs: 
+                  [
                     Tab(
                         child: Text('Ingredient',
                             style: TextStyle(
@@ -58,12 +60,12 @@ class _MenuDetailState extends State<MenuDetailPage> {
                 children: [
                   Container(
                       width: 200.0,
-                      child: barchart(), 
+                      child: MyBarchart(), 
                           ),
                   Container(
                       width: 200.0,
-                      child: reviewWrite
-                      // child:  ReviewList()
+                      // child: reviewWrite
+                      child:  ReviewList()
                           ),
                 ],
               ),
@@ -83,8 +85,12 @@ Widget imageSection = Container(
   width: double.infinity,
   child: Image.asset('images/restaurant_sample.png', fit: BoxFit.cover),
 );
-
-Food food = Food('전주 콩나물 국밥','steamed rice mixed with bean sprout soup');
+// Food food = Firestore.instance
+//     .collection('foodingredient')
+//     .where('foodnameKR', isEqualTo: food.foodnameKR)
+//     .getDocuments().then((QuerySnapshot ds) {
+//       print(ds.documents.length);
+Food food = new Food('콩나물 국밥','steamed rice mixed with bean sprout soup');
 Widget menuSection = Container(
   height: 300,
   padding: const EdgeInsets.all(36),
@@ -184,78 +190,40 @@ Widget restaurantSection = Container(
       ]))
     ]));
 
-class barchart extends StatelessWidget{
-  List<VBarChartModel> bardata = [
-    VBarChartModel(
-      index: 0,
-      label: "Seafood",
-      colors: [Colors.orange, Colors.deepOrange],
-      jumlah: (97/100)*55,
-      tooltip: "97%",
-      description: Text(
-        "Most selling fruit last week",
-        style: TextStyle(fontSize: 10),
-      ),
-    ),
-    VBarChartModel(
-      index: 1,
-      label: "tofu",
-      colors: [Colors.teal, Colors.indigo],
-      jumlah: (55/100)*55,
-      tooltip: "55%",
-    ),
-    VBarChartModel(
-      index: 2,
-      label: "Anchovy Stock",
-      colors: [Colors.teal, Colors.indigo],
-      jumlah: (99/100)*55,
-      tooltip: "99%",
-    ),
-    VBarChartModel(
-      index: 3,
-      label: "papper",
-      colors: [Colors.teal, Colors.indigo],
-      jumlah: (1/100)*55,
-      tooltip: "5%",
-    ),
-    VBarChartModel(
-      index: 4,
-      label: "egg",
-      colors: [Colors.orange, Colors.deepOrange],
-      jumlah: (15/100)*55,
-      tooltip: "15%",
-    ),
-    VBarChartModel(
-      index: 5,
-      label: "green onion",
-      colors: [Colors.teal, Colors.indigo],
-      jumlah: (30/100)*55,
-      tooltip: "30%",
-    ),
-        VBarChartModel(
-      index: 4,
-      label: "crab",
-      colors: [Colors.orange, Colors.deepOrange],
-      jumlah: (15/100)*55,
-      tooltip: "15%",
-    ),
-  ];
-
+class MyBarchart extends StatelessWidget{
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-          child: Column(
-        children: [
-          _buildGrafik(bardata),
-          IngredientList,
-          IngredientinfoList,
-        ],
-      )),
+  List<VBarChartModel> bardata = [];
+  Widget build(BuildContext context){
+    //allergy.forEach((item) => Text(item));
+    return StreamBuilder<QuerySnapshot>(
+      stream:Firestore.instance.collection('foodingredient').where('foodnameKR', isEqualTo: food.foodnameKR).snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        final document = snapshot.data.documents;
+          print(document);
+          bardata = [];
+          for (var ingredient in document[0].data["ingredient"]){
+          bardata.add(VBarChartModel(
+                        index: 1,
+                        label: ingredient["name"],
+                        colors: (ingredient["isvegan"])?[Colors.teal, Colors.indigo] :[Colors.orange, Colors.deepOrange] ,
+                        jumlah: (ingredient["percent"]/100)*55,
+                        tooltip: ingredient["percent"].toString()+"%",
+                    ));
+          }
+          return Scaffold(
+            body: SingleChildScrollView(
+                child: Column(
+              children: [
+                _buildGrafik(bardata),
+                IngredientList,
+                IngredientinfoList,
+              ],
+            )),
+          );
+        }
     );
   }
-
-  Widget _buildGrafik(List<VBarChartModel> bardata) {
+  Widget _buildGrafik(List<VBarChartModel> bardata){
     return VerticalBarchart(
       maxX: 55,
       data: bardata,
@@ -279,6 +247,79 @@ class barchart extends StatelessWidget{
   }
 }
 
+// class barchart extends State<MyBarchart>{
+//   var index = 0;
+//   List<VBarChartModel> bardata = [];
+
+//   void didUpdateWidget(MyBarchart)  {
+//     super.didUpdateWidget(MyBarchart);
+//     getData();
+//     //  print(bardata[0].label);
+//     }
+
+//   void getData() async{
+//     print("initSTATETEETETET");
+//     await Firestore.instance
+//     .collection('foodingredient')
+//     .where('foodnameKR', isEqualTo: food.foodnameKR)
+//     .getDocuments().then((QuerySnapshot ds) {
+//       print(ds.documents.length);
+//       ds.documents.forEach((doc) => 
+//         { 
+//           for (var ingredient in doc["ingredient"]){
+//           bardata.add(VBarChartModel(
+//                         index: 1,
+//                         label: ingredient["name"],
+//                         colors: (ingredient["isvegan"])?[Colors.teal, Colors.indigo] :[Colors.orange, Colors.deepOrange] ,
+//                         jumlah: (ingredient["percent"]/100)*55,
+//                         tooltip: ingredient["percent"].toString()+"%",
+//                     ))
+//           }
+//         });
+//       });
+//     print("-=---------------인스턴스 불러씀...!!"); 
+//     print(bardata);
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // getData();
+//     return Scaffold(
+//       body: SingleChildScrollView(
+//           child: Column(
+//         children: [
+//           _buildGrafik(bardata),
+//           IngredientList,
+//           IngredientinfoList,
+//         ],
+//       )),
+//     );
+//   }
+
+//   Widget _buildGrafik(List<VBarChartModel> bardata){
+//     return VerticalBarchart(
+//       maxX: 55,
+//       data: bardata,
+//       showLegend: true,
+//       showBackdrop: true,
+//       barStyle: BarStyle.DEFAULT,
+//       // alwaysShowDescription: true,
+//       legend: [
+//         Vlegend(
+//           isSquare: false,
+//           color: Colors.orange,
+//           text: "Non-Vegan",
+//         ),
+//         Vlegend(
+//           isSquare: false,
+//           color: Colors.teal,
+//           text: "Vegan",
+//         )
+//       ],
+//     );
+//   }
+// }
+
 Widget reviewView = Container(
   height: 2.0,
   width: double.infinity,
@@ -288,7 +329,7 @@ Widget reviewView = Container(
 
 Widget reviewWrite = Container(
   width: 200.0,
-  height: 215.0,
+  // height: 230.0,
   child : RatingDialog(
   submitButton: 'Submit',
   //onCancelled: () => print('cancelled'),
@@ -299,77 +340,53 @@ Widget reviewWrite = Container(
       "review": '${response.comment}',
       "star": int.parse('${response.rating}'),
       "uploaddate": Timestamp.now(),
-    }).then((value) => null);
+    }).then((value) => MenuDetail());
   }, 
   title: 'Write your own review',
 ));
 
 
+
 class ReviewList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      // scrollDirection: Axis.vertical,
-      // shrinkWrap: true,
-      children : [
-        reviewWrite,
-        Expanded(
-          child : StreamBuilder<QuerySnapshot>(
-        stream: Firestore.instance.collection("foodreview").snapshots(),
-        builder: (BuildContext context,
-          AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.hasError) return Text("Error: ${snapshot.error}");
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return Text("Loading...");
-              default:
-                return ListView(
-                children:
-                snapshot.data.documents.map((DocumentSnapshot document) {
-                Timestamp tt = document["uploaddate"];
-                DateTime dt = DateTime.fromMicrosecondsSinceEpoch(tt.microsecondsSinceEpoch);
-                return Card(
-                  elevation: 2,
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
+    List <Widget> list = [];
+    return StreamBuilder<QuerySnapshot>(
+        stream: Firestore.instance.collection("foodreview").where('foodnameKR', isEqualTo: food.foodnameKR).snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          final document = snapshot.data.documents;
+          list = [reviewWrite];
+          for (var element in document){
+            list.add( Card(
+              elevation: 2,
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment:
+                      MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                              StarIcon(document["star"]),
-                            ],
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                            document["review"],
-                            style: TextStyle(color: Colors.black54),
-                          ),
-                        )
+                        StarIcon(element["star"]),
                       ],
                     ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                        child: Text(
+                          element["review"],
+                          style: TextStyle(color: Colors.black54),
+                        ),
+                      )
+                    ],
                   ),
-                );
-                }).toList()
-              );
+                ),
+              ));
             }
-          }
-        )
-        )
-      ]);
+          return ListView(children: list);
+          });
   }
 }
-// children: [
-//   reviewWrite,
-//   ReviewsTile(Reviews(1, "good1")),
-//   ReviewsTile(Reviews(2, "good2")),
-//   ReviewsTile(Reviews(3, "good3")),
-//   ReviewsTile(Reviews(4, "good4")),
-//   ReviewsTile(Reviews(5, "good5")),
-//   ReviewsTile(Reviews(3, "good6")),
-// ],
+
 class Reviews {
   int score;
   String reviewText;
@@ -480,31 +497,34 @@ Widget IngredientinfoList = Container(
 
 class Ingredientinfo extends StatelessWidget {
   @override
-  List<String> allergy = [
-      // 알러지 유발 성분 리스트 
-      "Seafood",
-      "tofu",
-      "Anchovy Stock",
-      "papper",
-      "egg",
-      "green onion",
-      "salt",
-      "crab"
-    ];
-  Widget build(BuildContext context) {
+  List<String> allergy = [];
+  Widget build(BuildContext context){
     //allergy.forEach((item) => Text(item));
-    return Container(
-      width: 350.0,
-      height: 300.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-          itemCount: allergy.length,
-          itemBuilder: (context, index) {
-            return Container(
-              margin: const EdgeInsets.only(right: 12.0),
-              child:Text('${allergy[index]}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection("foodingredient").where('foodnameKR', isEqualTo: food.foodnameKR).snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        final document = snapshot.data.documents;
+          print(document);
+          allergy = [];
+            for (var element in document[0].data["allergy"]){
+              print(element);
+              allergy.add(element);
+            }
+          return Container(
+            width: 350.0,
+            height: 300.0,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+                itemCount: allergy.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: const EdgeInsets.only(right: 12.0),
+                    child:Text('${allergy[index]}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
+                  );
+                },
+              )
             );
-          },
-        ));
+          }
+        );
   }
 }

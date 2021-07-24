@@ -32,7 +32,7 @@ class RatingDialog extends StatelessWidget {
   final String submitButton;
 
   /// Returns a RatingDialogResponse with user's rating and comment values
-  final Function(RatingDialogResponse) onSubmitted;
+  // final Function(RatingDialogResponse) onSubmitted;
 
   /// called when user cancels/closes the dialog ?
   final Function onCancelled;
@@ -45,7 +45,7 @@ class RatingDialog extends StatelessWidget {
     //required
     this.submitButton,
     //required
-    this.onSubmitted,
+    // this.onSubmitted,
     this.ratingColor = Colors.amber,
     this.onCancelled,
     this.force = false,
@@ -135,9 +135,9 @@ class RatingDialog extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        if (!force) Navigator.pop(context);
-                        _response.comment = _commentController.text;
-                        onSubmitted.call(_response);
+                        // if (!force) Navigator.pop(context);
+                        // _response.comment = _commentController.text;
+                        // onSubmitted.call(_response);
                       },
                     ),
                   ],
@@ -148,9 +148,9 @@ class RatingDialog extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.close, size: 18),
                 onPressed: () {
-                  Navigator.pop(context);
-                  //onCancelled!.call();
-                  onCancelled.call();
+                  // Navigator.pop(context);
+                  // //onCancelled!.call();
+                  // onCancelled.call();
                 },
               )
             ]

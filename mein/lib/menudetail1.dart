@@ -194,3 +194,83 @@ class MenuDetail extends StatelessWidget {
     );
   }
 } 
+
+// class MyBarchart extends StatefulWidget{
+//   @override
+//   State<StatefulWidget> createState() {
+//     return barchart();
+//   }
+// }
+
+// class barchart extends State<MyBarchart>{
+//   var index = 0;
+//   List<VBarChartModel> bardata = [];
+
+//   void initState()  {
+//     super.initState();
+//     getData();
+//     //  print(bardata[0].label);
+//     }
+
+//   void getData() async{
+//     print("initSTATETEETETET");
+//     await Firestore.instance
+//     .collection('foodingredient')
+//     .where('foodnameKR', isEqualTo: food.foodnameKR)
+//     .getDocuments().then((QuerySnapshot ds) {
+//       print(ds.documents.length);
+//       ds.documents.forEach((doc) => 
+//         { 
+//           for (var ingredient in doc["ingredient"]){
+//           bardata.add(VBarChartModel(
+//                         index: 1,
+//                         label: ingredient["name"],
+//                         colors: (ingredient["isvegan"])?[Colors.teal, Colors.indigo] :[Colors.orange, Colors.deepOrange] ,
+//                         jumlah: (ingredient["percent"]/100)*55,
+//                         tooltip: ingredient["percent"].toString()+"%",
+//                     ))
+//           }
+//         });
+//       });
+//     print("-=---------------인스턴스 불러씀...!!"); 
+//     print(bardata);
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // getData();
+//     return Scaffold(
+//       body: SingleChildScrollView(
+//           child: Column(
+//         children: [
+//           _buildGrafik(bardata),
+//           IngredientList,
+//           IngredientinfoList,
+//         ],
+//       )),
+//     );
+//   }
+
+//   Widget _buildGrafik(List<VBarChartModel> bardata){
+//     return VerticalBarchart(
+//       maxX: 55,
+//       data: bardata,
+//       showLegend: true,
+//       showBackdrop: true,
+//       barStyle: BarStyle.DEFAULT,
+//       // alwaysShowDescription: true,
+//       legend: [
+//         Vlegend(
+//           isSquare: false,
+//           color: Colors.orange,
+//           text: "Non-Vegan",
+//         ),
+//         Vlegend(
+//           isSquare: false,
+//           color: Colors.teal,
+//           text: "Vegan",
+//         )
+//       ],
+//     );
+//   }
+// }
