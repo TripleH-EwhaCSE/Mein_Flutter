@@ -15,9 +15,11 @@ services:
     build: ./nginx
     ports:
       - "80:80"
+      - "81:81"
     depends_on:
       - flask_app
-  
+      - django_app
+
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.13.4
     container_name: es01
@@ -38,7 +40,44 @@ services:
       - 9200:9200
     # networks:
     #   - elastic
-  
+
+  mysql:
+    image: mariadb:latest
+    container_name: mysql
+    expose:
+      - "3306"
+    environment:
+      MYSQL_DATABASE: mein_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 99070812120817
+      MYSQL_ROOT_PASSWORD: 99070812120817
+    volumes:
+      - ../db/data:/var/lib/mysql
+      - ../db/data/conf.d:/etc/mysql/conf.d
+
+  django_app:
+    container_name: django_app
+    build:
+      context: .
+      dockerfile: ./django/Dockerfile
+    command: gunicorn mein.wsgi:application --bind 0.0.0.0:8010
+      # settings.py 환경분리 되어있어 settings를 지정해야하는 경우 다음과 같이 추가 입력
+      # [--env DJANGO_SETTINGS_MODULE='<django_project>.settings.production']
+    expose:
+      - "8010"
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql
+#    networks:
+#      - app-tier
+    restart: always
+    volumes:
+      - ./django/app:/app
+    env_file:
+      - ./django/env.dev
+
+
 # volumes:
 #   data01:
 #     driver: local

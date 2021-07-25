@@ -1,0 +1,17 @@
+Django==3.1.4
+pymysql
+Pillow
+jsonify
+requests
+cryptography
+gunicorn==20.0.4
+djangorestframework
+djangorestframework-jwt
+django-filter
+django-rest-auth
+django-allauth
+asgiref
+pytz
+sqlparse
+drf_yasg
+django-cors-headers
