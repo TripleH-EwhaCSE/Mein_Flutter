@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="afcd5351-3fed-44e8-8fca-96b2a45ce301" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mein/lib/ocrresult.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/mein/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/mein/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/camera_3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mein/lib/camera_3.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mein/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/main_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mein/lib/main_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/mein/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mein/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1vneeigzFaRyOSJZZ6Ghhsm0T82" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="afcd5351-3fed-44e8-8fca-96b2a45ce301" name="Default Changelist" comment="" />
+      <created>1627202376840</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1627202376840</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1864" y="184" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1627202935780">
+      <screen x="1440" y="25" width="1920" height="1000" />
+    </state>
+    <state x="1864" y="184" key="#com.intellij.execution.impl.EditConfigurationsDialog/1440.25.1920.1000/0.25.1440.875@1440.25.1920.1000" timestamp="1627202935780" />
+    <state x="2195" y="275" key="AndroidProcessChooserDialog" timestamp="1627202528046">
+      <screen x="1440" y="25" width="1920" height="1000" />
+    </state>
+    <state x="2195" y="275" key="AndroidProcessChooserDialog/1440.25.1920.1000/0.25.1440.875@1440.25.1920.1000" timestamp="1627202528046" />
+    <state x="1901" y="161" key="SettingsEditor" timestamp="1627202965165">
+      <screen x="1440" y="25" width="1920" height="1000" />
+    </state>
+    <state x="1901" y="161" key="SettingsEditor/1440.25.1920.1000/0.25.1440.875@1440.25.1920.1000" timestamp="1627202965165" />
+  </component>
+</project>
