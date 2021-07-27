@@ -17,8 +17,6 @@ from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-with open(os.path.join(BASE_DIR, 'secrets.json'), 'rb') as secret_file:
-    secrets = json.load(secret_file)
 
 # AUTH_USER_MODEL = 'api.User'  # abstractuser
 # Quick-start development settings - unsuitable for production
@@ -58,6 +56,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    # 'background_task',
 ]
 SITE_ID = 1
 
@@ -147,8 +146,6 @@ WSGI_APPLICATION = 'mein.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
-DATABASES = secrets['DB_SETTINGS']
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 

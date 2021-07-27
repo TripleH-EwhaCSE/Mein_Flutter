@@ -1,5 +1,4 @@
 Django==3.1.4
-pymysql
 Pillow
 jsonify
 requests
@@ -15,3 +14,5 @@ pytz
 sqlparse
 drf_yasg
 django-cors-headers
+firebase-admin
+django-background-tasks

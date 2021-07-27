@@ -15,4 +15,5 @@ router = DefaultRouter()
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('ingre/',views.findIncludePercent)
  ]

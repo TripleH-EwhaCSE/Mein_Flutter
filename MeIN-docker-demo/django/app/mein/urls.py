@@ -1,4 +1,4 @@
-"""venti URL Configuration
+"""mein URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -22,5 +22,5 @@ router = DefaultRouter()
 urlpatterns = [
 path('', include(router.urls)),
     path('admin/', admin.site.urls),
-    # path('api/', include('api.urls')),
+    path('api/', include('api.urls')),
   ]

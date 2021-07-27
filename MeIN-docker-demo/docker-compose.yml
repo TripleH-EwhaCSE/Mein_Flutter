@@ -41,19 +41,7 @@ services:
     # networks:
     #   - elastic
 
-  mysql:
-    image: mariadb:latest
-    container_name: mysql
-    expose:
-      - "3306"
-    environment:
-      MYSQL_DATABASE: mein_db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 99070812120817
-      MYSQL_ROOT_PASSWORD: 99070812120817
-    volumes:
-      - ../db/data:/var/lib/mysql
-      - ../db/data/conf.d:/etc/mysql/conf.d
+
 
   django_app:
     container_name: django_app
@@ -65,10 +53,8 @@ services:
       # [--env DJANGO_SETTINGS_MODULE='<django_project>.settings.production']
     expose:
       - "8010"
-    depends_on:
-      - mysql
-    links:
-      - mysql:mysql
+
+
 #    networks:
 #      - app-tier
     restart: always
