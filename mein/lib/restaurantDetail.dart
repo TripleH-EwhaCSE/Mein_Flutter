@@ -1,7 +1,5 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:mein/bottomnavigationbar.dart';
+//import 'package:mein/bottomnavigationbar.dart';
 
 class RestaurantDetail extends StatelessWidget {
   // This widget is the root of your application.
@@ -22,14 +20,14 @@ class RestaurantDetail extends StatelessWidget {
           ),
         ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
-    bottomNavigationBar: BottomNavigation(currentTab : 0),
+    //bottomNavigationBar: BottomNavigation(currentTab : 0),
     );
   }
 }
 
 Widget imageSection = Container(
   width: double.infinity,
-  child:Image.asset('images/restaurant_sample.png',fit: BoxFit.cover),
+  //child:Image.asset('images/restaurant_sample.png',fit: BoxFit.cover),
 );
 
 Widget menuSection = Container(
@@ -67,7 +65,7 @@ Widget menuSection = Container(
             ),
           ),
           Container(
-            child: Image.asset('images/kongnamulgookbab.png'),
+            //child: Image.asset('images/kongnamulgookbab.png'),
           ),
           Container(
           margin: const EdgeInsets.only(top:12.0),

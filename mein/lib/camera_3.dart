@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -5,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:mein/bottomnavigationbar.dart';
+//import 'package:mein/bottomnavigationbar.dart';
 import 'dart:async';
 
 import 'api.dart';
@@ -91,6 +92,8 @@ class _MyHomePageState extends State<Camera_3> {
   }
   */
   Future getGallery() async {
+    imageCache.maximumSize=0;
+    imageCache.clear();
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
@@ -119,9 +122,13 @@ class _MyHomePageState extends State<Camera_3> {
       loading = false;
       isUploaded = true;
     });
+
+    Map<String,String> headers = {'Content-Type':'application/json'};
+    final msg = jsonEncode({"imagename": _imageName});
     http.Response _res = await http.post("$_url",
-        headers: {"Content-Type": "application/json"},
-        body: {"imagename": _imageName});
+        headers: headers,
+        body: msg);
+
     print(_res.body);
   }
 
@@ -143,40 +150,22 @@ class _MyHomePageState extends State<Camera_3> {
       */
     //child: _image == null
     return Scaffold(
-      body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            //   Center(
-            //     child: ElevatedButton(
-            //       onPressed: getImage,
-            //       child: Text('Scan'),
-            //     ),
-            //   ),
-            //   SizedBox(height: 20),
-            //   Text('Cropped image path:'),
-            //   Padding(
-            //     padding: const EdgeInsets.only(top: 0, left: 0, right: 0),
-            //     child: Text(
-            //       '$_imagePath\n',
-            //       style: TextStyle(fontSize: 10),
-            //     ),
-            //   ),
-            _imageBytes == null
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+      body:
+       _imageBytes == null
+                ? Center(
+                child: (
                         Text(
                           'Take a Picture',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 24.0),
                           textAlign: TextAlign.center,
-                        ),
-                      ])
+                        )
+                      )
+            )
                 //: Image.file(_image),
                 : Stack(
-                    children: [
-                      Image.memory(_imageBytes),
+                    children: [Center(
+                      child:Image.memory(_imageBytes)),
                       if (loading)
                         Center(
                           child: CircularProgressIndicator(),
@@ -185,10 +174,10 @@ class _MyHomePageState extends State<Camera_3> {
                           ? Center(
                               child: IconButton(
                                 //radius: 40,
-                                color: Colors.green,
+                                //: Colors.green,
                                 icon: Icon(
                                   Icons.check,
-                                  color: Colors.white,
+                                  color: Colors.green,
                                   size: 60,
                                 ),
                                 onPressed: () => {
@@ -198,16 +187,18 @@ class _MyHomePageState extends State<Camera_3> {
                               ),
                             )
                           : Align(
-                              alignment: Alignment.bottomCenter,
-                              child: FlatButton(
-                                color: Colors.blueAccent,
-                                textColor: Colors.white,
+                              alignment: Alignment.center,
+                              child: FloatingActionButton(
+                                //color: Colors.blueAccent,
+                                child: Icon(Icons.wysiwyg,size:30,),
+                                //textColor: Colors.white,
                                 onPressed: _saveImage,
-                                child: Text('Translate'),
+                                //child: Text('Translate'),
                               ),
                             )
-                    ],
-                  )
+
+
+
           ]),
 
       //child: _image_2 == null ? Text('No image'): Image.file(File(_image_2.path)),
@@ -235,7 +226,7 @@ class _MyHomePageState extends State<Camera_3> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigation(currentTab: 0),
+      //bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
 }

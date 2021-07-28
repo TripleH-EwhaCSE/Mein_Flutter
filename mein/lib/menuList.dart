@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mein/bottomnavigationbar.dart';
+//import 'package:mein/bottomnavigationbar.dart';
 
 class MenuList extends StatelessWidget {
   // This widget is the root of your application.
@@ -16,7 +16,7 @@ class MenuList extends StatelessWidget {
         body: SizedBox.expand(
           child: menuSection(),
         ),
-        bottomNavigationBar: BottomNavigation(currentTab: 0),
+        //bottomNavigationBar: BottomNavigation(currentTab: 0),
       ),
     );
   }
