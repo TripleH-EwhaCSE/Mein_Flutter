@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -5,13 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:mein/bottomnavigationbar.dart';
+//import 'package:mein/bottomnavigationbar.dart';
 import 'dart:async';
 
 import 'api.dart';
 
 //Edge detection
-import 'package:edge_detection/edge_detection.dart';
+//import 'package:edge_detection/edge_detection.dart';
+
+import 'package:http/http.dart' as http;
 
 class Camera_3 extends StatefulWidget {
   @override
@@ -33,6 +36,8 @@ class _MyHomePageState extends State<Camera_3> {
   bool isUploaded = false;
   bool loading = false;
 
+  final String _url = "https://mein-flask.run.goorm.io/result";
+
   Widget LoadingImage(Uint8List imageData) {
     return Image.memory(imageData);
   }
@@ -49,19 +54,19 @@ class _MyHomePageState extends State<Camera_3> {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
 
     //Edge detection
-    String imagePath = await EdgeDetection.detectEdge;
+    // String imagePath = await EdgeDetection.detectEdge;
 
-    try {
-      imagePath = (await EdgeDetection.detectEdge);
-      print("$imagePath");
-    } on PlatformException {
-      imagePath = 'Failed to get cropped image path.';
-    }
-    if (!mounted) return;
+    // try {
+    //   imagePath = (await EdgeDetection.detectEdge);
+    //   print("$imagePath");
+    // } on PlatformException {
+    //   imagePath = 'Failed to get cropped image path.';
+    // }
+    // if (!mounted) return;
 
-    setState(() {
-      _imagePath = imagePath;
-    });
+    // setState(() {
+    //   _imagePath = imagePath;
+    // });
 
     setState(() {
       if (pickedFile != null) {
@@ -87,6 +92,8 @@ class _MyHomePageState extends State<Camera_3> {
   }
   */
   Future getGallery() async {
+    imageCache.maximumSize=0;
+    imageCache.clear();
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
@@ -115,6 +122,14 @@ class _MyHomePageState extends State<Camera_3> {
       loading = false;
       isUploaded = true;
     });
+
+    Map<String,String> headers = {'Content-Type':'application/json'};
+    final msg = jsonEncode({"imagename": _imageName});
+    http.Response _res = await http.post("$_url",
+        headers: headers,
+        body: msg);
+
+    print(_res.body);
   }
 
   @override
@@ -135,79 +150,55 @@ class _MyHomePageState extends State<Camera_3> {
       */
     //child: _image == null
     return Scaffold(
-      body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: ElevatedButton(
-                onPressed: getImage,
-                child: Text('Scan'),
-              ),
-            ),
-            SizedBox(height: 20),
-            Text('Cropped image path:'),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, left: 0, right: 0),
-              child: Text(
-                '$_imagePath\n',
-                style: TextStyle(fontSize: 10),
-              ),
-            ),
-            _imageBytes == null
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+      body:
+       _imageBytes == null
+                ? Center(
+                child: (
                         Text(
                           'Take a Picture',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 24.0),
                           textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          'or',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24.0),
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          'Select a Photo',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24.0),
-                          textAlign: TextAlign.center,
                         )
-                      ])
+                      )
+            )
                 //: Image.file(_image),
                 : Stack(
-                    children: [
-                      Image.memory(_imageBytes),
+                    children: [Center(
+                      child:Image.memory(_imageBytes)),
                       if (loading)
                         Center(
                           child: CircularProgressIndicator(),
                         ),
                       isUploaded
                           ? Center(
-                              child: CircleAvatar(
-                                radius: 40,
-                                backgroundColor: Colors.green,
-                                child: Icon(
+                              child: IconButton(
+                                //radius: 40,
+                                //: Colors.green,
+                                icon: Icon(
                                   Icons.check,
-                                  color: Colors.white,
+                                  color: Colors.green,
                                   size: 60,
                                 ),
+                                onPressed: () => {
+                                  Navigator.pushNamed(context, '/kakaoocr',
+                                      arguments: _imageBytes)
+                                },
                               ),
                             )
                           : Align(
-                              alignment: Alignment.bottomCenter,
-                              child: FlatButton(
-                                color: Colors.blueAccent,
-                                textColor: Colors.white,
+                              alignment: Alignment.center,
+                              child: FloatingActionButton(
+                                //color: Colors.blueAccent,
+                                child: Icon(Icons.wysiwyg,size:30,),
+                                //textColor: Colors.white,
                                 onPressed: _saveImage,
-                                child: Text('Save to cloud'),
+                                //child: Text('Translate'),
                               ),
                             )
-                    ],
-                  )
+
+
+
           ]),
 
       //child: _image_2 == null ? Text('No image'): Image.file(File(_image_2.path)),
@@ -235,7 +226,7 @@ class _MyHomePageState extends State<Camera_3> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigation(currentTab: 0),
+      //bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
 }

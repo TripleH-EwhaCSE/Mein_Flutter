@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mein/bottomnavigationbar.dart';
+//import 'package:mein/bottomnavigationbar.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:vertical_barchart/extension/expandedSection.dart';
@@ -24,7 +24,7 @@ class MenuDetailPage extends StatefulWidget {
 
 class _MenuDetailState extends State<MenuDetailPage> {
   // This widget is the root of your application.
-  
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -39,7 +39,7 @@ class _MenuDetailState extends State<MenuDetailPage> {
               height: 50,
               child: AppBar(
                 bottom: TabBar(
-                  tabs: 
+                  tabs:
                   [
                     Tab(
                         child: Text('Ingredient',
@@ -60,7 +60,7 @@ class _MenuDetailState extends State<MenuDetailPage> {
                 children: [
                   Container(
                       width: 200.0,
-                      child: MyBarchart(), 
+                      child: MyBarchart(),
                           ),
                   Container(
                       width: 200.0,
@@ -75,7 +75,7 @@ class _MenuDetailState extends State<MenuDetailPage> {
             // restaurantSection
           ]),
           // home: MyHomePage(title: 'Flutter Demo Home Page'),
-          bottomNavigationBar: BottomNavigation(currentTab: 0),
+          //bottomNavigationBar: BottomNavigation(currentTab: 0),
         ));
   }
 }
@@ -83,7 +83,7 @@ class _MenuDetailState extends State<MenuDetailPage> {
 Widget imageSection = Container(
   height: 50,
   width: double.infinity,
-  child: Image.asset('images/restaurant_sample.png', fit: BoxFit.cover),
+  //child: Image.asset('images/restaurant_sample.png', fit: BoxFit.cover),
 );
 // Food food = Firestore.instance
 //     .collection('foodingredient')
@@ -113,7 +113,7 @@ Widget menuSection = Container(
           ),
         ),
         Container(
-          child: Image.asset('images/kongnamulgookbab.png'),
+          //child: Image.asset('images/kongnamulgookbab.png'),
         ),
         stars,
         Container(
@@ -268,7 +268,7 @@ Widget reviewWrite = Container(
       "star": int.parse('${response.rating}'),
       "uploaddate": Timestamp.now(),
     }).then((value) => MenuDetail());
-  }, 
+  },
   title: 'Write your own review',
 ));
 
@@ -340,7 +340,7 @@ class StarIcon extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
      switch (_score){
-     case 1:  
+     case 1:
      return Row(
   mainAxisSize: MainAxisSize.min,
   children: [
@@ -351,7 +351,7 @@ class StarIcon extends StatelessWidget{
     Icon(Icons.star, color: Colors.grey),
   ],
 );
-     case 2:  
+     case 2:
      return Row(
   mainAxisSize: MainAxisSize.min,
   children: [
@@ -362,7 +362,7 @@ class StarIcon extends StatelessWidget{
     Icon(Icons.star, color: Colors.grey),
   ],
 );
-     case 3:  
+     case 3:
      return Row(
   mainAxisSize: MainAxisSize.min,
   children: [
@@ -373,7 +373,7 @@ class StarIcon extends StatelessWidget{
     Icon(Icons.star, color: Colors.grey),
   ],
 );
-     case 4:  
+     case 4:
      return Row(
   mainAxisSize: MainAxisSize.min,
   children: [
@@ -384,7 +384,7 @@ class StarIcon extends StatelessWidget{
     Icon(Icons.star, color: Colors.grey),
   ],
 );
-     case 5:  
+     case 5:
      return Row(
   mainAxisSize: MainAxisSize.min,
   children: [

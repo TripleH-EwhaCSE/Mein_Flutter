@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mein/cart.dart';
-import 'package:mein/main_page.dart';
-import 'package:mein/menuAR.dart';
-import 'package:mein/menudetail.dart';
-import 'package:mein/ocr_flutter.dart';
-import 'package:mein/restaurantDetail.dart';
+//import 'package:mein/cart.dart';
+import 'main_page.dart';
+//import 'package:mein/menuAR.dart';
+import 'menudetail.dart';
+//import 'package:mein/ocr_flutter.dart';
+import 'ocrresult.dart';
+import 'restaurantDetail.dart';
 //import 'package:mein/camera_1.dart';
 //import 'package:mein/camera_2.dart';
 // import 'package:mein/camera_3.dart';
-import 'package:mein/map.dart';
+//import 'package:mein/map.dart';
 import 'menuList.dart';
 
 void main() {
@@ -27,11 +28,12 @@ class MyApp extends StatelessWidget {
         // '/camera_3': (context) => Camera_3(),
         '/menudetail': (context) => MenuDetail(),
         '/menulist': (context) => MenuList(),
-        '/menuImage': (context) => MenuImage(),
-        '/cart': (context) => Cart(),
-        '/map': (context) => MapView(),
-        '/restaurantdetail': (context) => RestaurantDetail(),
-         '/ocr': (context) => OCRPage(),
+        //'/menuImage': (context) => MenuImage(),
+        //'/cart': (context) => Cart(),
+        //'/map': (context) => MapView(),
+        //'/restaurantdetail': (context) => RestaurantDetail(),
+        //'/ocr': (context) => OCRPage(),
+        '/kakaoocr': (context) => ocrresult(),
       },
     );
   }
