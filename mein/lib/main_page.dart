@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:mein/bottomnavigationbar.dart';
-// import 'package:mein/camera_3.dart';
+import 'package:mein/camera_3.dart';
 
 class MainPage extends StatelessWidget {
   @override
@@ -77,7 +77,7 @@ class MainPage extends StatelessWidget {
           ],
         ),
       ),
-      // body: Camera_3(),
+      body: Camera_3(),
     );
   }
 }

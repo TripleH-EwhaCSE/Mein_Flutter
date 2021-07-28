@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mein/bottomnavigationbar.dart';
-import 'package:rating_dialog/rating_dialog.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:mein/rating_dialog.dart';
+import 'package:mein/flutter_rating_bar.dart';
 import 'package:vertical_barchart/extension/expandedSection.dart';
 import 'package:vertical_barchart/vertical-barchart.dart';
 import 'package:vertical_barchart/vertical-barchartmodel.dart';
@@ -196,7 +196,7 @@ class MyBarchart extends StatelessWidget{
   Widget build(BuildContext context){
     //allergy.forEach((item) => Text(item));
     return StreamBuilder<QuerySnapshot>(
-      stream:Firestore.instance.collection('foodingredient').where('foodnameKR', isEqualTo: food.foodnameKR).snapshots(),
+      stream:Firestore.instance.collection('foodingredient').where('name', isEqualTo: food.foodnameENG).snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         final document = snapshot.data.documents;
           print(document);
@@ -254,10 +254,13 @@ Widget reviewView = Container(
   margin: const EdgeInsets.only(left: 24.0, right: 24.0),
 );
 
-Widget reviewWrite = Container(
+class reviewWrite extends StatelessWidget {
+   Widget build(BuildContext context) {
+    return Container(
   width: 200.0,
   // height: 230.0,
   child : RatingDialog(
+    title: 'Write your own review',
   submitButton: 'Submit',
   //onCancelled: () => print('cancelled'),
   onSubmitted: (response) {
@@ -267,11 +270,12 @@ Widget reviewWrite = Container(
       "review": '${response.comment}',
       "star": int.parse('${response.rating}'),
       "uploaddate": Timestamp.now(),
-    }).then((value) => MenuDetail());
+    });
+    // Navigator.pushNamed(context, '/menudetail');
   }, 
-  title: 'Write your own review',
+  
 ));
-
+   }}
 
 
 class ReviewList extends StatelessWidget {
@@ -282,7 +286,7 @@ class ReviewList extends StatelessWidget {
         stream: Firestore.instance.collection("foodreview").where('foodnameKR', isEqualTo: food.foodnameKR).snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           final document = snapshot.data.documents;
-          list = [reviewWrite];
+          list = [reviewWrite()];
           for (var element in document){
             list.add( Card(
               elevation: 2,

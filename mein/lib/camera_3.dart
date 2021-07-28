@@ -11,7 +11,9 @@ import 'dart:async';
 import 'api.dart';
 
 //Edge detection
-import 'package:edge_detection/edge_detection.dart';
+//import 'package:edge_detection/edge_detection.dart';
+
+import 'package:http/http.dart' as http;
 
 class Camera_3 extends StatefulWidget {
   @override
@@ -33,6 +35,8 @@ class _MyHomePageState extends State<Camera_3> {
   bool isUploaded = false;
   bool loading = false;
 
+  final String _url = "https://mein-flask.run.goorm.io/result";
+
   Widget LoadingImage(Uint8List imageData) {
     return Image.memory(imageData);
   }
@@ -49,19 +53,19 @@ class _MyHomePageState extends State<Camera_3> {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
 
     //Edge detection
-    String imagePath = await EdgeDetection.detectEdge;
+    // String imagePath = await EdgeDetection.detectEdge;
 
-    try {
-      imagePath = (await EdgeDetection.detectEdge);
-      print("$imagePath");
-    } on PlatformException {
-      imagePath = 'Failed to get cropped image path.';
-    }
-    if (!mounted) return;
+    // try {
+    //   imagePath = (await EdgeDetection.detectEdge);
+    //   print("$imagePath");
+    // } on PlatformException {
+    //   imagePath = 'Failed to get cropped image path.';
+    // }
+    // if (!mounted) return;
 
-    setState(() {
-      _imagePath = imagePath;
-    });
+    // setState(() {
+    //   _imagePath = imagePath;
+    // });
 
     setState(() {
       if (pickedFile != null) {
@@ -115,6 +119,10 @@ class _MyHomePageState extends State<Camera_3> {
       loading = false;
       isUploaded = true;
     });
+    http.Response _res = await http.post("$_url",
+        headers: {"Content-Type": "application/json"},
+        body: {"imagename": _imageName});
+    print(_res.body);
   }
 
   @override
@@ -139,21 +147,21 @@ class _MyHomePageState extends State<Camera_3> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
-              child: ElevatedButton(
-                onPressed: getImage,
-                child: Text('Scan'),
-              ),
-            ),
-            SizedBox(height: 20),
-            Text('Cropped image path:'),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, left: 0, right: 0),
-              child: Text(
-                '$_imagePath\n',
-                style: TextStyle(fontSize: 10),
-              ),
-            ),
+            //   Center(
+            //     child: ElevatedButton(
+            //       onPressed: getImage,
+            //       child: Text('Scan'),
+            //     ),
+            //   ),
+            //   SizedBox(height: 20),
+            //   Text('Cropped image path:'),
+            //   Padding(
+            //     padding: const EdgeInsets.only(top: 0, left: 0, right: 0),
+            //     child: Text(
+            //       '$_imagePath\n',
+            //       style: TextStyle(fontSize: 10),
+            //     ),
+            //   ),
             _imageBytes == null
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -164,18 +172,6 @@ class _MyHomePageState extends State<Camera_3> {
                               fontWeight: FontWeight.bold, fontSize: 24.0),
                           textAlign: TextAlign.center,
                         ),
-                        Text(
-                          'or',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24.0),
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          'Select a Photo',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24.0),
-                          textAlign: TextAlign.center,
-                        )
                       ])
                 //: Image.file(_image),
                 : Stack(
@@ -187,14 +183,18 @@ class _MyHomePageState extends State<Camera_3> {
                         ),
                       isUploaded
                           ? Center(
-                              child: CircleAvatar(
-                                radius: 40,
-                                backgroundColor: Colors.green,
-                                child: Icon(
+                              child: IconButton(
+                                //radius: 40,
+                                color: Colors.green,
+                                icon: Icon(
                                   Icons.check,
                                   color: Colors.white,
                                   size: 60,
                                 ),
+                                onPressed: () => {
+                                  Navigator.pushNamed(context, '/kakaoocr',
+                                      arguments: _imageBytes)
+                                },
                               ),
                             )
                           : Align(
@@ -203,7 +203,7 @@ class _MyHomePageState extends State<Camera_3> {
                                 color: Colors.blueAccent,
                                 textColor: Colors.white,
                                 onPressed: _saveImage,
-                                child: Text('Save to cloud'),
+                                child: Text('Translate'),
                               ),
                             )
                     ],
