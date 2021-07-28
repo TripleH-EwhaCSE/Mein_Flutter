@@ -131,9 +131,12 @@ class RatingDialog extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    if (!force) Navigator.pushNamed(context, '/menudetail');
+                    if (!force) 
                     _response.comment = _commentController.text;
-                    // onSubmitted.call(_response);
+                    onSubmitted.call(_response);
+                    Navigator.pushNamed(context, '/menudetail');
+                    // Navigator.pop(context);
+                    
                   },
                 ),
               ],

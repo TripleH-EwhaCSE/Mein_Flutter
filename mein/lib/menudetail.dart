@@ -90,7 +90,7 @@ Widget imageSection = Container(
 //     .where('foodnameKR', isEqualTo: food.foodnameKR)
 //     .getDocuments().then((QuerySnapshot ds) {
 //       print(ds.documents.length);
-Food food = new Food('콩나물 국밥','steamed rice mixed with bean sprout soup');
+Food food = new Food('강정','gangjeong');
 Widget menuSection = Container(
   height: 300,
   padding: const EdgeInsets.all(36),
@@ -257,7 +257,7 @@ Widget reviewView = Container(
 class reviewWrite extends StatelessWidget {
    Widget build(BuildContext context) {
     return Container(
-  width: 200.0,
+    width: 200.0,
   // height: 230.0,
   child : RatingDialog(
     title: 'Write your own review',
@@ -272,6 +272,7 @@ class reviewWrite extends StatelessWidget {
       "uploaddate": Timestamp.now(),
     });
     // Navigator.pushNamed(context, '/menudetail');
+   
   }, 
   
 ));
@@ -432,15 +433,16 @@ class Ingredientinfo extends StatelessWidget {
   Widget build(BuildContext context){
     //allergy.forEach((item) => Text(item));
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection("foodingredient").where('foodnameKR', isEqualTo: food.foodnameKR).snapshots(),
+      stream:Firestore.instance.collection('foodingredient').where('name', isEqualTo: food.foodnameENG).snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         final document = snapshot.data.documents;
-          print(document);
-          allergy = [];
-            for (var element in document[0].data["allergy"]){
-              print(element);
-              allergy.add(element);
-            }
+        print(document);
+        allergy = [];
+        for (var ingredient in document[0].data["ingredient"]){
+          if (ingredient["isallergy"]){
+            allergy.add(ingredient["name"]);
+          }
+        }
           return Container(
             width: 350.0,
             height: 300.0,
@@ -448,10 +450,17 @@ class Ingredientinfo extends StatelessWidget {
               scrollDirection: Axis.horizontal,
                 itemCount: allergy.length,
                 itemBuilder: (context, index) {
+                  if(allergy.length != 0){
                   return Container(
                     margin: const EdgeInsets.only(right: 12.0),
                     child:Text('${allergy[index]}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
-                  );
+                  );}
+                  else {
+                    return Container(
+                      margin: const EdgeInsets.only(right: 12.0),
+                      child:Text('',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
+                    );
+                  }
                 },
               )
             );
