@@ -5,10 +5,10 @@
 팀명: Triple**H** (Kim **H**yeon Jin, Lee **H**a Gyeong, **H**yun Ohjoo)
 
 팀구성:	
-
 - 이하경(이화여대 컴퓨터공학과)
 - 김현진(이화여대 컴퓨터공학과)
 - 현오주(이화여대 컴퓨터공학과)
+
 
 **Idea:** 
 
@@ -16,17 +16,20 @@
 
 한국어 읽고 쓰기의 어려움으로 한식을 검색할 수 없는 외국인을 위하여 사진 촬영을 통해 검색을 하고, 나아가 한식 리뷰를 분석하여 한식에 대한 직관적인 설명을 해준다.
 
+
 **Vision:**
 
 <img width="658" alt="Untitled" src="https://user-images.githubusercontent.com/52443092/127444688-4ee23a91-5e2f-46bf-b360-896d50186d80.png">
 <img width="568" alt="Untitled 1" src="https://user-images.githubusercontent.com/52443092/127444701-b278108c-b981-4259-88c5-397fb005cc80.png">
 <img width="629" alt="Untitled 2" src="https://user-images.githubusercontent.com/52443092/127444707-9f6fb619-8a47-45f6-9f40-0fea442b7d2b.png">
 
+
 **Target Group:**
 
 한식을 맛보고 싶으나 한국어에 서투르고 한식에 대해 잘 알지 못하는 외국인 관광객
 
 외국인 손님과의 소통이 어려운 한식 식당 점주들
+
 
 **Needs:**
 <img width="359" alt="Untitled 3" src="https://user-images.githubusercontent.com/52443092/127444737-90172296-da33-47bf-bea2-fd3256b35e5c.png">
@@ -38,6 +41,7 @@
 외국인 소통이 불가한 식당 주인들이 많음- 완벽한 관광도시 ↔ 외국인 제공관광에는 불친절한 강릉!
 
 ∴ 이미지 검색과 음식 데이터 분석으로 개인에게 필요한 강릉의 정보
+
 
 **PoC:**
 
@@ -58,8 +62,6 @@
 - 음식 별 재료 분석을 통하여 특정 재료가 그 음식에 들어갈 확률, 비건 여부, 알레르기 유발 여부 정보 제공
 - 외국인을 위해 번역된 정보를 제공
 
- 
-
 ## **[Feature 3] 이 음식이 어떻다고?!**
 
 **리뷰 분석 → 외국인의 한식 맛 표현에 대한 키워드 3개 뽑아서 보여줌**
@@ -78,6 +80,7 @@
 **개발 환경 및 version Control :**
 <img width="575" alt="Untitled 6" src="https://user-images.githubusercontent.com/52443092/127444835-f2687c70-62a8-4607-9f4d-af0052057c10.png">
 ![스크린샷 2021-07-29 오후 3 47 52](https://user-images.githubusercontent.com/52443092/127445022-348cf86e-341f-45b8-a73d-dac69e51e28b.png)
+
 
 
 ## Frontend: Flutter
@@ -102,6 +105,7 @@
         1. Widget
     3. Firebase로 부터 데이터를 받아오기 위한 Class 
         1. Widget
+
 
 
 ## 재료 데이터 수집 및 분석
@@ -159,28 +163,27 @@
     3) 이후 제거되지 않은 불용어 사전 제작 후, 불용어 제거
     <img width="1080" alt="Untitled 8" src="https://user-images.githubusercontent.com/52443092/127445106-6896d342-623f-49b2-bd75-25d33cfef688.png">
 
-4) 재료명 일반화 및 단어 통일
+    4) 재료명 일반화 및 단어 통일
 
-- 구체적인 재료 명이 아닌 비건 또는 알레르기 유발 여부를 일으킬 수 있는 재료를 보여주는 것이 목적이므로 일반화할 수 있는 재료 리스트를 만듦
-    - ex) 저염간장, 진간장, 국간장, 몽고간장 → 간장
-    - ex) 홍파프리카, 청파프리카, 빨간파프리카, 노란파프리카 → 파프리카
-    - ex) 흑미, 백미, 현미 → 쌀
-    - ex) 닭가슴살, 닭다리살, 닭안심 → 닭고기
+    - 구체적인 재료 명이 아닌 비건 또는 알레르기 유발 여부를 일으킬 수 있는 재료를 보여주는 것이 목적이므로 일반화할 수 있는 재료 리스트를 만듦
+        - ex) 저염간장, 진간장, 국간장, 몽고간장 → 간장
+        - ex) 홍파프리카, 청파프리카, 빨간파프리카, 노란파프리카 → 파프리카
+        - ex) 흑미, 백미, 현미 → 쌀
+        - ex) 닭가슴살, 닭다리살, 닭안심 → 닭고기
 
-        등으로 재료명 사전 제작 후 치환
+            등으로 재료명 사전 제작 후 치환
 
-- 중복 제거: 한 메뉴에 중복되는 재료가 있는 경우 중복제거
+    - 중복 제거: 한 메뉴에 중복되는 재료가 있는 경우 중복제거
 
-<img width="480" alt="Untitled 9" src="https://user-images.githubusercontent.com/52443092/127445167-c907132a-56ef-4e3f-a9a4-9ae5b972c392.png">
-
- 
-
-5) 전처리 된 최종 데이터
-
-<img width="1573" alt="Untitled 10" src="https://user-images.githubusercontent.com/52443092/127445231-1b3cdca8-480c-42f1-9623-3fab0da15f77.png">
+    <img width="480" alt="Untitled 9" src="https://user-images.githubusercontent.com/52443092/127445167-c907132a-56ef-4e3f-a9a4-9ae5b972c392.png">
 
 
-1. 재료의 비건/알레르기 여부 데이터 생성
+
+    5) 전처리 된 최종 데이터
+    <img width="1573" alt="Untitled 10" src="https://user-images.githubusercontent.com/52443092/127445231-1b3cdca8-480c-42f1-9623-3fab0da15f77.png">
+
+
+2. 재료의 비건/알레르기 여부 데이터 생성
 
     1) 위의 Food_Ingredient 데이터 내의 모든 재료 추출 → 총 280개의 재료 사용
 
@@ -191,12 +194,12 @@
 
     - 서칭을 통해서 정보 획득 후, boolean 값으로 사전 제작
 
-2. 최종 데이터 파이어베이스에 업로드
+3. 최종 데이터 파이어베이스에 업로드
+
 
 [food raw data]
 
 <img width="1275" alt="Untitled 12" src="https://user-images.githubusercontent.com/52443092/127445258-626d6e58-962b-4338-935a-ac3ef61114f6.png">
-
 
 [food ingredient raw data]
 
@@ -228,8 +231,9 @@
 2. 각 음식이 들어갈 확률을 차트로 표시
 3. Flutter 에서 리뷰 작성 시 Firebase로 전송 후, 플러터에서 바로 확인 가능
 4. 결과 화면
-
+<div style = "display : flex;">
 <img width="360" alt="Untitled 13" src="https://user-images.githubusercontent.com/52443092/127445279-730c0ae0-46c7-4079-a872-457abc0b41f7.png">
 <img width="360" alt="Untitled 14" src="https://user-images.githubusercontent.com/52443092/127445285-1cde47a3-50c5-4aa6-81ee-b22b71ab6420.png">
 <img width="360" alt="Untitled 15" src="https://user-images.githubusercontent.com/52443092/127445292-d269c844-026a-49bb-a110-d374863bb9da.png">
 <img width="360" alt="Untitled 16" src="https://user-images.githubusercontent.com/52443092/127445297-b52209d2-f8f0-4920-a3a5-65dd461a29f0.png">
+</div>
