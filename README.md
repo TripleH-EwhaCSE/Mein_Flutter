@@ -14,11 +14,6 @@
 
 ## **메뉴판 사진 촬영을 통한 AI 한식 검색 어플리케이션**
 
-한국어 읽고 쓰기의 어려움으로 한식을 검색할 수 없는 외국인을 위하여 사진 촬영을 통해 검색을 하고, 나아가 한식 리뷰를 분석하여 한식에 대한 직관적인 설명을 해준다.
-
-
-**Vision:**
-
 <img width="658" alt="Untitled" src="https://user-images.githubusercontent.com/52443092/127444688-4ee23a91-5e2f-46bf-b360-896d50186d80.png">
 <img width="568" alt="Untitled 1" src="https://user-images.githubusercontent.com/52443092/127444701-b278108c-b981-4259-88c5-397fb005cc80.png">
 <img width="629" alt="Untitled 2" src="https://user-images.githubusercontent.com/52443092/127444707-9f6fb619-8a47-45f6-9f40-0fea442b7d2b.png">
@@ -234,6 +229,7 @@
 <div style = "display : flex;">
 <img width="360" alt="Untitled 13" src="https://user-images.githubusercontent.com/52443092/127445279-730c0ae0-46c7-4079-a872-457abc0b41f7.png">
 <img width="360" alt="Untitled 14" src="https://user-images.githubusercontent.com/52443092/127445285-1cde47a3-50c5-4aa6-81ee-b22b71ab6420.png">
+</div><div style = "display : flex;">
 <img width="360" alt="Untitled 15" src="https://user-images.githubusercontent.com/52443092/127445292-d269c844-026a-49bb-a110-d374863bb9da.png">
 <img width="360" alt="Untitled 16" src="https://user-images.githubusercontent.com/52443092/127445297-b52209d2-f8f0-4920-a3a5-65dd461a29f0.png">
 </div>
