@@ -106,39 +106,9 @@
 2. 데이터 전처리
 
     1) 재료 정보에 단위, 수량, 숫자 등 필요없는 부분 제거
-
-    - code
-
-        ```python
-        #재료 데이터에서 한글만 남기고 제거(숫자, 영어, 특수문자 제거)
-        num=0
-        for i in df_final['RCP_PARTS_DTLS'] :
-            df_final['RCP_PARTS_DTLS'][num]=re.sub(pattern='[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\n, ]',repl='',string=i)
-            #[^a-zA-Z,] 은 알파벳과 ',' 그리고 공백을 제외하고 모두 지우겠다는 의미.
-            num+=1
-
-        df_final["RCP_PARTS_DTLS"] = df_final["RCP_PARTS_DTLS"].str.replace(pat=r'[^\wA-Za-z0-9]', repl=r',', regex=True)
-        ```
-
+    
     2)  nltk와 KoNLPy를 사용하여 재료 정보를 한 단어씩 tokenizing 하여 명사만 추출
-
-    - code
-
-        ```python
-        #재료 토큰
-        from nltk.tokenize import word_tokenize
-        from konlpy.tag import Okt  
-        okt=Okt() 
-
-        #재료 토크나이징 후 명사만 추출
-        for i in range(len(df2['RCP_PARTS_DTLS'])):
-          print(okt.nouns(df2['RCP_PARTS_DTLS'][i]))
-        ```
-
-
-    <img width="300" alt="Untitled 7" src="https://user-images.githubusercontent.com/52443092/127445092-e372dea4-16dd-482c-855c-bae19c970df1.png">
-
-
+   
     3) 이후 제거되지 않은 불용어 사전 제작 후, 불용어 제거
 
     <img width="300" alt="Untitled 8" src="https://user-images.githubusercontent.com/52443092/127445106-6896d342-623f-49b2-bd75-25d33cfef688.png">
