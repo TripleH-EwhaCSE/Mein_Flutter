@@ -135,22 +135,25 @@
           print(okt.nouns(df2['RCP_PARTS_DTLS'][i]))
         ```
 
-    <img width="514" alt="Untitled 7" src="https://user-images.githubusercontent.com/52443092/127445092-e372dea4-16dd-482c-855c-bae19c970df1.png">
+
+    <img width="300" alt="Untitled 7" src="https://user-images.githubusercontent.com/52443092/127445092-e372dea4-16dd-482c-855c-bae19c970df1.png">
+
 
     3) 이후 제거되지 않은 불용어 사전 제작 후, 불용어 제거
 
-    <img width="540" alt="Untitled 8" src="https://user-images.githubusercontent.com/52443092/127445106-6896d342-623f-49b2-bd75-25d33cfef688.png">
+    <img width="300" alt="Untitled 8" src="https://user-images.githubusercontent.com/52443092/127445106-6896d342-623f-49b2-bd75-25d33cfef688.png">
+
 
     4) 재료명 일반화 및 단어 통일
 
     - 중복 제거: 한 메뉴에 중복되는 재료가 있는 경우 중복제거
 
-    <img width="480" alt="Untitled 9" src="https://user-images.githubusercontent.com/52443092/127445167-c907132a-56ef-4e3f-a9a4-9ae5b972c392.png">
+    <img width="300" alt="Untitled 9" src="https://user-images.githubusercontent.com/52443092/127445167-c907132a-56ef-4e3f-a9a4-9ae5b972c392.png">
 
 
     5) 전처리 된 최종 데이터
    
-    <img width="1573" alt="Untitled 10" src="https://user-images.githubusercontent.com/52443092/127445231-1b3cdca8-480c-42f1-9623-3fab0da15f77.png">
+    <img width="750" alt="Untitled 10" src="https://user-images.githubusercontent.com/52443092/127445231-1b3cdca8-480c-42f1-9623-3fab0da15f77.png">
 
 
 3. 재료의 비건/알레르기 여부 데이터 생성
