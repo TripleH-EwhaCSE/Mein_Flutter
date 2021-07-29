@@ -67,13 +67,19 @@
 - 외국인이 작성한 리뷰 분석을 통해 특정 음식의 특징을 그들의 입맛 반영하여 키워드로 제공
 - 초기 데이터 부족으로 Yelp의 리뷰 데이터 분석을 통해 키워드 추출, 이후 사용자 리뷰 데이터 분석을 접목할 예정
 
+
 **화면 Flow :**
+
 <img width="652" alt="Untitled 4" src="https://user-images.githubusercontent.com/52443092/127444759-5af29c20-c137-4e51-95a5-2085ad076ed6.png">
 
+
 **ERD:NoSQL**
+
 <img width="581" alt="Untitled 5" src="https://user-images.githubusercontent.com/52443092/127444778-8fa1e1b8-0d37-4501-9805-a7b0aada394d.png">
 
+
 **개발 환경 및 version Control :**
+
 <img width="575" alt="Untitled 6" src="https://user-images.githubusercontent.com/52443092/127444835-f2687c70-62a8-4607-9f4d-af0052057c10.png">
 ![스크린샷 2021-07-29 오후 3 47 52](https://user-images.githubusercontent.com/52443092/127445022-348cf86e-341f-45b8-a73d-dac69e51e28b.png)
 
