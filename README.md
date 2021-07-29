@@ -77,36 +77,6 @@
 
 **개발 환경 및 version Control :**
 <img width="575" alt="Untitled 6" src="https://user-images.githubusercontent.com/52443092/127444835-f2687c70-62a8-4607-9f4d-af0052057c10.png">
-
-- 도커 개발 환경 구축
-- UI/UX : Figma
-- Mobile application: Flutter
-- Python(Pytorch/ Tensorflow)를 이용한 딥러닝/데이터 크롤러 개발
-- NLPK와 Python을 통한 자연어 처리 및 분석
-- Postman을 이용한 API 테스팅
-- DB: FireBase & Django
-- API server: GCP
-- Git, GitHub을 이용한 버전 컨트롤
-
-Tech Stack
-
-DevOps: Docker, Nginx
-
-Front-end: Flutter
-
-Back-end: Flask, GUnicorn, Django
-
-Database: MySQL, Firebase, GCS
-
-AI: Tensorflow, Pytorch, Colab, OpenCV
-
-Data Analysis: Colab, NLPK, KoNLPy, Selenium, Beautifulsoup
-
-UI/UX: Figma
-
-API Server: GCP
-
-Git, GitHub을 이용한 버전 컨트롤
 ![스크린샷 2021-07-29 오후 3 47 52](https://user-images.githubusercontent.com/52443092/127445022-348cf86e-341f-45b8-a73d-dac69e51e28b.png)
 
 
@@ -132,7 +102,7 @@ Git, GitHub을 이용한 버전 컨트롤
         1. Widget
     3. Firebase로 부터 데이터를 받아오기 위한 Class 
         1. Widget
-4. 
+
 
 ## 재료 데이터 수집 및 분석
 
@@ -238,6 +208,7 @@ Git, GitHub을 이용한 버전 컨트롤
     - 이 데이터는 지역별 식음료 검색 순위 top100에 대한 정보도 포함하여, 이를 기준으로 검색을 용이하게 만들 예정
     - 크롤링한 데이터를 더 활용하여, 정확한 비율을 제공할 예정
 
+
 ## 데이터 정리
 
 1. 크롤링한 데이터가 너무 방대하고 음식 데이터와 재료 데이터가 따로 저장되어있는 문제 발생
@@ -250,6 +221,7 @@ Git, GitHub을 이용한 버전 컨트롤
     - SQLite를 이용하여 Background-tasks 저장, 주기적으로 리로드
 5. 결과 화면
 
+
 ## Flutter 음식 재료 정보 및 알레르기 정보 제공
 
 1. Firebase 연동으로 정보 추출
@@ -257,17 +229,7 @@ Git, GitHub을 이용한 버전 컨트롤
 3. Flutter 에서 리뷰 작성 시 Firebase로 전송 후, 플러터에서 바로 확인 가능
 4. 결과 화면
 
-![Untitled 14](https://user-images.githubusercontent.com/52443092/127445279-730c0ae0-46c7-4079-a872-457abc0b41f7.png)
-![Untitled 15](https://user-images.githubusercontent.com/52443092/127445285-1cde47a3-50c5-4aa6-81ee-b22b71ab6420.png)
-![Untitled 16](https://user-images.githubusercontent.com/52443092/127445292-d269c844-026a-49bb-a110-d374863bb9da.png)
-![Untitled 17](https://user-images.githubusercontent.com/52443092/127445297-b52209d2-f8f0-4920-a3a5-65dd461a29f0.png)
-
-
-- Postman을 이용한 API 테스팅
-- DB: FireBase & Django
-- API server: GCP
-- Git, GitHub을 이용한 버전 컨트롤
-- Postman을 이용한 API 테스팅
-- DB: FireBase & Django
-- API server: GCP
-- Git, GitHub을 이용한 버전 컨트롤
+<img width="360" alt="Untitled 13" src="https://user-images.githubusercontent.com/52443092/127445279-730c0ae0-46c7-4079-a872-457abc0b41f7.png">
+<img width="360" alt="Untitled 14" src="https://user-images.githubusercontent.com/52443092/127445285-1cde47a3-50c5-4aa6-81ee-b22b71ab6420.png">
+<img width="360" alt="Untitled 15" src="https://user-images.githubusercontent.com/52443092/127445292-d269c844-026a-49bb-a110-d374863bb9da.png">
+<img width="360" alt="Untitled 16" src="https://user-images.githubusercontent.com/52443092/127445297-b52209d2-f8f0-4920-a3a5-65dd461a29f0.png">
