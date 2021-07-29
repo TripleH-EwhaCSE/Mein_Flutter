@@ -90,12 +90,10 @@
 
 **결과 화면**
 <div style = "display : flex;">
-<img width="360" alt="Untitled 13" src="https://user-images.githubusercontent.com/52443092/127445279-730c0ae0-46c7-4079-a872-457abc0b41f7.png">
-<img width="360" alt="Untitled 14" src="https://user-images.githubusercontent.com/52443092/127445285-1cde47a3-50c5-4aa6-81ee-b22b71ab6420.png">
-</div>
-<div style = "display : flex;">
-<img width="360" alt="Untitled 15" src="https://user-images.githubusercontent.com/52443092/127445292-d269c844-026a-49bb-a110-d374863bb9da.png">
-<img width="360" alt="Untitled 16" src="https://user-images.githubusercontent.com/52443092/127445297-b52209d2-f8f0-4920-a3a5-65dd461a29f0.png">
+<img width="180" alt="Untitled 13" src="https://user-images.githubusercontent.com/52443092/127445279-730c0ae0-46c7-4079-a872-457abc0b41f7.png">
+<img width="180" alt="Untitled 14" src="https://user-images.githubusercontent.com/52443092/127445285-1cde47a3-50c5-4aa6-81ee-b22b71ab6420.png">
+<img width="180" alt="Untitled 15" src="https://user-images.githubusercontent.com/52443092/127445292-d269c844-026a-49bb-a110-d374863bb9da.png">
+<img width="180" alt="Untitled 16" src="https://user-images.githubusercontent.com/52443092/127445297-b52209d2-f8f0-4920-a3a5-65dd461a29f0.png">
 </div>
 
 
