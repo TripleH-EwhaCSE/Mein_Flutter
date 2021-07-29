@@ -27,6 +27,7 @@
 
 
 **Needs:**
+
 <img width="359" alt="Untitled 3" src="https://user-images.githubusercontent.com/52443092/127444737-90172296-da33-47bf-bea2-fd3256b35e5c.png">
 
 **비건, 알레르기 등의 음식 제한은 외국인들이 한국의 여행을 즐기지 못하는 이유이다.**
@@ -156,7 +157,7 @@
 
 
     3) 이후 제거되지 않은 불용어 사전 제작 후, 불용어 제거
-    <img width="1080" alt="Untitled 8" src="https://user-images.githubusercontent.com/52443092/127445106-6896d342-623f-49b2-bd75-25d33cfef688.png">
+    <img width="540" alt="Untitled 8" src="https://user-images.githubusercontent.com/52443092/127445106-6896d342-623f-49b2-bd75-25d33cfef688.png">
 
     4) 재료명 일반화 및 단어 통일
 
@@ -191,14 +192,13 @@
 
 3. 최종 데이터 파이어베이스에 업로드
 
-
 [food raw data]
 
-<img width="1275" alt="Untitled 12" src="https://user-images.githubusercontent.com/52443092/127445258-626d6e58-962b-4338-935a-ac3ef61114f6.png">
+<img width="637" alt="Untitled 12" src="https://user-images.githubusercontent.com/52443092/127445258-626d6e58-962b-4338-935a-ac3ef61114f6.png">
 
 [food ingredient raw data]
 
-<img width="1275" alt="Untitled 13" src="https://user-images.githubusercontent.com/52443092/127445266-88d69186-fc52-41fa-a407-75f0b1aca5d8.png">
+<img width="637" alt="Untitled 13" src="https://user-images.githubusercontent.com/52443092/127445266-88d69186-fc52-41fa-a407-75f0b1aca5d8.png">
 
 
 1. 이후 목표
@@ -229,7 +229,8 @@
 <div style = "display : flex;">
 <img width="360" alt="Untitled 13" src="https://user-images.githubusercontent.com/52443092/127445279-730c0ae0-46c7-4079-a872-457abc0b41f7.png">
 <img width="360" alt="Untitled 14" src="https://user-images.githubusercontent.com/52443092/127445285-1cde47a3-50c5-4aa6-81ee-b22b71ab6420.png">
-</div><div style = "display : flex;">
+</div>
+<div style = "display : flex;">
 <img width="360" alt="Untitled 15" src="https://user-images.githubusercontent.com/52443092/127445292-d269c844-026a-49bb-a110-d374863bb9da.png">
 <img width="360" alt="Untitled 16" src="https://user-images.githubusercontent.com/52443092/127445297-b52209d2-f8f0-4920-a3a5-65dd461a29f0.png">
 </div>
