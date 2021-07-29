@@ -18,11 +18,9 @@
 
 **Vision:**
 
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled.png)
-
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%201.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%201.png)
-
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%202.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%202.png)
+<img width="658" alt="Untitled" src="https://user-images.githubusercontent.com/52443092/127444688-4ee23a91-5e2f-46bf-b360-896d50186d80.png">
+<img width="568" alt="Untitled 1" src="https://user-images.githubusercontent.com/52443092/127444701-b278108c-b981-4259-88c5-397fb005cc80.png">
+<img width="629" alt="Untitled 2" src="https://user-images.githubusercontent.com/52443092/127444707-9f6fb619-8a47-45f6-9f40-0fea442b7d2b.png">
 
 **Target Group:**
 
@@ -31,8 +29,7 @@
 외국인 손님과의 소통이 어려운 한식 식당 점주들
 
 **Needs:**
-
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%203.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%203.png)
+<img width="359" alt="Untitled 3" src="https://user-images.githubusercontent.com/52443092/127444737-90172296-da33-47bf-bea2-fd3256b35e5c.png">
 
 **비건, 알레르기 등의 음식 제한은 외국인들이 한국의 여행을 즐기지 못하는 이유이다.**
 
@@ -73,16 +70,13 @@
 - 초기 데이터 부족으로 Yelp의 리뷰 데이터 분석을 통해 키워드 추출, 이후 사용자 리뷰 데이터 분석을 접목할 예정
 
 **화면 Flow :**
-
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%204.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%204.png)
+<img width="652" alt="Untitled 4" src="https://user-images.githubusercontent.com/52443092/127444759-5af29c20-c137-4e51-95a5-2085ad076ed6.png">
 
 **ERD:NoSQL**
-
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%205.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%205.png)
+<img width="581" alt="Untitled 5" src="https://user-images.githubusercontent.com/52443092/127444778-8fa1e1b8-0d37-4501-9805-a7b0aada394d.png">
 
 **개발 환경 및 version Control :**
-
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%206.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%206.png)
+<img width="575" alt="Untitled 6" src="https://user-images.githubusercontent.com/52443092/127444835-f2687c70-62a8-4607-9f4d-af0052057c10.png">
 
 - 도커 개발 환경 구축
 - UI/UX : Figma
@@ -113,8 +107,8 @@ UI/UX: Figma
 API Server: GCP
 
 Git, GitHub을 이용한 버전 컨트롤
+![스크린샷 2021-07-29 오후 3 47 52](https://user-images.githubusercontent.com/52443092/127445022-348cf86e-341f-45b8-a73d-dac69e51e28b.png)
 
-[Tech Stack](https://www.notion.so/ded5596d046e49e08dc1f1741be7cae4)
 
 ## Frontend: Flutter
 
@@ -127,7 +121,8 @@ Git, GitHub을 이용한 버전 컨트롤
     2. Widget
 3. Class와 Widget 기능 설명
 
-    [Flutter Class & Widget](https://www.notion.so/a9ef46a2b25347d9abff3e91f6878535)
+    ![스크린샷 2021-07-29 오후 3 48 14](https://user-images.githubusercontent.com/52443092/127445033-f8941137-3fd5-46ac-a1aa-91ac0e7558c5.png)
+
 
     1. Client Device의 카메라, 갤러리로부터 이미지를 받아오기 위한 Class
         1. State
@@ -187,11 +182,12 @@ Git, GitHub을 이용한 버전 컨트롤
           print(okt.nouns(df2['RCP_PARTS_DTLS'][i]))
         ```
 
-    ![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%207.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%207.png)
+    <img width="514" alt="Untitled 7" src="https://user-images.githubusercontent.com/52443092/127445092-e372dea4-16dd-482c-855c-bae19c970df1.png">
+
+
 
     3) 이후 제거되지 않은 불용어 사전 제작 후, 불용어 제거
-
-    ![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%208.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%208.png)
+    <img width="1080" alt="Untitled 8" src="https://user-images.githubusercontent.com/52443092/127445106-6896d342-623f-49b2-bd75-25d33cfef688.png">
 
 4) 재료명 일반화 및 단어 통일
 
@@ -205,19 +201,21 @@ Git, GitHub을 이용한 버전 컨트롤
 
 - 중복 제거: 한 메뉴에 중복되는 재료가 있는 경우 중복제거
 
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%209.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%209.png)
+<img width="480" alt="Untitled 9" src="https://user-images.githubusercontent.com/52443092/127445167-c907132a-56ef-4e3f-a9a4-9ae5b972c392.png">
 
  
 
 5) 전처리 된 최종 데이터
 
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2010.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2010.png)
+<img width="1573" alt="Untitled 10" src="https://user-images.githubusercontent.com/52443092/127445231-1b3cdca8-480c-42f1-9623-3fab0da15f77.png">
+
 
 1. 재료의 비건/알레르기 여부 데이터 생성
 
     1) 위의 Food_Ingredient 데이터 내의 모든 재료 추출 → 총 280개의 재료 사용
 
-    ![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2011.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2011.png)
+    <img width="168" alt="Untitled 11" src="https://user-images.githubusercontent.com/52443092/127445244-f552b6ff-2448-4a74-9c04-f14836045f3a.png">
+
 
     2) 재료 리스트를 기반으로 비건/알레르기 사전 제작
 
@@ -227,11 +225,13 @@ Git, GitHub을 이용한 버전 컨트롤
 
 [food raw data]
 
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2012.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2012.png)
+<img width="1275" alt="Untitled 12" src="https://user-images.githubusercontent.com/52443092/127445258-626d6e58-962b-4338-935a-ac3ef61114f6.png">
+
 
 [food ingredient raw data]
 
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2013.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2013.png)
+<img width="1275" alt="Untitled 13" src="https://user-images.githubusercontent.com/52443092/127445266-88d69186-fc52-41fa-a407-75f0b1aca5d8.png">
+
 
 1. 이후 목표
     - 현재 한국관광공사X카카오 관광 API 공모전에 선발되어 Tmap 네비게이션 데이터를 활용할 수 있음
@@ -257,13 +257,11 @@ Git, GitHub을 이용한 버전 컨트롤
 3. Flutter 에서 리뷰 작성 시 Firebase로 전송 후, 플러터에서 바로 확인 가능
 4. 결과 화면
 
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2014.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2014.png)
+![Untitled 14](https://user-images.githubusercontent.com/52443092/127445279-730c0ae0-46c7-4079-a872-457abc0b41f7.png)
+![Untitled 15](https://user-images.githubusercontent.com/52443092/127445285-1cde47a3-50c5-4aa6-81ee-b22b71ab6420.png)
+![Untitled 16](https://user-images.githubusercontent.com/52443092/127445292-d269c844-026a-49bb-a110-d374863bb9da.png)
+![Untitled 17](https://user-images.githubusercontent.com/52443092/127445297-b52209d2-f8f0-4920-a3a5-65dd461a29f0.png)
 
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2015.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2015.png)
-
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2016.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2016.png)
-
-![MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2017.png](MeIN%209ed2f289c8dc451db9b7c8307132936c/Untitled%2017.png)
 
 - Postman을 이용한 API 테스팅
 - DB: FireBase & Django
