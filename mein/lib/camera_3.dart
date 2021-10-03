@@ -134,6 +134,8 @@ class _MyHomePageState extends State<Camera_3> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     // return Scaffold(
     //   body: Center(
     /*
@@ -150,18 +152,33 @@ class _MyHomePageState extends State<Camera_3> {
       */
     //child: _image == null
     return Scaffold(
+
       body:
        _imageBytes == null
-                ? Center(
+                ? Stack(children:[Padding(padding:EdgeInsets.only(top: 80),child:Center(
                 child: (
                         Text(
-                          'Take a Picture',
+                          'Going to take a picture of the menu',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24.0),
+                              fontWeight: FontWeight.bold, fontSize: 20.0,color: Colors.lightBlueAccent,),
                           textAlign: TextAlign.center,
+
                         )
                       )
-            )
+            )),
+
+         Center(
+           //top: screenHeight/2,
+           //left: screenHeight/2,
+           child: IconButton(
+             //color: Colors.blueAccent,
+             icon: Icon(Icons.camera_alt),
+             onPressed: getGallery,
+             color: Colors.lightBlueAccent,
+             //textColor: Colors.white,
+             //child: Text('Translate'),
+           ),
+         )])
                 //: Image.file(_image),
                 : Stack(
                     children: [Center(

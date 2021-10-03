@@ -224,9 +224,6 @@ PODS:
     - Firebase/Core
     - Firebase/Firestore (~> 6.0)
     - Flutter
-  - edge_detection (1.0.6):
-    - Flutter
-    - WeScan
   - Firebase/Analytics (6.34.0):
     - Firebase/Core
   - Firebase/Auth (6.34.0):
@@ -365,12 +362,10 @@ PODS:
   - permission_handler (3.3.0):
     - Flutter
   - PromisesObjC (1.2.12)
-  - WeScan (1.7.0)
 
 DEPENDENCIES:
   - camera (from `.symlinks/plugins/camera/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
-  - edge_detection (from `.symlinks/plugins/edge_detection/ios`)
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
@@ -401,15 +396,12 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
-    - WeScan
 
 EXTERNAL SOURCES:
   camera:
     :path: ".symlinks/plugins/camera/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
-  edge_detection:
-    :path: ".symlinks/plugins/edge_detection/ios"
   firebase_analytics:
     :path: ".symlinks/plugins/firebase_analytics/ios"
   firebase_auth:
@@ -432,7 +424,6 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   camera: 3164201dc344383e62282964016528c4f5a9ad50
   cloud_firestore: 10fd4a09ebffc33efd64708106e2e7de701fe9ae
-  edge_detection: 4f7f420eecc8dc8aa6b9948e5bf2ec0fbd75fe6e
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   firebase_analytics: 71531c94f4457504e12bb60baa53bf283f59e67f
   firebase_auth: d99b993c1405096e66c58211b1cd956c23eed1c5
@@ -443,7 +434,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 770ac5958e1372ce67959ae4b4f31d8e127c3ac1
   FirebaseFirestore: 9b2f1b9b9a6f2f0b6fb7484b9e32ab7e39243554
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
-  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   google_maps_flutter: df4e7de95264aa0a2f11aac0fc7e313acb8ffc7e
   GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
@@ -458,7 +449,6 @@ SPEC CHECKSUMS:
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   permission_handler: 67637977b227d62d46bfbf524f335f8568de5a73
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  WeScan: fed582f6c38014d529afb5aa9ffd1bad38fc72b7
 
 PODFILE CHECKSUM: fe0e1ee7f3d1f7d00b11b474b62dd62134535aea
 

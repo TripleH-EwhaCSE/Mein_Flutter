@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="afcd5351-3fed-44e8-8fca-96b2a45ce301" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mein/lib/ocrresult.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mein/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/mein/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Mein_Flutter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Mein_Flutter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcloud_flutter_upload/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/gcloud_flutter_upload/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcloud_flutter_upload/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/gcloud_flutter_upload/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcloud_flutter_upload/.dart_tool/version" beforeDir="false" afterPath="$PROJECT_DIR$/gcloud_flutter_upload/.dart_tool/version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcloud_flutter_upload/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/gcloud_flutter_upload/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcloud_flutter_upload/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/gcloud_flutter_upload/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcloud_flutter_upload/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/gcloud_flutter_upload/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcloud_flutter_upload/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/gcloud_flutter_upload/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/mein/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/android/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/mein/android/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/mein/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mein/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/mein/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/bottomnavigationbar.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mein/lib/camera_3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mein/lib/camera_3.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/cart.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mein/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mein/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mein/lib/main_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mein/lib/main_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/map.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/menuAR.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/menuList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mein/lib/menuList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/menudetail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mein/lib/menudetail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/menudetail1.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/ocr_flutter.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/ocrresult.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mein/lib/ocrresult.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mein/lib/rating_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mein/lib/rating_dialog.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mein/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/mein/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mein/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mein/pubspec.yaml" afterDir="false" />
     </list>
@@ -17,8 +39,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R3CMA0EA5NV]" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1vneeigzFaRyOSJZZ6Ghhsm0T82" />
   <component name="ProjectViewState">
@@ -30,10 +63,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
+  <component name="RunManager">
+    <configuration name="mein" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/mein/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -47,18 +91,37 @@
     </task>
     <servers />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="1864" y="184" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1627202935780">
-      <screen x="1440" y="25" width="1920" height="1000" />
-    </state>
-    <state x="1864" y="184" key="#com.intellij.execution.impl.EditConfigurationsDialog/1440.25.1920.1000/0.25.1440.875@1440.25.1920.1000" timestamp="1627202935780" />
-    <state x="2195" y="275" key="AndroidProcessChooserDialog" timestamp="1627202528046">
-      <screen x="1440" y="25" width="1920" height="1000" />
-    </state>
-    <state x="2195" y="275" key="AndroidProcessChooserDialog/1440.25.1920.1000/0.25.1440.875@1440.25.1920.1000" timestamp="1627202528046" />
-    <state x="1901" y="161" key="SettingsEditor" timestamp="1627202965165">
-      <screen x="1440" y="25" width="1920" height="1000" />
-    </state>
-    <state x="1901" y="161" key="SettingsEditor/1440.25.1920.1000/0.25.1440.875@1440.25.1920.1000" timestamp="1627202965165" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/mein/lib/camera_3.dart</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

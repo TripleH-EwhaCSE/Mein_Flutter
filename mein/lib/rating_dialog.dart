@@ -57,103 +57,103 @@ class RatingDialog extends StatelessWidget {
     final _response = RatingDialogResponse(rating: initialRating);
 
     final _content = SizedBox(
-  width: 250,
-  height: 250,
-  child: Stack(
-      alignment: Alignment.topRight,
-      children: <Widget>[
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(25, 30, 25, 5),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                image != null
-                    ? Padding(
-                        child: image,
-                        padding: const EdgeInsets.only(top: 25, bottom: 25),
-                      )
-                    : Container(),
-                Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                message != null
-                    ? Text(
-                        message,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 15),
-                      )
-                    : Container(),
-                const SizedBox(height: 10),
-                Center(
-                  child: RatingBar.builder(
-                    initialRating: initialRating.toDouble(),
-                    glowColor: ratingColor,
-                    minRating: 1.0,
-                    direction: Axis.horizontal,
-                    allowHalfRating: false,
-                    itemCount: 5,
-                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                    onRatingUpdate: (rating) =>
+        width: 250,
+        height: 250,
+        child: Stack(
+          alignment: Alignment.topRight,
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(25, 30, 25, 5),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    image != null
+                        ? Padding(
+                      child: image,
+                      padding: const EdgeInsets.only(top: 25, bottom: 25),
+                    )
+                        : Container(),
+                    Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    message != null
+                        ? Text(
+                      message,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 15),
+                    )
+                        : Container(),
+                    const SizedBox(height: 10),
+                    Center(
+                      child: RatingBar.builder(
+                        initialRating: initialRating.toDouble(),
+                        glowColor: ratingColor,
+                        minRating: 1.0,
+                        direction: Axis.horizontal,
+                        allowHalfRating: false,
+                        itemCount: 5,
+                        itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                        onRatingUpdate: (rating) =>
                         _response.rating = rating.toInt(),
-                    itemBuilder: (context, _) => Icon(
-                      Icons.star,
-                      color: ratingColor,
-                    ),
-                  ),
-                ),
-                enableComment
-                    ? TextField(
-                        controller: _commentController,
-                        textAlign: TextAlign.center,
-                        textInputAction: TextInputAction.newline,
-                        minLines: 1,
-                        maxLines: 5,
-                        decoration: InputDecoration(
-                          hintText: commentHint,
+                        itemBuilder: (context, _) => Icon(
+                          Icons.star,
+                          color: ratingColor,
                         ),
-                      )
-                    : const SizedBox(height: 15),
-                TextButton(
-                  child: Text(
-                    submitButton,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 17,
+                      ),
                     ),
-                  ),
-                  onPressed: () {
-                    if (!force) 
-                    _response.comment = _commentController.text;
-                    onSubmitted.call(_response);
-                    Navigator.pushNamed(context, '/menudetail');
-                    // Navigator.pop(context);
-                    
-                  },
+                    enableComment
+                        ? TextField(
+                      controller: _commentController,
+                      textAlign: TextAlign.center,
+                      textInputAction: TextInputAction.newline,
+                      minLines: 1,
+                      maxLines: 5,
+                      decoration: InputDecoration(
+                        hintText: commentHint,
+                      ),
+                    )
+                        : const SizedBox(height: 15),
+                    TextButton(
+                      child: Text(
+                        submitButton,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
+                      onPressed: () {
+                        if (!force)
+                          _response.comment = _commentController.text;
+                        onSubmitted.call(_response);
+                        Navigator.pushNamed(context, '/menudetail');
+                        // Navigator.pop(context);
+
+                      },
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-        if (!force && onCancelled != null) ...[
-          IconButton(
-            icon: const Icon(Icons.close, size: 18),
-            onPressed: () {
-              Navigator.pop(context);
-              onCancelled.call();
-            },
-          )
-        ]
-      ],
-    )
+            if (!force && onCancelled != null) ...[
+              IconButton(
+                icon: const Icon(Icons.close, size: 18),
+                onPressed: () {
+                  Navigator.pop(context);
+                  onCancelled.call();
+                },
+              )
+            ]
+          ],
+        )
     );
 
     return _content;

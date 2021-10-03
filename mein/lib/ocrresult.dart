@@ -50,6 +50,12 @@ class _FlaskApiState extends State<ocrresult> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+        // appBar: AppBar(
+        //   backgroundColor: Colors.transparent,
+        //   title: Image.asset('images/MeIN.png'),
+        //   centerTitle: true,
+        //   elevation: 0.0,
+        // ),
       body: Container(
         child:
             Stack(
@@ -74,7 +80,7 @@ class _FlaskApiState extends State<ocrresult> {
                           )))),
               for(var j=0;j<list.length;j++)Positioned(top: (screenHeight - size[1] * screenWidth / size[0]) / 2+ (list[j][2][0][1] / size[1]) * size[1]  * screenWidth / size[0] - 5, //200+(110/768)*screenHeight,
                   left: list[j][2][0][0] / size[0] * screenWidth,
-                  child: FlatButton(child: Text(list[j][1].toString(),style: TextStyle(fontSize: 30.0),),
+                  child: FlatButton(child: Text(list[j][1].toString(),style: TextStyle(fontSize: 15.0),),
                 onPressed: () => { Navigator.pushNamed(context, '/menudetail',
                     arguments: null)})),
               // Positioned(

@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-//import 'package:mein/cart.dart';
 import 'main_page.dart';
-//import 'package:mein/menuAR.dart';
 import 'menudetail.dart';
-//import 'package:mein/ocr_flutter.dart';
 import 'ocrresult.dart';
 import 'restaurantDetail.dart';
-//import 'package:mein/camera_1.dart';
-//import 'package:mein/camera_2.dart';
-// import 'package:mein/camera_3.dart';
-//import 'package:mein/map.dart';
+import 'owner.dart';
 import 'menuList.dart';
 
 void main() {
@@ -23,6 +17,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => MainPage(),
+        '/owner': (context) => Owner(),
         //'/camera_1': (context) => Camera_1(),
         //'/camera_2': (context) => Camera_2(),
         // '/camera_3': (context) => Camera_3(),

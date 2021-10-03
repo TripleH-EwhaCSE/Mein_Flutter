@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mein/bottomnavigationbar.dart';
+//import 'package:mein/bottomnavigationbar.dart';
 import 'package:mein/rating_dialog.dart';
 import 'package:mein/flutter_rating_bar.dart';
 import 'package:vertical_barchart/extension/expandedSection.dart';
@@ -30,7 +30,12 @@ class _MenuDetailState extends State<MenuDetailPage> {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: AppBar(title: Text('menudetail')),
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            title: Image.asset('images/MeIN.png'),
+            centerTitle: true,
+            elevation: 0.0,
+          ),
           body: Column(children: <Widget>[
             imageSection,
             menuSection,
@@ -59,14 +64,14 @@ class _MenuDetailState extends State<MenuDetailPage> {
               child: TabBarView(
                 children: [
                   Container(
-                      width: 200.0,
-                      child: MyBarchart(),
-                          ),
+                    width: 200.0,
+                    child: MyBarchart(),
+                  ),
                   Container(
                       width: 200.0,
                       // child: reviewWrite
                       child:  ReviewList()
-                          ),
+                  ),
                 ],
               ),
             ),
@@ -79,18 +84,25 @@ class _MenuDetailState extends State<MenuDetailPage> {
         ));
   }
 }
+Widget innerimageSection = Container(
+  height: 130,
+  width: 130,
+  child: Image.asset('images/Grilledporkbelly.png', fit: BoxFit.cover),
+);
 
 Widget imageSection = Container(
-  height: 50,
+  margin: new EdgeInsets.only(top: 14.0),
+  height: 90,
   width: double.infinity,
-  //child: Image.asset('images/restaurant_sample.png', fit: BoxFit.cover),
+  child: Image.asset('images/grilledporkbelly_sample.png', fit: BoxFit.cover),
 );
+
 // Food food = Firestore.instance
 //     .collection('foodingredient')
 //     .where('foodnameKR', isEqualTo: food.foodnameKR)
 //     .getDocuments().then((QuerySnapshot ds) {
 //       print(ds.documents.length);
-Food food = new Food('강정','gangjeong');
+Food food = new Food('삼겹살 구이', 'Grilled pork belly');
 Widget menuSection = Container(
   height: 300,
   padding: const EdgeInsets.all(36),
@@ -98,43 +110,43 @@ Widget menuSection = Container(
     children: [
       Expanded(
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        Container(
-            margin: const EdgeInsets.only(top: 12.0),
-            child: Text(food.foodnameKR,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0))),
-        Text(food.foodnameENG,
-            style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16.0)),
-        Container(
-          margin: const EdgeInsets.all(12.0),
-          child: Text(
-            'Main Menu',
-            style: TextStyle(fontWeight: FontWeight.normal, fontSize: 14.0),
-          ),
-        ),
-        Container(
-          //child: Image.asset('images/kongnamulgookbab.png'),
-        ),
-        stars,
-        Container(
-            margin: const EdgeInsets.only(top: 12.0),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
-                  child: Text('#HOT',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0))),
-              Container(
-                  margin: const EdgeInsets.only(left: 36.0),
-                  child: Text('#SALTY',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0))),
-              Container(
-                  margin: const EdgeInsets.only(left: 36.0),
-                  child: Text('#VEGAN',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0)))
-            ]))
-      ]))
+          Column(crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+            Container(
+                margin: const EdgeInsets.only(top: 12.0),
+                child: Text(food.foodnameKR,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0))),
+            Text(food.foodnameENG,
+                style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16.0)),
+            // Container(
+            //   margin: const EdgeInsets.all(12.0),
+            //   child: Text(
+            //     'Main Menu',
+            //     style: TextStyle(fontWeight: FontWeight.normal, fontSize: 14.0),
+            //   ),
+            // ),
+         innerimageSection
+           ,
+            stars,
+            Container(
+                margin: const EdgeInsets.only(top: 12.0),
+                child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Container(
+                      child: Text('#Oily',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 16.0))),
+                  Container(
+                      margin: const EdgeInsets.only(left: 36.0),
+                      child: Text('#Chewy',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 16.0))),
+                  Container(
+                      margin: const EdgeInsets.only(left: 36.0),
+                      child: Text('#Juicy',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 16.0)))
+                ]))
+          ]))
     ],
   ),
 );
@@ -162,32 +174,32 @@ Widget restaurantSection = Container(
     child: Row(children: [
       Expanded(
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            margin: const EdgeInsets.only(bottom: 12.0),
-            child: Text('This restaurant is ...',
-                style:
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Container(
+                margin: const EdgeInsets.only(bottom: 12.0),
+                child: Text('This restaurant is ...',
+                    style:
                     TextStyle(fontWeight: FontWeight.normal, fontSize: 16.0))),
-        stars,
-        Container(
-            margin: const EdgeInsets.only(top: 12.0),
-            child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Container(
-                  child: Text('#Cheap',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0))),
-              Container(
-                  margin: const EdgeInsets.only(left: 36.0),
-                  child: Text('#Delicious',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0))),
-              Container(
-                  margin: const EdgeInsets.only(left: 36.0),
-                  child: Text('#Kind',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0)))
-            ]))
-      ]))
+            stars,
+            Container(
+                margin: const EdgeInsets.only(top: 12.0),
+                child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Container(
+                      child: Text('#Cheap',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 16.0))),
+                  Container(
+                      margin: const EdgeInsets.only(left: 36.0),
+                      child: Text('#Delicious',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 16.0))),
+                  Container(
+                      margin: const EdgeInsets.only(left: 36.0),
+                      child: Text('#Kind',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 16.0)))
+                ]))
+          ]))
     ]));
 
 class MyBarchart extends StatelessWidget{
@@ -196,29 +208,29 @@ class MyBarchart extends StatelessWidget{
   Widget build(BuildContext context){
     //allergy.forEach((item) => Text(item));
     return StreamBuilder<QuerySnapshot>(
-      stream:Firestore.instance.collection('foodingredient').where('name', isEqualTo: food.foodnameENG).snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        final document = snapshot.data.documents;
+        stream:Firestore.instance.collection('foodingredient').where('name', isEqualTo: food.foodnameENG).snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          final document = snapshot.data.documents;
           print(document);
           bardata = [];
           for (var ingredient in document[0].data["ingredient"]){
-          bardata.add(VBarChartModel(
-                        index: 1,
-                        label: ingredient["name"],
-                        colors: (ingredient["isvegan"])?[Colors.teal, Colors.indigo] :[Colors.orange, Colors.deepOrange] ,
-                        jumlah: (ingredient["percent"]/100)*55,
-                        tooltip: ingredient["percent"].toString()+"%",
-                    ));
+            bardata.add(VBarChartModel(
+              index: 1,
+              label: ingredient["name"],
+              colors: (ingredient["isvegan"])?[Colors.teal, Colors.indigo] :[Colors.orange, Colors.deepOrange] ,
+              jumlah: (ingredient["percent"]/100)*55,
+              tooltip: ingredient["percent"].toString()+"%",
+            ));
           }
           return Scaffold(
             body: SingleChildScrollView(
                 child: Column(
-              children: [
-                _buildGrafik(bardata),
-                IngredientList,
-                IngredientinfoList,
-              ],
-            )),
+                  children: [
+                    _buildGrafik(bardata),
+                    IngredientList,
+                    IngredientinfoList,
+                  ],
+                )),
           );
         }
     );
@@ -255,28 +267,28 @@ Widget reviewView = Container(
 );
 
 class reviewWrite extends StatelessWidget {
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Container(
-    width: 200.0,
-  // height: 230.0,
-  child : RatingDialog(
-    title: 'Write your own review',
-  submitButton: 'Submit',
-  //onCancelled: () => print('cancelled'),
-  onSubmitted: (response) {
-    Firestore.instance.collection("foodreview").add({
-      "foodnameENG": food.foodnameENG,
-      "foodnameKR": food.foodnameKR,
-      "review": '${response.comment}',
-      "star": int.parse('${response.rating}'),
-      "uploaddate": Timestamp.now(),
-    });
-    // Navigator.pushNamed(context, '/menudetail');
-   
-  }, 
-  
-));
-   }}
+        width: 200.0,
+        // height: 230.0,
+        child : RatingDialog(
+          title: 'Write your own review',
+          submitButton: 'Submit',
+          //onCancelled: () => print('cancelled'),
+          onSubmitted: (response) {
+            Firestore.instance.collection("foodreview").add({
+              "foodnameENG": food.foodnameENG,
+              "foodnameKR": food.foodnameKR,
+              "review": '${response.comment}',
+              "star": int.parse('${response.rating}'),
+              "uploaddate": Timestamp.now(),
+            });
+            // Navigator.pushNamed(context, '/menudetail');
+
+          },
+
+        ));
+  }}
 
 
 class ReviewList extends StatelessWidget {
@@ -304,18 +316,18 @@ class ReviewList extends StatelessWidget {
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                        child: Text(
-                          element["review"],
-                          style: TextStyle(color: Colors.black54),
-                        ),
-                      )
-                    ],
-                  ),
+                      child: Text(
+                        element["review"],
+                        style: TextStyle(color: Colors.black54),
+                      ),
+                    )
+                  ],
                 ),
-              ));
-            }
+              ),
+            ));
+          }
           return ListView(children: list);
-          });
+        });
   }
 }
 
@@ -323,7 +335,7 @@ class Reviews {
   int score;
   String reviewText;
 
-   Reviews(this.score, this.reviewText);
+  Reviews(this.score, this.reviewText);
 }
 
 class ReviewsTile extends StatelessWidget{
@@ -331,7 +343,7 @@ class ReviewsTile extends StatelessWidget{
   final Reviews _reviews;
   @override
   Widget build(BuildContext context) {
-     return ListTile(
+    return ListTile(
       leading: Icon(Icons.person),
       title: StarIcon(_reviews.score),
       subtitle: Text("${_reviews.reviewText}"),
@@ -344,63 +356,63 @@ class StarIcon extends StatelessWidget{
   final int _score;
   @override
   Widget build(BuildContext context) {
-     switch (_score){
-     case 1:
-     return Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-  ],
-);
-     case 2:
-     return Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-  ],
-);
-     case 3:
-     return Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.grey),
-    Icon(Icons.star, color: Colors.grey),
-  ],
-);
-     case 4:
-     return Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.grey),
-  ],
-);
-     case 5:
-     return Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-    Icon(Icons.star, color: Colors.yellow[500]),
-  ],
-);
-     }
+    switch (_score){
+      case 1:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+          ],
+        );
+      case 2:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+          ],
+        );
+      case 3:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.grey),
+            Icon(Icons.star, color: Colors.grey),
+          ],
+        );
+      case 4:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.grey),
+          ],
+        );
+      case 5:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+            Icon(Icons.star, color: Colors.yellow[500]),
+          ],
+        );
+    }
     // TODO: implement build
     throw UnimplementedError();
   }
@@ -415,9 +427,9 @@ Widget devider = Container(
 
 
 Widget IngredientList =  Container(
-          margin: const EdgeInsets.only(top: 12.0),
-            child: Text('Allergy Info',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0)));
+    margin: const EdgeInsets.only(top: 12.0),
+    child: Text('Allergy Info',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0)));
 
 Widget IngredientinfoList = Container(
     margin: const EdgeInsets.only(top: 12.0),
@@ -433,28 +445,28 @@ class Ingredientinfo extends StatelessWidget {
   Widget build(BuildContext context){
     //allergy.forEach((item) => Text(item));
     return StreamBuilder<QuerySnapshot>(
-      stream:Firestore.instance.collection('foodingredient').where('name', isEqualTo: food.foodnameENG).snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        final document = snapshot.data.documents;
-        print(document);
-        allergy = [];
-        for (var ingredient in document[0].data["ingredient"]){
-          if (ingredient["isallergy"]){
-            allergy.add(ingredient["name"]);
+        stream:Firestore.instance.collection('foodingredient').where('name', isEqualTo: food.foodnameENG).snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          final document = snapshot.data.documents;
+          print(document);
+          allergy = [];
+          for (var ingredient in document[0].data["ingredient"]){
+            if (ingredient["isallergy"]){
+              allergy.add(ingredient["name"]);
+            }
           }
-        }
           return Container(
-            width: 350.0,
-            height: 300.0,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
+              width: 350.0,
+              height: 300.0,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
                 itemCount: allergy.length,
                 itemBuilder: (context, index) {
                   if(allergy.length != 0){
-                  return Container(
-                    margin: const EdgeInsets.only(right: 12.0),
-                    child:Text('${allergy[index]}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
-                  );}
+                    return Container(
+                      margin: const EdgeInsets.only(right: 12.0),
+                      child:Text('${allergy[index]}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
+                    );}
                   else {
                     return Container(
                       margin: const EdgeInsets.only(right: 12.0),
@@ -463,8 +475,8 @@ class Ingredientinfo extends StatelessWidget {
                   }
                 },
               )
-            );
-          }
-        );
+          );
+        }
+    );
   }
 }
