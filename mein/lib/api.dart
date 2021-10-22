@@ -19,7 +19,7 @@ class CloudApi {
 
     // Instantiate objects to cloud storage
     var storage = Storage(_client, 'Image Upload Google Storage');
-    var bucket = storage.bucket('mein-bucket-1');
+    var bucket = storage.bucket('mein-menu');
 
     // Save to bucket
     final timestamp = DateTime.now().millisecondsSinceEpoch;

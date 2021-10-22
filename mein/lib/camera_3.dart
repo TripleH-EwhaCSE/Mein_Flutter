@@ -36,7 +36,9 @@ class _MyHomePageState extends State<Camera_3> {
   bool isUploaded = false;
   bool loading = false;
 
-  final String _url = "https://mein-flask.run.goorm.io/result";
+  //https://mein-flask.run.goorm.io http://34.64.112.13/
+
+  final String _url = "http://34.64.112.13/result";
 
   Widget LoadingImage(Uint8List imageData) {
     return Image.memory(imageData);
@@ -92,7 +94,7 @@ class _MyHomePageState extends State<Camera_3> {
   }
   */
   Future getGallery() async {
-    imageCache.maximumSize=0;
+    imageCache.maximumSize = 0;
     imageCache.clear();
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
@@ -123,11 +125,9 @@ class _MyHomePageState extends State<Camera_3> {
       isUploaded = true;
     });
 
-    Map<String,String> headers = {'Content-Type':'application/json'};
+    Map<String, String> headers = {'Content-Type': 'application/json'};
     final msg = jsonEncode({"imagename": _imageName});
-    http.Response _res = await http.post("$_url",
-        headers: headers,
-        body: msg);
+    http.Response _res = await http.post("$_url", headers: headers, body: msg);
 
     print(_res.body);
   }
@@ -152,71 +152,70 @@ class _MyHomePageState extends State<Camera_3> {
       */
     //child: _image == null
     return Scaffold(
-
-      body:
-       _imageBytes == null
-                ? Stack(children:[Padding(padding:EdgeInsets.only(top: 80),child:Center(
-                child: (
-                        Text(
-                          'Going to take a picture of the menu',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20.0,color: Colors.lightBlueAccent,),
-                          textAlign: TextAlign.center,
-
-                        )
-                      )
-            )),
-
-         Center(
-           //top: screenHeight/2,
-           //left: screenHeight/2,
-           child: IconButton(
-             //color: Colors.blueAccent,
-             icon: Icon(Icons.camera_alt),
-             onPressed: getGallery,
-             color: Colors.lightBlueAccent,
-             //textColor: Colors.white,
-             //child: Text('Translate'),
-           ),
-         )])
-                //: Image.file(_image),
-                : Stack(
-                    children: [Center(
-                      child:Image.memory(_imageBytes)),
-                      if (loading)
-                        Center(
-                          child: CircularProgressIndicator(),
+      body: _imageBytes == null
+          ? Stack(children: [
+              Padding(
+                  padding: EdgeInsets.only(top: 80),
+                  child: Center(
+                      child: (Text(
+                    'Going to take a picture of the menu',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Colors.lightBlueAccent,
+                    ),
+                    textAlign: TextAlign.center,
+                  )))),
+              Center(
+                //top: screenHeight/2,
+                //left: screenHeight/2,
+                child: IconButton(
+                  //color: Colors.blueAccent,
+                  icon: Icon(Icons.camera_alt),
+                  onPressed: getGallery,
+                  color: Colors.lightBlueAccent,
+                  //textColor: Colors.white,
+                  //child: Text('Translate'),
+                ),
+              )
+            ])
+          //: Image.file(_image),
+          : Stack(children: [
+              Center(child: Image.memory(_imageBytes)),
+              if (loading)
+                Center(
+                  child: CircularProgressIndicator(),
+                ),
+              isUploaded
+                  ? Center(
+                      child: IconButton(
+                        //radius: 40,
+                        //: Colors.green,
+                        icon: Icon(
+                          Icons.check,
+                          color: Colors.green,
+                          size: 60,
                         ),
-                      isUploaded
-                          ? Center(
-                              child: IconButton(
-                                //radius: 40,
-                                //: Colors.green,
-                                icon: Icon(
-                                  Icons.check,
-                                  color: Colors.green,
-                                  size: 60,
-                                ),
-                                onPressed: () => {
-                                  Navigator.pushNamed(context, '/kakaoocr',
-                                      arguments: _imageBytes)
-                                },
-                              ),
-                            )
-                          : Align(
-                              alignment: Alignment.center,
-                              child: FloatingActionButton(
-                                //color: Colors.blueAccent,
-                                child: Icon(Icons.wysiwyg,size:30,),
-                                //textColor: Colors.white,
-                                onPressed: _saveImage,
-                                //child: Text('Translate'),
-                              ),
-                            )
-
-
-
-          ]),
+                        onPressed: () => {
+                          Navigator.pushNamed(context, '/kakaoocr',
+                              arguments: _imageBytes)
+                        },
+                      ),
+                    )
+                  : Align(
+                      alignment: Alignment.center,
+                      child: FloatingActionButton(
+                        //color: Colors.blueAccent,
+                        child: Icon(
+                          Icons.wysiwyg,
+                          size: 30,
+                        ),
+                        //textColor: Colors.white,
+                        onPressed: _saveImage,
+                        //child: Text('Translate'),
+                      ),
+                    )
+            ]),
 
       //child: _image_2 == null ? Text('No image'): Image.file(File(_image_2.path)),
       //_image == null ? Text('No image selected.') : Image.file(_image),
