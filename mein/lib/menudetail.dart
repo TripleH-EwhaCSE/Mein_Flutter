@@ -41,7 +41,6 @@ class _MenuDetailState extends State<MenuDetailPage> {
             elevation: 0.0,
           ),
           body: Column(children: <Widget>[
-            imageSection,
             menuSection,
             // the tab bar with two items
             SizedBox(
@@ -68,7 +67,7 @@ class _MenuDetailState extends State<MenuDetailPage> {
               child: TabBarView(
                 children: [
                   Container(
-                    width: 200.0,
+                    width: 170.0,
                     child: MyBarchart(),
                   ),
                   Container(
@@ -88,25 +87,32 @@ class _MenuDetailState extends State<MenuDetailPage> {
         ));
   }
 }
-Widget innerimageSection = Container(
-  height: 110,
-  width: 110,
-  child: Image.asset('images/Grilledporkbelly.png', fit: BoxFit.cover),
-);
-
-Widget imageSection = Container(
-  margin: new EdgeInsets.only(top: 18.0),
-  height: 70,
-  width: double.infinity,
-  child: Image.asset('images/grilledporkbelly_sample.png', fit: BoxFit.cover),
-);
-
-// Food food = Firestore.instance
-//     .collection('foodingredient_2')
-//     .where('foodnameKR', isEqualTo: food.foodnameKR)
-//     .getDocuments().then((QuerySnapshot ds) {
-//       print(ds.documents.length);
 Food food = new Food('라면', 'Ramyeon');
+
+class innerimageSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+          stream:Firestore.instance.collection('foodingredient_2').where('name', isEqualTo: food.foodnameENG).snapshots(),
+          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            final document = snapshot.data.documents;
+            var img_src = document[0].data["foodIMG"];
+        
+          return Scaffold(
+            body: SingleChildScrollView(
+                  child:Container (
+                        height: 100,
+                        width: 110,
+                        child: Image.network(img_src)
+                        )
+                    )
+      );
+      }
+    );
+  }
+}
+  
+
 Widget menuSection = Container(
   height: 300,
   padding: const EdgeInsets.all(36),
@@ -122,14 +128,12 @@ Widget menuSection = Container(
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0))),
             Text(food.foodnameENG,
                 style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16.0)),
-            // Container(
-            //   margin: const EdgeInsets.all(12.0),
-            //   child: Text(
-            //     'Main Menu',
-            //     style: TextStyle(fontWeight: FontWeight.normal, fontSize: 14.0),
-            //   ),
-            // ),
-         innerimageSection
+            Container(
+              height: 100,
+              alignment: Alignment.center,
+                margin: const EdgeInsets.only(left: 50),
+                child: innerimageSection()  )
+    
            ,
             stars,
             Container(
@@ -212,7 +216,7 @@ class MyBarchart extends StatelessWidget{
   Widget build(BuildContext context){
     //allergy.forEach((item) => Text(item));
     return StreamBuilder<QuerySnapshot>(
-        stream:Firestore.instance.collection('foodingredient_2').where('name', isEqualTo: 'Ramyeon').orderBy('ingredient', descending: true).snapshots(),
+        stream:Firestore.instance.collection('foodingredient_2').where('name', isEqualTo: food.foodnameENG).orderBy('ingredient', descending: true).snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if(!snapshot.hasData) {
             return Text("Sorry, we cannot find the food name...😢");
@@ -306,7 +310,7 @@ class ReviewList extends StatelessWidget {
         stream: Firestore.instance.collection("foodreview").where('foodnameKR', isEqualTo: food.foodnameKR).snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if(!snapshot.hasData) {
-          final document = [];
+          Center();
           } 
           final document = snapshot.data.documents;
           list = [reviewWrite()];
