@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 //import 'package:mein/bottomnavigationbar.dart';
 import 'package:mein/rating_dialog.dart';
@@ -24,7 +25,10 @@ class MenuDetailPage extends StatefulWidget {
 
 class _MenuDetailState extends State<MenuDetailPage> {
   // This widget is the root of your application.
-
+  @override
+  void initState(){
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -85,24 +89,24 @@ class _MenuDetailState extends State<MenuDetailPage> {
   }
 }
 Widget innerimageSection = Container(
-  height: 130,
-  width: 130,
+  height: 110,
+  width: 110,
   child: Image.asset('images/Grilledporkbelly.png', fit: BoxFit.cover),
 );
 
 Widget imageSection = Container(
-  margin: new EdgeInsets.only(top: 14.0),
-  height: 90,
+  margin: new EdgeInsets.only(top: 18.0),
+  height: 70,
   width: double.infinity,
   child: Image.asset('images/grilledporkbelly_sample.png', fit: BoxFit.cover),
 );
 
 // Food food = Firestore.instance
-//     .collection('foodingredient')
+//     .collection('foodingredient_2')
 //     .where('foodnameKR', isEqualTo: food.foodnameKR)
 //     .getDocuments().then((QuerySnapshot ds) {
 //       print(ds.documents.length);
-Food food = new Food('삼겹살 구이', 'Grilled pork belly');
+Food food = new Food('라면', 'Ramyeon');
 Widget menuSection = Container(
   height: 300,
   padding: const EdgeInsets.all(36),
@@ -208,8 +212,11 @@ class MyBarchart extends StatelessWidget{
   Widget build(BuildContext context){
     //allergy.forEach((item) => Text(item));
     return StreamBuilder<QuerySnapshot>(
-        stream:Firestore.instance.collection('foodingredient').where('name', isEqualTo: food.foodnameENG).snapshots(),
+        stream:Firestore.instance.collection('foodingredient_2').where('name', isEqualTo: 'Ramyeon').orderBy('ingredient', descending: true).snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if(!snapshot.hasData) {
+            return Text("Sorry, we cannot find the food name...😢");
+          } 
           final document = snapshot.data.documents;
           print(document);
           bardata = [];
@@ -218,7 +225,7 @@ class MyBarchart extends StatelessWidget{
               index: 1,
               label: ingredient["name"],
               colors: (ingredient["isvegan"])?[Colors.teal, Colors.indigo] :[Colors.orange, Colors.deepOrange] ,
-              jumlah: (ingredient["percent"]/100)*55,
+              jumlah: (ingredient["percent"]/100)*52,
               tooltip: ingredient["percent"].toString()+"%",
             ));
           }
@@ -237,7 +244,7 @@ class MyBarchart extends StatelessWidget{
   }
   Widget _buildGrafik(List<VBarChartModel> bardata){
     return VerticalBarchart(
-      maxX: 55,
+      maxX: 52,
       data: bardata,
       showLegend: true,
       showBackdrop: true,
@@ -298,6 +305,9 @@ class ReviewList extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance.collection("foodreview").where('foodnameKR', isEqualTo: food.foodnameKR).snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if(!snapshot.hasData) {
+          final document = [];
+          } 
           final document = snapshot.data.documents;
           list = [reviewWrite()];
           for (var element in document){
@@ -445,7 +455,7 @@ class Ingredientinfo extends StatelessWidget {
   Widget build(BuildContext context){
     //allergy.forEach((item) => Text(item));
     return StreamBuilder<QuerySnapshot>(
-        stream:Firestore.instance.collection('foodingredient').where('name', isEqualTo: food.foodnameENG).snapshots(),
+        stream:Firestore.instance.collection('foodingredient_2').where('name', isEqualTo: food.foodnameENG).snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           final document = snapshot.data.documents;
           print(document);
