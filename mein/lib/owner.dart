@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mein/ocrresult.dart';
 import 'package:vertical_barchart/vertical-barchart.dart';
 import 'package:vertical_barchart/vertical-barchartmodel.dart';
 import 'package:vertical_barchart/vertical-legend.dart';
@@ -7,9 +8,13 @@ import 'dart:ui' as ui;
 
 import 'menudetail.dart';
 
+//Food food = new Food('삼겹살 구이', 'Grilled pork belly');
+
 class Owner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // foodName_info extractParams = ModalRoute.of(context).settings.arguments;
+    // Food food = new Food(extractParams.KR, extractParams.ENG);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -35,6 +40,9 @@ class Owner extends StatelessWidget {
 }
 
 class MenuDetailPage extends StatefulWidget {
+  final Foodinfo food;
+
+  const MenuDetailPage({Key key, this.food}) : super(key: key);
   @override
   _MenuDetailState createState() => _MenuDetailState();
 }
@@ -151,7 +159,7 @@ class MyBarchart extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection('foodingredient')
-            .where('name', isEqualTo: food.foodnameENG)
+            .where('name', isEqualTo: MenuDetailPage().food.foodnameENG)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           //final document = snapshot.data.documents;
@@ -263,7 +271,7 @@ class ReviewList extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection("foodreview")
-            .where('foodnameKR', isEqualTo: food.foodnameKR)
+            .where('foodnameKR', isEqualTo: MenuDetailPage().food.foodnameKR)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           final document = snapshot.data.documents;

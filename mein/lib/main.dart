@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         //'/camera_2': (context) => Camera_2(),
         // '/camera_3': (context) => Camera_3(),
         '/menudetail': (context) => MenuDetail(),
+        //'/menuname': (context) => Food(),
         '/menulist': (context) => MenuList(),
         //'/menuImage': (context) => MenuImage(),
         //'/cart': (context) => Cart(),

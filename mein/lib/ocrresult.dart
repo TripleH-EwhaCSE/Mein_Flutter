@@ -2,11 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mein/menudetail.dart';
 import 'dart:convert' show jsonDecode, utf8;
 
 import 'menuList.dart';
 
 class ocrresult extends StatefulWidget {
+  
   @override
   _FlaskApiState createState() => _FlaskApiState();
 }
@@ -15,10 +17,11 @@ class _FlaskApiState extends State<ocrresult> {
   GlobalKey _imageKey, _bg = GlobalKey();
   double _x, _y;
 
-  static const String GOORM_IO = "http://34.64.112.13/";
+  static const String GOORM_IO = "http://34.64.248.143:8000/";
   var data;
   List<dynamic> list = [];
   List<dynamic> size = [];
+
   @override
   void initState() {
     Future.microtask(() async {
@@ -80,6 +83,8 @@ class _FlaskApiState extends State<ocrresult> {
                             Colors.black.withOpacity(0.3), BlendMode.dstATop),
                       )))),
               for (var j = 0; j < list.length; j++)
+                // list[j][0] = foodName_KR,
+                // list[j][1] = foodName_Eng;
                 Positioned(
                     top: (screenHeight - size[1] * screenWidth / size[0]) / 2 +
                         (list[j][2][0][1] / size[1]) *
@@ -93,10 +98,19 @@ class _FlaskApiState extends State<ocrresult> {
                           list[j][1].toString(),
                           style: TextStyle(fontSize: 15.0),
                         ),
-                        onPressed: () => {
-                              Navigator.pushNamed(context, '/menudetail',
-                                  arguments: null)
-                            })),
+                        onPressed: () async {
+                          // Navigator.pushNamed(context, '/menuname',
+                          //     arguments: Foodinfo(list[j][0].toString(),
+                          //         list[j][1].toString()))
+                          final food = Foodinfo(
+                              list[j][0].toString(), list[j][1].toString());
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    MenuDetailPage(food: food)),
+                          );
+                        })),
               // Positioned(
               //     top: (screenHeight - 768 * screenWidth / 1024) / 2+ (110 / 768) * 768 * screenWidth / 1024, //200+(110/768)*screenHeight,
               //     left: 344 / 1024 * screenWidth,
@@ -117,4 +131,11 @@ class _FlaskApiState extends State<ocrresult> {
       //bottomNavigationBar: BottomNavigation(currentTab: 0),
     );
   }
+}
+
+class Foodinfo {
+  String foodnameKR;
+  String foodnameENG;
+
+  Foodinfo(this.foodnameKR, this.foodnameENG);
 }

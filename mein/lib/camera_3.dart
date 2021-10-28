@@ -38,7 +38,7 @@ class _MyHomePageState extends State<Camera_3> {
 
   //https://mein-flask.run.goorm.io http://34.64.112.13/
 
-  final String _url = "http://34.64.112.13/result";
+  final String _url = "http://34.64.248.143:8000/result";
 
   Widget LoadingImage(Uint8List imageData) {
     return Image.memory(imageData);

@@ -121,7 +121,7 @@ def result():
     #get image name from flutter
     imagename = request.get_json()
     filename = str(imagename['imagename'])
-    image_path_url = "https://storage.googleapis.com/mein-bucket-1/" + filename
+    image_path_url = "https://storage.googleapis.com/mein-menu/" + filename
     image = url_to_image(image_path_url)
     
     resize_img = kakao_ocr_resize(image)
