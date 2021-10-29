@@ -107,7 +107,7 @@ class innerimageSection extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection('foodingredient_2')
-            .where('name', isEqualTo: food.foodnameENG.toString())
+            .where('nameKR', isEqualTo: food.foodnameKR.toString())
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           final document = snapshot.data.documents;
@@ -259,7 +259,7 @@ class MyBarchart extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection('foodingredient_2')
-            .where('name', isEqualTo: food.foodnameENG.toString())
+            .where('nameKR', isEqualTo: food.foodnameKR.toString())
             .orderBy('ingredient', descending: true)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -530,7 +530,7 @@ class Ingredientinfo extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection('foodingredient_2')
-            .where('name', isEqualTo: food.foodnameENG.toString())
+            .where('nameKR', isEqualTo: food.foodnameKR.toString())
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           final document = snapshot.data.documents;
