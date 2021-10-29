@@ -44,8 +44,8 @@ android {
         applicationId "com.ohjoo.mein"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        versionCode 2
+        versionName "2.0.0"
     }
     signingConfigs {
        release {
