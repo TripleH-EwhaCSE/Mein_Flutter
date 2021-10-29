@@ -7,8 +7,10 @@ import 'package:vertical_barchart/vertical-legend.dart';
 import 'dart:ui' as ui;
 
 import 'menudetail.dart';
+import 'package:get/get.dart';
 
 //Food food = new Food('삼겹살 구이', 'Grilled pork belly');
+Food food = new Food('라면', 'ramen');
 
 class Owner extends StatelessWidget {
   @override
@@ -40,9 +42,6 @@ class Owner extends StatelessWidget {
 }
 
 class MenuDetailPage extends StatefulWidget {
-  final Foodinfo food;
-
-  const MenuDetailPage({Key key, this.food}) : super(key: key);
   @override
   _MenuDetailState createState() => _MenuDetailState();
 }
@@ -159,7 +158,7 @@ class MyBarchart extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection('foodingredient')
-            .where('name', isEqualTo: MenuDetailPage().food.foodnameENG)
+            .where('name', isEqualTo: food.foodnameENG)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           //final document = snapshot.data.documents;
@@ -271,7 +270,8 @@ class ReviewList extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection("foodreview")
-            .where('foodnameKR', isEqualTo: MenuDetailPage().food.foodnameKR)
+            .where('foodnameKR',
+                isEqualTo: "${(Get.arguments as Foodinfo).foodnameKR}")
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           final document = snapshot.data.documents;

@@ -1,35 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:mein/ocrresult.dart';
 //import 'package:mein/bottomnavigationbar.dart';
 import 'package:mein/rating_dialog.dart';
 import 'package:mein/flutter_rating_bar.dart';
+import 'package:path/path.dart';
 import 'package:vertical_barchart/extension/expandedSection.dart';
 import 'package:vertical_barchart/vertical-barchart.dart';
 import 'package:vertical_barchart/vertical-barchartmodel.dart';
 import 'package:vertical_barchart/vertical-legend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-// ignore: must_be_immutable
 class MenuDetail extends StatelessWidget {
+  //var args;
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context).settings.arguments;
+    //print(args);
+
     return MaterialApp(
-      home: MenuDetailPage(),
+      home: MenuDetailPage(args1: args),
     );
   }
 }
 
 class MenuDetailPage extends StatefulWidget {
-  final Foodinfo food;
-
-  const MenuDetailPage({Key key, this.food}) : super(key: key);
+  var args1;
+  MenuDetailPage({this.args1});
   @override
-  _MenuDetailState createState() => _MenuDetailState();
+  _MenuDetailState createState() => _MenuDetailState(args2: args1);
 }
 
 class _MenuDetailState extends State<MenuDetailPage> {
-  // This widget is the root of your application.
+  var args2;
+  _MenuDetailState({this.args2});
 
+  // This widget is the root of your application.
   @override
   void initState() {
     super.initState();
@@ -37,6 +41,8 @@ class _MenuDetailState extends State<MenuDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(args2);
+    //print(FoodInfo().A());
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -47,7 +53,7 @@ class _MenuDetailState extends State<MenuDetailPage> {
             elevation: 0.0,
           ),
           body: Column(children: <Widget>[
-            menuSection,
+            menuSection(args2),
             // the tab bar with two items
             SizedBox(
               height: 50,
@@ -73,12 +79,12 @@ class _MenuDetailState extends State<MenuDetailPage> {
                 children: [
                   Container(
                     width: 170.0,
-                    child: MyBarchart(),
+                    child: MyBarchart(args2),
                   ),
                   Container(
                       width: 200.0,
                       // child: reviewWrite
-                      child: ReviewList()),
+                      child: ReviewList(args2)),
                 ],
               ),
             ),
@@ -92,18 +98,16 @@ class _MenuDetailState extends State<MenuDetailPage> {
   }
 }
 
-// Food food = new Food('라면', 'Ramyeon');
-//Food food = new Food('라면', 'Ramyeon');
-
-//Food food;
-
 class innerimageSection extends StatelessWidget {
+  final food;
+  innerimageSection(this.food);
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection('foodingredient_2')
-            .where('name', isEqualTo: MenuDetailPage().food.foodnameENG)
+            .where('name', isEqualTo: food.foodnameENG.toString())
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           final document = snapshot.data.documents;
@@ -117,48 +121,72 @@ class innerimageSection extends StatelessWidget {
   }
 }
 
-Widget menuSection = Container(
-  height: 300,
-  padding: const EdgeInsets.all(36),
-  child: Row(
-    children: [
-      Expanded(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        Container(
-            margin: const EdgeInsets.only(top: 12.0),
-            child: Text(MenuDetailPage().food.foodnameKR,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0))),
-        Text(MenuDetailPage().food.foodnameENG,
-            style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16.0)),
-        Container(
-            height: 100,
-            alignment: Alignment.center,
-            margin: const EdgeInsets.only(left: 50),
-            child: innerimageSection()),
-        stars,
-        Container(
-            margin: const EdgeInsets.only(top: 12.0),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
-                  child: Text('#Oily',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0))),
-              Container(
-                  margin: const EdgeInsets.only(left: 36.0),
-                  child: Text('#Chewy',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0))),
-              Container(
-                  margin: const EdgeInsets.only(left: 36.0),
-                  child: Text('#Juicy',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0)))
-            ]))
-      ]))
-    ],
-  ),
-);
+class menuSection extends StatelessWidget {
+  final food;
+  menuSection(this.food);
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      height: 300,
+      padding: const EdgeInsets.all(36),
+      child: Row(
+        children: [
+          Expanded(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                Container(
+                    margin: const EdgeInsets.only(top: 12.0),
+                    child: Text(food.foodnameKR.toString(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24.0))),
+                Text(food.foodnameENG.toString(),
+                    style: TextStyle(
+                        fontWeight: FontWeight.normal, fontSize: 16.0)),
+                Container(
+                    height: 100,
+                    alignment: Alignment.center,
+                    margin: const EdgeInsets.only(left: 125),
+                    child: innerimageSection(food)),
+                stars,
+                Container(
+                    margin: const EdgeInsets.only(top: 12.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              child: Text('#Oily',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16.0))),
+                          Container(
+                              margin: const EdgeInsets.only(left: 36.0),
+                              child: Text('#Chewy',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16.0))),
+                          Container(
+                              margin: const EdgeInsets.only(left: 36.0),
+                              child: Text('#Juicy',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16.0)))
+                        ]))
+              ]))
+        ],
+      ),
+    );
+    throw UnimplementedError();
+  }
+}
+
+class Food {
+  String foodnameKR;
+  String foodnameENG;
+
+  Food(this.foodnameKR, this.foodnameENG);
+}
 
 var stars = Row(
   mainAxisSize: MainAxisSize.min,
@@ -171,50 +199,67 @@ var stars = Row(
   ],
 );
 
-Widget restaurantSection = Container(
-    padding: const EdgeInsets.all(36),
-    child: Row(children: [
-      Expanded(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            margin: const EdgeInsets.only(bottom: 12.0),
-            child: Text('This restaurant is ...',
-                style:
-                    TextStyle(fontWeight: FontWeight.normal, fontSize: 16.0))),
-        stars,
-        Container(
-            margin: const EdgeInsets.only(top: 12.0),
-            child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Container(
-                  child: Text('#Cheap',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0))),
-              Container(
-                  margin: const EdgeInsets.only(left: 36.0),
-                  child: Text('#Delicious',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0))),
-              Container(
-                  margin: const EdgeInsets.only(left: 36.0),
-                  child: Text('#Kind',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 16.0)))
-            ]))
-      ]))
-    ]));
+class restaurantSection extends StatelessWidget {
+  final food;
+  restaurantSection(this.food);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.all(36),
+        child: Row(children: [
+          Expanded(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                Container(
+                    margin: const EdgeInsets.only(bottom: 12.0),
+                    child: Text('This restaurant is ...',
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal, fontSize: 16.0))),
+                stars,
+                Container(
+                    margin: const EdgeInsets.only(top: 12.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                              child: Text('#Cheap',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16.0))),
+                          Container(
+                              margin: const EdgeInsets.only(left: 36.0),
+                              child: Text('#Delicious',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16.0))),
+                          Container(
+                              margin: const EdgeInsets.only(left: 36.0),
+                              child: Text('#Kind',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16.0)))
+                        ]))
+              ]))
+        ]));
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
 
 class MyBarchart extends StatelessWidget {
-  // Foodinfo food;
-  // MyBarchart({@required this.food});
+  final food;
+  MyBarchart(this.food);
   @override
   List<VBarChartModel> bardata = [];
+
   Widget build(BuildContext context) {
+    //print("mybarchart"+food.toString());
     //allergy.forEach((item) => Text(item));
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection('foodingredient_2')
-            .where('name', isEqualTo: MenuDetailPage().food.foodnameENG)
+            .where('name', isEqualTo: food.foodnameENG.toString())
             .orderBy('ingredient', descending: true)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -235,13 +280,15 @@ class MyBarchart extends StatelessWidget {
               tooltip: ingredient["percent"].toString() + "%",
             ));
           }
+
           return Scaffold(
             body: SingleChildScrollView(
                 child: Column(
               children: [
                 _buildGrafik(bardata),
-                IngredientList,
-                IngredientinfoList,
+                IngredientList(),
+                IngredientinfoList(food),
+                //Text('${_MenuDetailState().args2.toString()}') //미해결 이슈
               ],
             )),
           );
@@ -280,6 +327,8 @@ Widget reviewView = Container(
 );
 
 class reviewWrite extends StatelessWidget {
+  final food;
+  reviewWrite(this.food);
   Widget build(BuildContext context) {
     return Container(
         width: 200.0,
@@ -290,8 +339,8 @@ class reviewWrite extends StatelessWidget {
           //onCancelled: () => print('cancelled'),
           onSubmitted: (response) {
             Firestore.instance.collection("foodreview").add({
-              "foodnameENG": MenuDetailPage().food.foodnameENG,
-              "foodnameKR": MenuDetailPage().food.foodnameKR,
+              "foodnameENG": 'food.foodnameENG',
+              "foodnameKR": 'food.foodnameKR',
               "review": '${response.comment}',
               "star": int.parse('${response.rating}'),
               "uploaddate": Timestamp.now(),
@@ -303,20 +352,22 @@ class reviewWrite extends StatelessWidget {
 }
 
 class ReviewList extends StatelessWidget {
+  final food;
+  ReviewList(this.food);
   @override
   Widget build(BuildContext context) {
     List<Widget> list = [];
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection("foodreview")
-            .where('foodnameKR', isEqualTo: MenuDetailPage().food.foodnameKR)
+            .where('foodnameKR', isEqualTo: food.foodnameKR.toString())
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
             Center();
           }
           final document = snapshot.data.documents;
-          list = [reviewWrite()];
+          list = [reviewWrite(food)];
           for (var element in document) {
             list.add(Card(
               elevation: 2,
@@ -441,20 +492,37 @@ Widget devider = Container(
   margin: const EdgeInsets.only(left: 24.0, right: 24.0),
 );
 
-Widget IngredientList = Container(
-    margin: const EdgeInsets.only(top: 12.0),
-    child: Text('Allergy Info',
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0)));
+class IngredientList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+        margin: const EdgeInsets.only(top: 12.0),
+        child: Text('Allergy Info',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0)));
+    throw UnimplementedError();
+  }
+}
 
-Widget IngredientinfoList = Container(
-    margin: const EdgeInsets.only(top: 12.0),
-    height: 100.0,
-    child: ListView(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[Ingredientinfo()]));
+class IngredientinfoList extends StatelessWidget {
+  final food;
+  IngredientinfoList(this.food);
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+        margin: const EdgeInsets.only(top: 12.0),
+        height: 100.0,
+        child: ListView(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            children: [Ingredientinfo(food)]));
+  }
+}
 
 class Ingredientinfo extends StatelessWidget {
+  final food;
+  Ingredientinfo(this.food);
   @override
   List<String> allergy = [];
   Widget build(BuildContext context) {
@@ -462,7 +530,7 @@ class Ingredientinfo extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance
             .collection('foodingredient_2')
-            .where('name', isEqualTo: MenuDetailPage().food.foodnameENG)
+            .where('name', isEqualTo: food.foodnameENG.toString())
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           final document = snapshot.data.documents;

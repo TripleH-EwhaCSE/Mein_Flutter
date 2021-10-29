@@ -33,6 +33,7 @@ dependencies:
   #file_picker: ^3.0.3
   vertical_barchart: ^2.0.0
   http: ^0.12.2
+  get: ^4.3.8
   #cloud_firestore: ^0.13.7
 
 dev_dependencies:

@@ -7,8 +7,9 @@ import 'dart:convert' show jsonDecode, utf8;
 
 import 'menuList.dart';
 
+import 'package:get/get.dart';
+
 class ocrresult extends StatefulWidget {
-  
   @override
   _FlaskApiState createState() => _FlaskApiState();
 }
@@ -53,6 +54,7 @@ class _FlaskApiState extends State<ocrresult> {
     final args = ModalRoute.of(context).settings.arguments;
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    Foodinfo food;
     return Scaffold(
       // appBar: AppBar(
       //   backgroundColor: Colors.transparent,
@@ -98,19 +100,29 @@ class _FlaskApiState extends State<ocrresult> {
                           list[j][1].toString(),
                           style: TextStyle(fontSize: 15.0),
                         ),
-                        onPressed: () async {
-                          // Navigator.pushNamed(context, '/menuname',
-                          //     arguments: Foodinfo(list[j][0].toString(),
-                          //         list[j][1].toString()))
-                          final food = Foodinfo(
-                              list[j][0].toString(), list[j][1].toString());
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    MenuDetailPage(food: food)),
-                          );
-                        })),
+                        onPressed: () => {
+                              // Navigator.pushNamed(context, '/menuname',
+                              //     arguments: Foodinfo(list[j][0].toString(),
+                              //         list[j][1].toString()))
+                              food = Foodinfo(
+                                  list[j][0].toString(), list[j][1].toString()),
+                              // await Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       builder: (context) =>
+                              //           MenuDetailPage(food: food)),
+                              //);
+
+                              // Get.to(MenuDetail(), arguments: "abc")
+
+                              Navigator.pushNamed(context, '/menudetail',
+                                  arguments: food)
+
+                              // Foodinfo(
+                              //     foodnameKR: list[j][0],
+                              //     foodnameENG: list[j][1])
+                              //     )
+                            })),
               // Positioned(
               //     top: (screenHeight - 768 * screenWidth / 1024) / 2+ (110 / 768) * 768 * screenWidth / 1024, //200+(110/768)*screenHeight,
               //     left: 344 / 1024 * screenWidth,
