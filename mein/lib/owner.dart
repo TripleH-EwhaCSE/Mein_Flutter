@@ -271,7 +271,7 @@ class ReviewList extends StatelessWidget {
         stream: Firestore.instance
             .collection("foodreview")
             .where('foodnameKR',
-                isEqualTo: "${(Get.arguments as Foodinfo).foodnameKR}")
+                isEqualTo: food.foodnameKR)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           final document = snapshot.data.documents;
