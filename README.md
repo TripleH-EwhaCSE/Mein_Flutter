@@ -69,7 +69,7 @@
 
 **개발 환경 및 version Control :**
 
-<img width="575" alt="Untitled 6" src="https://user-images.githubusercontent.com/52443092/127444835-f2687c70-62a8-4607-9f4d-af0052057c10.png">
+<img width="575" alt="Untitled 6" src="">
 
 
 **화면 Flow :**
@@ -99,6 +99,15 @@
 <img width="180" alt="Untitled 15" src="https://user-images.githubusercontent.com/52443092/127445292-d269c844-026a-49bb-a110-d374863bb9da.png">
 <img width="180" alt="Untitled 16" src="https://user-images.githubusercontent.com/52443092/127445297-b52209d2-f8f0-4920-a3a5-65dd461a29f0.png">
 </div>
+
+## 글자 인식 모델
+<img width="180" alt="Untitled 13" src="">
+<img width="180" alt="Untitled 13" src="">
+- 가장 높은 정확도를 보인 모델 조합은 TPS-VGG-BiLSTM-Attention이다.
+- 변환(Transformer) 모듈에서 TPS를 사용할 때 정확도가 최대 34%까지 향상되는 결과를 보였다.
+- 추출(Feature Extraction) 모듈에서 VGG와 ResNet을 사용하였을 때의 결과가  RCNN을 사용했을 때보다 높은 정확도를 보였고 모델 간 평균 파라미터 수를 비교했을 때는 ResNet,VGG, RCNN 순의 결과를 보였다.
+- 시퀀스(Sequence) – 예측(Prediction) 모듈에서 BiLSTM-Attention 조합이 BiLSTM을 사용하지 않을 때보다 정확도가 높은 결과를 보였다.
+   -> BiLSTM-Attention 조합이 함께 사용했을 때 정확도를 향상시키는 효과
 
 
 ## 재료 데이터 수집 및 분석

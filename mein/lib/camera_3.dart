@@ -172,7 +172,7 @@ class _MyHomePageState extends State<Camera_3> {
                 child: IconButton(
                   //color: Colors.blueAccent,
                   icon: Icon(Icons.camera_alt),
-                  onPressed: getGallery,
+                  onPressed: getImage,
                   color: Colors.lightBlueAccent,
                   //textColor: Colors.white,
                   //child: Text('Translate'),
