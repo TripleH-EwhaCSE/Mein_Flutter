@@ -101,8 +101,9 @@
 </div>
 
 ## 글자 인식 모델
-<img width="180" alt="Untitled 13" src="https://raw.githubusercontent.com/TripleH-EwhaCSE/Mein_Flutter/master/mein/images/Acc_Graph.png">
-<img width="180" alt="Untitled 13" src="https://raw.githubusercontent.com/TripleH-EwhaCSE/Mein_Flutter/master/mein/images/Result_Table.png">
+<img width="575" alt="Untitled 13" src="https://raw.githubusercontent.com/TripleH-EwhaCSE/Mein_Flutter/master/mein/images/Acc_Graph.png">
+<img width="575" alt="Untitled 13" src="https://raw.githubusercontent.com/TripleH-EwhaCSE/Mein_Flutter/master/mein/images/Result_Table.png">
+
 - 가장 높은 정확도를 보인 모델 조합은 TPS-VGG-BiLSTM-Attention이다.
 
 - 변환(Transformer) 모듈에서 TPS를 사용할 때 정확도가 최대 34%까지 향상되는 결과를 보였다.
