@@ -57,11 +57,12 @@
 - 외국인이 작성한 리뷰 분석을 통해 특정 음식의 특징을 그들의 입맛 반영하여 키워드로 제공
 - 초기 데이터 부족으로 Yelp의 리뷰 데이터 분석을 통해 키워드 추출, 이후 사용자 리뷰 데이터 분석을 접목할 예정
 
-## **[Application Demo Video] **
-https://youtu.be/nDoO2a9Fvj0
+## [Application Demo Video]
+
+[![Application Demo Video](http://img.youtube.com/vi/nDoO2a9Fvj0/0.jpg)](https://youtu.be/nDoO2a9Fvj0?t=0s) 
 
 
-**ERD:NoSQL**
+### **ERD:NoSQL**
 
 <img width="481" alt="Untitled 5" src="https://user-images.githubusercontent.com/52443092/127444778-8fa1e1b8-0d37-4501-9805-a7b0aada394d.png">
 
