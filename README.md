@@ -59,7 +59,11 @@
 
 ## [Application Demo Video]
 
-[![Application Demo Video](http://img.youtube.com/vi/nDoO2a9Fvj0/0.jpg)](https://youtu.be/nDoO2a9Fvj0?t=0s) 
+[![Application Demo Video](http://img.youtube.com/vi/nDoO2a9Fvj0/0.jpg)](https://youtu.be/nDoO2a9Fvj0?t=0s)
+
+클릭하면 Youtube 영상으로 이동 :)
+
+https://youtu.be/nDoO2a9Fvj0
 
 
 ### **ERD:NoSQL**
