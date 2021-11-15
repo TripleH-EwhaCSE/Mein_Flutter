@@ -69,7 +69,7 @@
 
 **개발 환경 및 version Control :**
 
-<img width="575" alt="Untitled 6" src="">
+<img width="575" alt="Untitled 6" src="https://raw.githubusercontent.com/TripleH-EwhaCSE/Mein_Flutter/master/mein/images/Environ.png">
 
 
 **화면 Flow :**
@@ -101,11 +101,14 @@
 </div>
 
 ## 글자 인식 모델
-<img width="180" alt="Untitled 13" src="">
-<img width="180" alt="Untitled 13" src="">
+<img width="180" alt="Untitled 13" src="https://raw.githubusercontent.com/TripleH-EwhaCSE/Mein_Flutter/master/mein/images/Acc_Graph.png">
+<img width="180" alt="Untitled 13" src="https://raw.githubusercontent.com/TripleH-EwhaCSE/Mein_Flutter/master/mein/images/Result_Table.png">
 - 가장 높은 정확도를 보인 모델 조합은 TPS-VGG-BiLSTM-Attention이다.
+
 - 변환(Transformer) 모듈에서 TPS를 사용할 때 정확도가 최대 34%까지 향상되는 결과를 보였다.
+
 - 추출(Feature Extraction) 모듈에서 VGG와 ResNet을 사용하였을 때의 결과가  RCNN을 사용했을 때보다 높은 정확도를 보였고 모델 간 평균 파라미터 수를 비교했을 때는 ResNet,VGG, RCNN 순의 결과를 보였다.
+
 - 시퀀스(Sequence) – 예측(Prediction) 모듈에서 BiLSTM-Attention 조합이 BiLSTM을 사용하지 않을 때보다 정확도가 높은 결과를 보였다.
    -> BiLSTM-Attention 조합이 함께 사용했을 때 정확도를 향상시키는 효과
 
